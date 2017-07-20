@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterAttributes : MonoBehaviour {
+public class UnitAttributes : MonoBehaviour {
 
     // Base attributes
     [SerializeField]
