@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class UnitAttributes : MonoBehaviour {
 
+    protected const float airborneAccelerationTimeMultiplier = 4;
+
     // Base attributes
     [SerializeField]
     protected float baseMaxHealth;
     [SerializeField]
     protected float baseMovementSpeed;
+    [SerializeField]
+    protected float timeTakenToReachMaxSpeed;
     [SerializeField]
     protected float baseJumpHeight;
     protected float baseDamageTakenFactor = 1;
@@ -17,6 +21,8 @@ public class UnitAttributes : MonoBehaviour {
     // Runtime attributes
     protected float currentHealth;
     protected float currentMovementSpeed;
+    protected float currentGroundAcceleration;
+    protected float currentAirborneAcceleraion;
     protected float currentJumpHeight;
     protected float currentDamageTakenFactor;
     protected float currentDamageOutputFactor;
@@ -25,6 +31,8 @@ public class UnitAttributes : MonoBehaviour {
     public float CurrentHealth { get { return currentHealth; } }
     public float CurrentDamageOutputFactor { get { return currentDamageOutputFactor; } }
     public float CurrentMovementSpeed { get { return currentMovementSpeed; } }
+    public float CurrentGroundAcceleration { get { return currentGroundAcceleration; } }
+    public float CurrentAirborneAcceleration { get { return currentAirborneAcceleraion; } }
     public float CurrentJumpHeight { get { return currentJumpHeight; } }
     public bool CanMove { get { return canMove; } }
     public bool CanExecuteActions { get { return canExecuteActions; } }
@@ -86,6 +94,8 @@ public class UnitAttributes : MonoBehaviour {
         currentJumpHeight = baseJumpHeight;
         currentDamageTakenFactor = baseDamageTakenFactor;
         currentDamageOutputFactor = baseDamageOutputFactor;
+        currentGroundAcceleration = currentMovementSpeed / timeTakenToReachMaxSpeed;
+        currentAirborneAcceleraion = currentGroundAcceleration / airborneAccelerationTimeMultiplier;
     }
 
     protected void ParseBuff(Buff buff) {

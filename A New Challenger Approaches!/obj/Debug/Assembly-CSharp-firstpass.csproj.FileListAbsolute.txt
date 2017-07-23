@@ -33,3 +33,38 @@ C:\Users\Luke\Desktop\Games\A New Challenger Approaches!\Temp\bin\Debug\Rewired_
 C:\Users\Luke\Desktop\Games\A New Challenger Approaches!\obj\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
 C:\Users\Luke\Desktop\Games\A New Challenger Approaches!\obj\Debug\Assembly-CSharp-firstpass.dll
 C:\Users\Luke\Desktop\Games\A New Challenger Approaches!\obj\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\nunit.framework.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\Rewired_Core.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\UnityEngine.Analytics.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\UnityEngine.HoloLens.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\UnityEngine.TestRunner.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\UnityEngine.Timeline.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\XInputDotNetPure.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\ExCSS.Unity.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\Unity.Legacy.NRefactory.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\UnityEngine.xml
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\UnityEditor.xml
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\UnityEngine.TestRunner.xml
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\nunit.framework.xml
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\UnityEngine.Timeline.xml
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\UnityEngine.Analytics.xml
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\UnityEngine.HoloLens.xml
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\Temp\bin\Debug\Rewired_Core.xml
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\obj\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\obj\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\Luke\Desktop\School or Intern Stuff\ANCA\A New Challenger Approaches!\obj\Debug\Assembly-CSharp-firstpass.pdb
