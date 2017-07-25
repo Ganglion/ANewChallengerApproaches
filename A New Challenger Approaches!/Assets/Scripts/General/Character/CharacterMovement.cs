@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CharacterMovement : ObjectMovement {
 
-    protected bool isGrounded = true;
-
     protected UnitAttributes characterAttributes;
 
     protected override void Awake() {
@@ -44,7 +42,4 @@ public class CharacterMovement : ObjectMovement {
         }
     }
 
-    protected override void OnLand() {
-        isGrounded = true;
-    }
 }
