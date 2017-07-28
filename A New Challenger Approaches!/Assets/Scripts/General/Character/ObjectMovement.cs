@@ -49,7 +49,7 @@ public class ObjectMovement : MonoBehaviour {
                 displacement.y = displacement.x * Mathf.Tan(obstacleAngle * Mathf.Deg2Rad);
             } else {
                 displacement.x = verticalHit.distance * directionOfMovementX;
-                velocity.x = 0;
+                //velocity.x = 0;
                 if (obstacleAngle <= maximumAngleOfSlopeClimbable) {
                     isOnSlope = true;
                 } else {

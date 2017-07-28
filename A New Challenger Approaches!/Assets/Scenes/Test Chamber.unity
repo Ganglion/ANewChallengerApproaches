@@ -738,6 +738,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMaxHealth: 2
-  baseMovementSpeed: 1
+  baseMovementSpeed: 3
   timeTakenToReachMaxSpeed: 0.125
-  baseJumpHeight: 1
+  baseJumpHeight: 3
