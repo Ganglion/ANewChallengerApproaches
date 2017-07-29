@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnitAttributes : MonoBehaviour {
 
-    protected const float airborneAccelerationTimeMultiplier = 4;
+    protected const float airborneAccelerationTimeMultiplier = 8;
 
     // Base attributes
     [SerializeField]
