@@ -23,20 +23,31 @@ public class ObjectMovement : MonoBehaviour {
         objectCollider = GetComponent<Collider2D>();
     }
 
-	protected virtual void FixedUpdate () {
-		if (!isGrounded) {
-			DoGravity (ref currentVelocity);
-		}
+    protected virtual void FixedUpdate() {
+        DoGravity(ref currentVelocity);
         Vector2 nextFrameDisplacement = currentVelocity * Time.deltaTime;
-        float heightOfObject = objectCollider.bounds.extents.y * 2;
-        float widthOfObject = objectCollider.bounds.extents.x * 2;
+        //float heightOfObject = objectCollider.bounds.extents.y * 2;
+        //float widthOfObject = objectCollider.bounds.extents.x * 2;
         float angleOfGround = 0;
-        RaycastHit2D horizontalHit = DetectHorizontalCollisions(nextFrameDisplacement, heightOfObject, widthOfObject);
-        RaycastHit2D verticalHit = DetectVerticalCollisions(nextFrameDisplacement, heightOfObject, widthOfObject, ref angleOfGround);
-		CheckHorizontalCollisions (horizontalHit, angleOfGround, ref currentVelocity, ref nextFrameDisplacement);
-		if (!isGrounded && currentVelocity.y <= 0) {
-			CheckVerticalCollisions (verticalHit, ref nextFrameDisplacement, ref currentVelocity);
-		}
+        Vector2 raycastOrigin = transform.position;
+        RaycastHit2D verticalHit = DetectVerticalCollisions(nextFrameDisplacement, ref angleOfGround, ref raycastOrigin);
+        RaycastHit2D horizontalHit = DetectHorizontalCollisions(nextFrameDisplacement, raycastOrigin);
+        //Debug.Log("AOG: " + angleOfGround);
+        if (nextFrameDisplacement.x != 0) {
+            CheckHorizontalCollisions(horizontalHit, angleOfGround, ref currentVelocity, ref nextFrameDisplacement);
+        }
+        //Debug.Log("NFD : " + nextFrameDisplacement.y);
+        if (Mathf.Sign(nextFrameDisplacement.y) < 0) {
+            CheckVerticalCollisions(verticalHit, ref nextFrameDisplacement, ref currentVelocity);
+        }
+        //Debug.Log("NFD222 : " + nextFrameDisplacement.y);
+
+        //Debug.Log("? " + isGrounded);
+        //if (!isGrounded) {
+
+
+        //}
+        //Debug.Log("NFD : " + nextFrameDisplacement);
         transform.Translate(nextFrameDisplacement);
 	}
 
@@ -44,7 +55,73 @@ public class ObjectMovement : MonoBehaviour {
         velocity.y += gravityAcceleration * Time.deltaTime;
     }
 
-    protected RaycastHit2D DetectHorizontalCollisions(Vector2 displacement, float heightOfObject, float widthOfObject) {
+    protected RaycastHit2D DetectHorizontalCollisions(Vector2 displacement, Vector2 raycastOrigin) {
+        float directionOfMovementX = Mathf.Sign(displacement.x);
+        //Vector2 raycastOrigin = GetRaycastOriginPosition(angleOfGround);
+        //Debug.DrawLine(raycastOrigin, raycastOrigin + Vector2.right * directionOfMovementX, Color.red);
+        RaycastHit2D horizontalHit = Physics2D.Raycast(raycastOrigin, Vector2.right * directionOfMovementX, Mathf.Abs(displacement.x), collisionLayerMask);
+        return horizontalHit;
+    }
+
+    protected RaycastHit2D DetectVerticalCollisions(Vector2 displacement, ref float angleOfGround, ref Vector2 raycastOrigin) {
+        float directionOfMovementX = System.Math.Sign(currentVelocity.x);
+        float directionOfMovementY = Mathf.Sign(displacement.y);
+        float raycastOriginY = (directionOfMovementY > 0) ? objectCollider.bounds.max.y : objectCollider.bounds.min.y;
+        Vector2 leftRaycastOrigin = new Vector2(objectCollider.bounds.min.x, raycastOriginY);
+        Vector2 rightRaycastOrigin = new Vector2(objectCollider.bounds.max.x, raycastOriginY);
+        RaycastHit2D leftVerticalHit = Physics2D.Raycast(leftRaycastOrigin, Vector2.up * directionOfMovementY, Mathf.Abs(displacement.y), collisionLayerMask);
+        RaycastHit2D rightVerticalHit = Physics2D.Raycast(rightRaycastOrigin, Vector2.up * directionOfMovementY, Mathf.Abs(displacement.y), collisionLayerMask);
+        RaycastHit2D verticalHit;
+        if (leftVerticalHit.collider == null) {
+            raycastOrigin = rightRaycastOrigin;
+            verticalHit = rightVerticalHit;
+        } else if (rightVerticalHit.collider == null) {
+            raycastOrigin = leftRaycastOrigin;
+            verticalHit = leftVerticalHit;
+        } else {
+            raycastOrigin = (leftVerticalHit.distance < rightVerticalHit.distance) ? leftRaycastOrigin : rightRaycastOrigin;
+            verticalHit = (leftVerticalHit.distance < rightVerticalHit.distance) ? leftVerticalHit : rightVerticalHit;
+        }
+        Debug.DrawLine(raycastOrigin, raycastOrigin + Vector2.up * directionOfMovementY, Color.green);
+        //Debug.Log("DISTANCE CHECK : " + leftVerticalHit.distance + " " + rightVerticalHit.distance);
+        if (verticalHit.collider != null) {
+            angleOfGround = Vector2.SignedAngle(Vector2.up, verticalHit.normal);
+        }
+        return verticalHit;
+        
+        /*if (currentVelocity.x != 0) {
+            raycastOriginX = (directionOfMovementX > 0) ? objectCollider.bounds.max.x : objectCollider.bounds.min.x;
+        } else {
+            raycastOriginX = (angleOfGround > 0) ? objectCollider.bounds.min.x : objectCollider.bounds.max.x;
+        }
+        Debug.DrawLine(raycastOrigin, raycastOrigin + Vector2.up * directionOfMovementY, Color.green);
+        RaycastHit2D verticalHit = Physics2D.Raycast(raycastOrigin, Vector2.up * directionOfMovementY, Mathf.Abs(displacement.y), collisionLayerMask);
+        if (verticalHit.collider != null) {
+            angleOfGround = Vector2.SignedAngle(Vector2.up, verticalHit.normal);
+        }
+        return verticalHit;*/
+    }
+
+    protected Vector2 GetRaycastOriginPosition(ref float angleOfGround) {
+        float directionOfMovementX = System.Math.Sign(currentVelocity.x);
+        float directionOfMovementY = System.Math.Sign(currentVelocity.y);
+        float raycastOriginX;
+
+
+
+
+
+
+        if (currentVelocity.x != 0) {
+            raycastOriginX = (directionOfMovementX > 0) ? objectCollider.bounds.max.x : objectCollider.bounds.min.x;
+        } else {
+            raycastOriginX = (angleOfGround > 0) ? objectCollider.bounds.min.x : objectCollider.bounds.max.x;
+        }
+        float raycastOriginY = (directionOfMovementY > 0) ? objectCollider.bounds.max.y : objectCollider.bounds.min.y;
+        return new Vector2(raycastOriginX, raycastOriginY);
+    }
+
+    /*protected RaycastHit2D DetectHorizontalCollisions(Vector2 displacement, float heightOfObject, float widthOfObject) {
         float directionOfMovementX = Mathf.Sign(displacement.x);
         Vector2 raycastOrigin = (Vector2)transform.position + new Vector2(widthOfObject / 2, 0) * directionOfMovementX;
         RaycastHit2D horizontalHit = Physics2D.BoxCast(raycastOrigin, new Vector2(bufferLength, heightOfObject), 0, Vector2.right * directionOfMovementX, Mathf.Abs(displacement.x), collisionLayerMask);
@@ -56,37 +133,41 @@ public class ObjectMovement : MonoBehaviour {
         Vector2 raycastOrigin = (Vector2)transform.position + new Vector2(0, heightOfObject / 2) * directionOfMovementY;
         RaycastHit2D verticalHit = Physics2D.BoxCast(raycastOrigin, new Vector2(widthOfObject, bufferLength), 0, Vector2.up * directionOfMovementY, Mathf.Abs(displacement.y), collisionLayerMask);
 		if (verticalHit.collider != null) {
-			angleOfGround = Vector2.SignedAngle (verticalHit.normal, Vector2.up);
-			Debug.Log(angleOfGround);
-		}
-        
+			angleOfGround = Vector2.SignedAngle(Vector2.up, verticalHit.normal);
+		} else {
+            Debug.Log(verticalHit.collider);
+        }
         return verticalHit;
-    }
+    }*/
 
     protected void CheckHorizontalCollisions(RaycastHit2D horizontalHit, float angleOfGround, ref Vector2 velocity, ref Vector2 displacement) {
         float directionOfMovementX = Mathf.Sign(displacement.x);
         float idealDisplacementY = Mathf.Sin(angleOfGround * Mathf.Deg2Rad) * Mathf.Abs(displacement.x);
         float idealDisplacementX = Mathf.Cos(angleOfGround * Mathf.Deg2Rad) * Mathf.Abs(displacement.x) * directionOfMovementX;
         if (horizontalHit.collider != null) {
-            float obstacleAngle = Vector2.Angle(horizontalHit.normal, Vector2.up);
-			if (obstacleAngle > maximumAngleOfSlopeClimbable || obstacleAngle != angleOfGround) {
-				displacement.x = horizontalHit.distance * directionOfMovementX;
-			} else {
-				displacement.y = displacement.x * Mathf.Tan (obstacleAngle * Mathf.Deg2Rad);
+            float obstacleAngle = Vector2.SignedAngle(Vector2.up, horizontalHit.normal);
+			if (obstacleAngle > maximumAngleOfSlopeClimbable) {
+				displacement.x = (horizontalHit.distance - bufferLength) * directionOfMovementX;
+            } else {
+                //Debug.Log("should be climbing " + obstacleAngle);
+                displacement.y = displacement.x * Mathf.Tan(obstacleAngle * Mathf.Deg2Rad);
+                //Debug.Log(Vector2.Angle(displacement, Vector2.right));
 			}
+            isGrounded = true;
+        } else {
+            //Debug.Log("MISS HORI");
         }
+        
     }
 
 	protected void CheckVerticalCollisions(RaycastHit2D verticalHit, ref Vector2 displacement, ref Vector2 velocity) {
 		float directionOfMovementY = Mathf.Sign(displacement.y);
-		/*Vector2 raycastOrigin = (Vector2)transform.position + new Vector2(0, heightOfObject / 2) * directionOfMovementY;
+        /*Vector2 raycastOrigin = (Vector2)transform.position + new Vector2(0, heightOfObject / 2) * directionOfMovementY;
 		RaycastHit2D verticalHit = Physics2D.BoxCast(raycastOrigin, new Vector2(widthOfObject, bufferLength), 0, Vector2.up * directionOfMovementY, Mathf.Abs(displacement.y), collisionLayerMask);*/
-		if (verticalHit.collider != null) {
-			displacement.y = verticalHit.distance * directionOfMovementY;
-			velocity.y = 0;
-			isGrounded = true;
-		} else {
-			isGrounded = false;
+        if (verticalHit.collider != null) {
+            displacement.y = (verticalHit.distance - bufferLength) * directionOfMovementY;
+            isGrounded = true;
+            velocity.y = 0;
 		}
     }
 }
