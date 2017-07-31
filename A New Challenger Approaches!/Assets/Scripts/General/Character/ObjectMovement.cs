@@ -26,28 +26,16 @@ public class ObjectMovement : MonoBehaviour {
     protected virtual void FixedUpdate() {
         DoGravity(ref currentVelocity);
         Vector2 nextFrameDisplacement = currentVelocity * Time.deltaTime;
-        //float heightOfObject = objectCollider.bounds.extents.y * 2;
-        //float widthOfObject = objectCollider.bounds.extents.x * 2;
         float angleOfGround = 0;
         Vector2 raycastOrigin = transform.position;
         RaycastHit2D verticalHit = DetectVerticalCollisions(nextFrameDisplacement, ref angleOfGround, ref raycastOrigin);
         RaycastHit2D horizontalHit = DetectHorizontalCollisions(nextFrameDisplacement, raycastOrigin);
-        //Debug.Log("AOG: " + angleOfGround);
         if (nextFrameDisplacement.x != 0) {
             CheckHorizontalCollisions(horizontalHit, angleOfGround, ref currentVelocity, ref nextFrameDisplacement);
         }
-        //Debug.Log("NFD : " + nextFrameDisplacement.y);
         if (Mathf.Sign(nextFrameDisplacement.y) < 0) {
             CheckVerticalCollisions(verticalHit, ref nextFrameDisplacement, ref currentVelocity);
         }
-        //Debug.Log("NFD222 : " + nextFrameDisplacement.y);
-
-        //Debug.Log("? " + isGrounded);
-        //if (!isGrounded) {
-
-
-        //}
-        //Debug.Log("NFD : " + nextFrameDisplacement);
         transform.Translate(nextFrameDisplacement);
 	}
 
@@ -56,11 +44,21 @@ public class ObjectMovement : MonoBehaviour {
     }
 
     protected RaycastHit2D DetectHorizontalCollisions(Vector2 displacement, Vector2 raycastOrigin) {
+		float directionOfMovementX = System.Math.Sign(currentVelocity.x);
+		float directionOfMovementY = Mathf.Sign(displacement.y);
+		float raycastOriginY = (directionOfMovementY > 0) ? objectCollider.bounds.max.y : objectCollider.bounds.min.y;
+		Vector2 leftRaycastOrigin = new Vector2(objectCollider.bounds.min.x, raycastOriginY);
+		Vector2 rightRaycastOrigin = new Vector2(objectCollider.bounds.max.x, raycastOriginY);
+
+
+		/*
         float directionOfMovementX = Mathf.Sign(displacement.x);
-        //Vector2 raycastOrigin = GetRaycastOriginPosition(angleOfGround);
-        //Debug.DrawLine(raycastOrigin, raycastOrigin + Vector2.right * directionOfMovementX, Color.red);
         RaycastHit2D horizontalHit = Physics2D.Raycast(raycastOrigin, Vector2.right * directionOfMovementX, Mathf.Abs(displacement.x), collisionLayerMask);
-        return horizontalHit;
+		Debug.DrawLine(raycastOrigin, raycastOrigin + Vector2.right * directionOfMovementX, Color.green);
+		if (isGrounded) {
+			RaycastHit2D oppositeHorizontalHit = Physics2D.Raycast(raycastOrigin, Vector2.right * -directionOfMovementX, Mathf.Abs(displacement.x), collisionLayerMask);
+		}
+        return horizontalHit;*/
     }
 
     protected RaycastHit2D DetectVerticalCollisions(Vector2 displacement, ref float angleOfGround, ref Vector2 raycastOrigin) {
@@ -83,35 +81,28 @@ public class ObjectMovement : MonoBehaviour {
             verticalHit = (leftVerticalHit.distance < rightVerticalHit.distance) ? leftVerticalHit : rightVerticalHit;
         }
         Debug.DrawLine(raycastOrigin, raycastOrigin + Vector2.up * directionOfMovementY, Color.green);
-        //Debug.Log("DISTANCE CHECK : " + leftVerticalHit.distance + " " + rightVerticalHit.distance);
         if (verticalHit.collider != null) {
             angleOfGround = Vector2.SignedAngle(Vector2.up, verticalHit.normal);
         }
         return verticalHit;
-        
-        /*if (currentVelocity.x != 0) {
-            raycastOriginX = (directionOfMovementX > 0) ? objectCollider.bounds.max.x : objectCollider.bounds.min.x;
-        } else {
-            raycastOriginX = (angleOfGround > 0) ? objectCollider.bounds.min.x : objectCollider.bounds.max.x;
-        }
-        Debug.DrawLine(raycastOrigin, raycastOrigin + Vector2.up * directionOfMovementY, Color.green);
-        RaycastHit2D verticalHit = Physics2D.Raycast(raycastOrigin, Vector2.up * directionOfMovementY, Mathf.Abs(displacement.y), collisionLayerMask);
-        if (verticalHit.collider != null) {
-            angleOfGround = Vector2.SignedAngle(Vector2.up, verticalHit.normal);
-        }
-        return verticalHit;*/
     }
+
+	/*if (currentVelocity.x != 0) {
+        raycastOriginX = (directionOfMovementX > 0) ? objectCollider.bounds.max.x : objectCollider.bounds.min.x;
+    } else {
+        raycastOriginX = (angleOfGround > 0) ? objectCollider.bounds.min.x : objectCollider.bounds.max.x;
+    }
+    Debug.DrawLine(raycastOrigin, raycastOrigin + Vector2.up * directionOfMovementY, Color.green);
+    RaycastHit2D verticalHit = Physics2D.Raycast(raycastOrigin, Vector2.up * directionOfMovementY, Mathf.Abs(displacement.y), collisionLayerMask);
+    if (verticalHit.collider != null) {
+        angleOfGround = Vector2.SignedAngle(Vector2.up, verticalHit.normal);
+    }
+    return verticalHit;
 
     protected Vector2 GetRaycastOriginPosition(ref float angleOfGround) {
         float directionOfMovementX = System.Math.Sign(currentVelocity.x);
         float directionOfMovementY = System.Math.Sign(currentVelocity.y);
         float raycastOriginX;
-
-
-
-
-
-
         if (currentVelocity.x != 0) {
             raycastOriginX = (directionOfMovementX > 0) ? objectCollider.bounds.max.x : objectCollider.bounds.min.x;
         } else {
@@ -148,14 +139,11 @@ public class ObjectMovement : MonoBehaviour {
             float obstacleAngle = Vector2.SignedAngle(Vector2.up, horizontalHit.normal);
 			if (obstacleAngle > maximumAngleOfSlopeClimbable) {
 				displacement.x = (horizontalHit.distance - bufferLength) * directionOfMovementX;
-            } else {
-                //Debug.Log("should be climbing " + obstacleAngle);
-                displacement.y = displacement.x * Mathf.Tan(obstacleAngle * Mathf.Deg2Rad);
-                //Debug.Log(Vector2.Angle(displacement, Vector2.right));
+			} else {
+				float directionOfDisplacementY = (directionOfMovementX == Mathf.Sign (obstacleAngle)) ? 1 : 0;
+				displacement.y = displacement.x * Mathf.Tan(obstacleAngle * Mathf.Deg2Rad) * directionOfDisplacementY;
 			}
             isGrounded = true;
-        } else {
-            //Debug.Log("MISS HORI");
         }
         
     }
