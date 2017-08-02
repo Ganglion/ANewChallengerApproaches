@@ -52,8 +52,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\General\Buffs\Buff.cs" />
-     <Compile Include="Assets\Scripts\General\Character\CharacterMovement.cs" />
+     <Compile Include="Assets\Scripts\General\Character\CharacterInput.cs" />
      <Compile Include="Assets\Scripts\General\Character\ObjectMovement.cs" />
+     <Compile Include="Assets\Scripts\General\Character\ObjectRaycasting.cs" />
      <Compile Include="Assets\Scripts\General\Character\UnitAttributes.cs" />
      <Compile Include="Assets\Scripts\General\Singleton.cs" />
      <None Include="Assets\Plugins\Controller\Rewired\Documentation\licences.txt" />
