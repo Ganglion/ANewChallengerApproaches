@@ -24,6 +24,12 @@ public class CharacterInput : MonoBehaviour {
         float jumpHeight = characterAttributes.CurrentJumpHeight;
         bool hasMovedHorizontally = false;
 
+        if (!characterMovement.collisions.below) {
+            currentVelocity.y += Time.deltaTime * -9.81f * 2;
+        } else {
+            currentVelocity.y = -0.1f;
+        }
+
         if (Input.GetKey(KeyCode.A)) {
             currentVelocity.x = Mathf.MoveTowards(currentVelocity.x, -movementSpeed, currentAcceleration * Time.deltaTime);
             hasMovedHorizontally = true;
@@ -41,8 +47,13 @@ public class CharacterInput : MonoBehaviour {
         if (!hasMovedHorizontally) {
             currentVelocity.x = Mathf.MoveTowards(currentVelocity.x, 0, currentAcceleration * Time.deltaTime);
         }
-		currentVelocity.y += Time.deltaTime * -9.81f * 2;
-		characterMovement.Move (currentVelocity * Time.deltaTime, Vector2.down);
+
+        if (Input.GetKey(KeyCode.S)) {
+            Debug.Log(currentVelocity);
+            characterMovement.Move(currentVelocity * Time.deltaTime, Vector2.down);
+        } else {
+            characterMovement.Move(currentVelocity * Time.deltaTime, Vector2.up);
+        }
     }
 
 }
