@@ -51,15 +51,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ExampleAnimationController.cs" />
      <Compile Include="Assets\Scripts\General\Buffs\Buff.cs" />
      <Compile Include="Assets\Scripts\General\Character\CharacterInput.cs" />
+     <Compile Include="Assets\Scripts\General\Character\HomingProjectile.cs" />
+     <Compile Include="Assets\Scripts\General\Character\LinearProjectile.cs" />
      <Compile Include="Assets\Scripts\General\Character\ObjectMovement.cs" />
      <Compile Include="Assets\Scripts\General\Character\ObjectRaycasting.cs" />
+     <Compile Include="Assets\Scripts\General\Character\Projectile.cs" />
      <Compile Include="Assets\Scripts\General\Character\UnitAttributes.cs" />
+     <Compile Include="Assets\Scripts\General\Character\Visualiser.cs" />
      <Compile Include="Assets\Scripts\General\Singleton.cs" />
+     <Compile Include="Assets\Testing Level\Scripts\FiringHomingProjectileSkillExample.cs" />
+     <Compile Include="Assets\Testing Level\Scripts\FiringProjectileSkillExample.cs" />
      <None Include="Assets\Plugins\Controller\Rewired\Documentation\licences.txt" />
+     <None Include="Assets\Plugins\Anima2D\Anima2D\Version.txt" />
      <None Include="Assets\Plugins\Controller\Rewired\Documentation\ReadMe.txt" />
+     <None Include="Assets\Plugins\Anima2D\Anima2D\Examples\Shaders\Unlit-Alpha-Cull-off.shader" />
+     <None Include="Assets\Plugins\Anima2D\Anima2D\Licenses.txt" />
+     <None Include="Assets\Plugins\Anima2D\Anima2D\Examples\Shaders\VertexLitOneDirectional.shader" />
      <None Include="Assets\Plugins\Controller\Rewired\Documentation\ReleaseNotes.txt" />
+     <None Include="Assets\Plugins\Anima2D\Anima2D\Readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

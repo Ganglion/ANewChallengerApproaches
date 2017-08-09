@@ -39,7 +39,7 @@ public class ObjectMovement : ObjectRaycasting {
 			VerticalCollisions (ref moveAmount);
 		}
 
-		transform.Translate (moveAmount);
+		this.transform.Translate (moveAmount);
 
 		if (standingOnPlatform) {
 			collisions.below = true;
@@ -121,7 +121,7 @@ public class ObjectMovement : ObjectRaycasting {
                         }
                         if (playerInput.y == -1) {
                             collisions.fallingThroughPlatform = true;
-                            Invoke("ResetFallingThroughPlatform", .25f);
+                            Invoke("ResetFallingThroughPlatform", .05f);
                             continue;
                         }
                     }
