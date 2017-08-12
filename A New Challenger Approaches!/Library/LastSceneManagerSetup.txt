@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Testing Level/Testing Level.unity
+- path: Assets/A Foggy Bridge/Foggy Bridge.unity
   isLoaded: 1
   isActive: 1
