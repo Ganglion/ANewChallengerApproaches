@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0543fe805424df99fe08ce744cbe49, type: 3}
+  m_Name: BridgeguardFightStance
+  m_EditorClassIdentifier: 
+  m_PoseEntries:
+  - path: Bones/Base
+    localPosition: {x: 0, y: -1.55, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Bones/Base/RightLeg
+    localPosition: {x: -0.05466161, y: 0.3396745, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.927004, w: 0.37505153}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Bones/Base/LeftLeg
+    localPosition: {x: -0.036974613, y: -0.42088974, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.92711854, w: 0.37476838}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Bones/Base/Body
+    localPosition: {x: 0.5, y: 0, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.098017134, w: 0.9951847}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Bones/Base/Body/Head
+    localPosition: {x: 2.180157, y: 0, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.098017134, w: 0.9951847}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Bones/Base/Body/LeftUpperArm
+    localPosition: {x: 1.824374, y: -0.74643517, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.9187763, w: 0.39477876}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Bones/Base/Body/LeftUpperArm/LeftLowerArm
+    localPosition: {x: 1.1256216, y: 0.00000071525574, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.18500257, w: 0.9827381}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Bones/Base/Body/LeftUpperArm/LeftLowerArm/Sword
+    localPosition: {x: 1.2150862, y: 0.00000040605664, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.7230455, w: 0.69080037}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Bones/Base/Body/RightUpperArm
+    localPosition: {x: 1.849463, y: 0.5868387, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.8545314, w: 0.5193998}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Bones/Base/Body/RightUpperArm/Shield
+    localPosition: {x: 1.6241935, y: -0.00000047683716, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.3565097, w: 0.93429166}
+    localScale: {x: 1, y: 1, z: 1}
