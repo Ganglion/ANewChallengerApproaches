@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 01503fc928b9cbe46a002ab2fc0ce0a2
-timeCreated: 1502628886
+timeCreated: 1502686227
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -90,7 +90,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 335
-        width: 300
+        width: 296
         height: 177
       alignment: 9
       pivot: {x: 0.49166667, y: 0.51129943}
@@ -102,9 +102,9 @@ TextureImporter:
       name: BridgeguardBody
       rect:
         serializedVersion: 2
-        x: 290
+        x: 295
         y: 171
-        width: 237
+        width: 232
         height: 341
       alignment: 9
       pivot: {x: 0.49999997, y: 0.5073314}
@@ -118,7 +118,7 @@ TextureImporter:
         serializedVersion: 2
         x: 521
         y: 374
-        width: 157
+        width: 152
         height: 138
       alignment: 9
       pivot: {x: 0.5, y: 0.51811594}
@@ -130,9 +130,9 @@ TextureImporter:
       name: BridgeguardShield
       rect:
         serializedVersion: 2
-        x: 667
+        x: 673
         y: 122
-        width: 150
+        width: 144
         height: 390
       alignment: 9
       pivot: {x: 0.5, y: 0.5064103}
@@ -146,7 +146,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 222
-        width: 179
+        width: 174
         height: 115
       alignment: 9
       pivot: {x: 0.4860335, y: 0.49999997}
@@ -158,10 +158,10 @@ TextureImporter:
       name: BridgeguardLeftLowerArm
       rect:
         serializedVersion: 2
-        x: 169
-        y: 169
-        width: 93
-        height: 170
+        x: 174
+        y: 173
+        width: 88
+        height: 166
       alignment: 9
       pivot: {x: 0.5, y: 0.5147059}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,7 +174,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 54
-        width: 173
+        width: 168
         height: 176
       alignment: 9
       pivot: {x: 0.48554912, y: 0.5}
@@ -186,10 +186,10 @@ TextureImporter:
       name: BridgeguardLeftLeg
       rect:
         serializedVersion: 2
-        x: 223
+        x: 228
         y: 42
-        width: 63
-        height: 137
+        width: 58
+        height: 132
       alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,9 +200,9 @@ TextureImporter:
       name: BridgeguardRightLeg
       rect:
         serializedVersion: 2
-        x: 163
+        x: 167
         y: 43
-        width: 70
+        width: 61
         height: 138
       alignment: 9
       pivot: {x: 0.5, y: 0.5}
