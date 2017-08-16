@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\ExampleAnimationController.cs" />
      <Compile Include="Assets\Foggy Bridge\Scripts\BridgeguardController.cs" />
+     <Compile Include="Assets\Foggy Bridge\Scripts\SpitfireProjectile.cs" />
      <Compile Include="Assets\Foggy Bridge\Scripts\UnitInput.cs" />
      <Compile Include="Assets\Scripts\General\Buffs\Buff.cs" />
      <Compile Include="Assets\Scripts\General\Character\CharacterInput.cs" />
@@ -66,14 +67,62 @@
      <Compile Include="Assets\Scripts\General\Singleton.cs" />
      <Compile Include="Assets\Testing Level\Scripts\FiringHomingProjectileSkillExample.cs" />
      <Compile Include="Assets\Testing Level\Scripts\FiringProjectileSkillExample.cs" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\DepthOfField.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\Fog.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\LutGen.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Editor Resources\UI\CurveBackground.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\ACES.cginc" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
      <None Include="Assets\Plugins\Controller\Rewired\Documentation\licences.txt" />
      <None Include="Assets\Plugins\Anima2D\Anima2D\Version.txt" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\Uber.shader" />
      <None Include="Assets\Plugins\Controller\Rewired\Documentation\ReadMe.txt" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\Blit.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Editor Resources\Monitors\WaveformRender.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Editor Resources\Monitors\VectorscopeCompute.compute" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\FXAA3.cginc" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\MotionBlur.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\AmbientOcclusion.shader" />
+     <None Include="Assets\Plugins\Particlecollection_Free samples\Plugins\Effect\Shader\effect_distortion_mask.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Bluenoise64\LICENSE.txt" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\BuiltinDebugViews.shader" />
+     <None Include="Assets\Plugins\Particlecollection_Free samples\Plugins\Effect\Shader\ParticleAddSoftEffect.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\Common.cginc" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
+     <None Include="Assets\Plugins\_SFB_Particle Package 1\Demo &amp; Read Me\SFB_ParticlePackage1_ReadMe.txt" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Editor Resources\UI\Trackball.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\Bloom.cginc" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\TAA.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\EyeHistogram.compute" />
+     <None Include="Assets\Plugins\Particlecollection_Free samples\Plugins\Effect\Shader\ParticlePremultiplyBlend.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\TAA.cginc" />
+     <None Include="Assets\Plugins\Particlecollection_Free samples\READ ME.txt" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\EyeAdaptation.cginc" />
      <None Include="Assets\Plugins\Anima2D\Anima2D\Examples\Shaders\Unlit-Alpha-Cull-off.shader" />
      <None Include="Assets\Plugins\Anima2D\Anima2D\Licenses.txt" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\GrainGen.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\FXAA.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\DiskKernels.cginc" />
      <None Include="Assets\Plugins\Anima2D\Anima2D\Examples\Shaders\VertexLitOneDirectional.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\DepthOfField.cginc" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
      <None Include="Assets\Plugins\Controller\Rewired\Documentation\ReleaseNotes.txt" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\Bloom.shader" />
+     <None Include="Assets\Plugins\Particlecollection_Free samples\Plugins\Effect\Shader\ParticleAddEffect.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Editor Resources\Monitors\VectorscopeRender.shader" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\EyeAdaptation.shader" />
      <None Include="Assets\Plugins\Anima2D\Anima2D\Readme.txt" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\ColorGrading.cginc" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
+     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
+     <None Include="Assets\Plugins\Particlecollection_Free samples\Plugins\Effect\Shader\ParticleBlendEffect.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -105,6 +154,8 @@
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{7AF8F88F-7BE7-B2FD-BB28-E26C2E0E48E7}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.csproj">
+      <Project>{DABF7717-2469-C078-89CF-86560785D39A}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,77 +4,92 @@ using UnityEngine;
 
 public class BridgeguardController : UnitInput {
 
-	// Constants
-	protected const string WALK_TRIGGER = "BridgeguardWalk";
-	protected const string STAB_TRIGGER = "BridgeguardStab";
-	protected const string SPITFIRE_TRIGGER = "BridgeguardSpitfire";
+    // Constants
+    protected const string WALK_TRIGGER = "BridgeguardWalk";
+    protected const string STAB_TRIGGER = "BridgeguardStab";
+    protected const string SPITFIRE_TRIGGER = "BridgeguardSpitfire";
 
-	// References
-	[SerializeField]
-	protected Transform targetCharacter;
+    // References
+    [SerializeField]
+    protected Transform targetCharacter;
+    [SerializeField]
+    protected GameObject spitfireProjectile;
+    [SerializeField]
+    protected Transform spitfireTransform;
 
-	// Fields
-	[SerializeField]
-	protected int moveWeight;
-	[SerializeField]
-	protected int stabWeight;
-	[SerializeField]
-	protected int spitfireWeight;
-	[SerializeField]
-	protected float minCoolown;
-	[SerializeField]
-	protected float maxCooldown;
+    // Fields
+    [SerializeField]
+    protected int moveWeight;
+    [SerializeField]
+    protected int stabWeight;
+    [SerializeField]
+    protected int spitfireWeight;
 
-	// Runtime variables
-	protected bool isDoingAction = false;
-	protected float cooldownToNextAction = 0;
-	protected int totalWeights;
-	protected float initialScale;
+    // Spitfire Fields
+    [SerializeField]
+    protected float spitfireDamage;
+    [SerializeField]
+    protected float spitfireHeight;
+    [SerializeField]
+    protected float spitfireGravity;
+    [SerializeField]
+    protected float spitfireLifespan;
 
-	// Components
-	protected Animator characterAnimator;
+    // Delay
+    [SerializeField]
+    protected float minCoolown;
+    [SerializeField]
+    protected float maxCooldown;
 
-	protected override void Awake() {
-		base.Awake ();
-		characterAnimator = GetComponent<Animator>();
-		totalWeights = moveWeight + stabWeight + spitfireWeight;
-		initialScale = transform.localScale.x;
-	}
+    // Runtime variables
+    protected bool isDoingAction = false;
+    protected float cooldownToNextAction = 0;
+    protected int totalWeights;
+    protected float initialScale;
 
-	protected void Update() {
-		cooldownToNextAction -= Time.deltaTime;
+    // Components
+    protected Animator characterAnimator;
 
-		float movementSpeed = characterAttributes.CurrentMovementSpeed;
-		float currentAcceleration = characterAttributes.CurrentGroundAcceleration;
+    protected override void Awake() {
+        base.Awake();
+        characterAnimator = GetComponent<Animator>();
+        totalWeights = moveWeight + stabWeight + spitfireWeight;
+        initialScale = transform.localScale.x;
+    }
 
-		if (!characterMovement.collisions.below) { // Is not on ground?
-			currentVelocity.y += Time.deltaTime * -9.81f * 5; // Fall
-		} else {
-			currentVelocity.y = -0.1f;
-		}
+    protected void Update() {
+        cooldownToNextAction -= Time.deltaTime;
 
-		//Debug.Log (isDoingAction + " " + cooldownToNextAction + " ");
-		if (!isDoingAction && cooldownToNextAction <= 0 && characterAttributes.CanExecuteActions) {
-			//ebug.Log ("ACTION");
-			int chosenAction = Random.Range (0, totalWeights);
-			if (chosenAction < moveWeight) {
-				//Debug.Log ("WALK");
-				characterAnimator.SetTrigger (WALK_TRIGGER);
-				currentVelocity.x = movementSpeed * FaceDirectionToTarget();
-			} else if ((chosenAction - moveWeight) < stabWeight) {
-				FaceDirectionToTarget ();
-				characterAnimator.SetTrigger (STAB_TRIGGER);
-			} else if ((chosenAction - moveWeight - stabWeight) < spitfireWeight) {
-				FaceDirectionToTarget ();
-				characterAnimator.SetTrigger (SPITFIRE_TRIGGER);
-			}
+        float movementSpeed = characterAttributes.CurrentMovementSpeed;
+        float currentAcceleration = characterAttributes.CurrentGroundAcceleration;
 
-			isDoingAction = true;
-			ApplyCooldown ();
-		}
-		currentVelocity.x = Mathf.MoveTowards(currentVelocity.x, 0, currentAcceleration * Time.deltaTime);
-		characterMovement.Move (currentVelocity * Time.deltaTime, Vector2.zero);
-	}
+        if (!characterMovement.collisions.below) { // Is not on ground?
+            currentVelocity.y += Time.deltaTime * -9.81f * 5; // Fall
+        } else {
+            currentVelocity.y = -0.1f;
+        }
+
+        //Debug.Log (isDoingAction + " " + cooldownToNextAction + " ");
+        if (!isDoingAction && cooldownToNextAction <= 0 && characterAttributes.CanExecuteActions) {
+            int chosenAction = Random.Range(0, totalWeights);
+            if (chosenAction < moveWeight) {
+                characterAnimator.SetTrigger(WALK_TRIGGER);
+                currentVelocity.x = movementSpeed * FaceDirectionToTarget();
+
+            } else if ((chosenAction - moveWeight) < stabWeight) {
+                FaceDirectionToTarget();
+                characterAnimator.SetTrigger(STAB_TRIGGER);
+            } else if ((chosenAction - moveWeight - stabWeight) < spitfireWeight) {
+                FaceDirectionToTarget();
+                characterAnimator.SetTrigger(SPITFIRE_TRIGGER);
+            }
+
+            isDoingAction = true;
+            StartCoroutine(ApplyCooldownDelay());
+        }
+        currentVelocity.x = Mathf.MoveTowards(currentVelocity.x, 0, currentAcceleration * Time.deltaTime);
+        characterMovement.Move(currentVelocity * Time.deltaTime, Vector2.zero);
+    }
 
 	protected int FaceDirectionToTarget() {
 		//Debug.Log (targetCharacter.position.x - transform.position.x);
@@ -92,47 +107,22 @@ public class BridgeguardController : UnitInput {
 		}
 	}
 
-	protected void ApplyCooldown() {
+	protected IEnumerator ApplyCooldownDelay() {
+        isDoingAction = true;
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(characterAnimator.GetCurrentAnimatorStateInfo(0).length);
 		isDoingAction = false;
 		cooldownToNextAction = Random.Range (minCoolown, maxCooldown);
 	}
 
-	protected void DoPlayerInput() {
-		// Retrieves values from attributes every frame (as buffs/debuffs may change them)
-		float movementSpeed = characterAttributes.CurrentMovementSpeed;
-		float currentAcceleration = characterMovement.collisions.below ? characterAttributes.CurrentGroundAcceleration : characterAttributes.CurrentAirborneAcceleration;
-		float jumpHeight = characterAttributes.CurrentJumpHeight;
-		bool hasMovedHorizontally = false;
+    protected void LaunchSpitfire() {
+        float verticalSpeed = Mathf.Sqrt(2 * Mathf.Abs(spitfireGravity) * spitfireHeight);
+        float totalTimeTaken = 2 * verticalSpeed / Mathf.Abs(spitfireGravity);
+        float horizontalSpeed = (targetCharacter.position.x - spitfireTransform.position.x) / totalTimeTaken;
+        Debug.Log(horizontalSpeed + " " + verticalSpeed);
+        GameObject newSpitfire = (GameObject)Instantiate(spitfireProjectile, spitfireTransform.position, Quaternion.Euler(Vector3.zero));
+        newSpitfire.GetComponent<SpitfireProjectile>().SetupProjectile(spitfireDamage, new Vector2(horizontalSpeed, verticalSpeed), spitfireLifespan, spitfireGravity, null);
 
-
-
-		if (Input.GetKey(KeyCode.LeftArrow)) { // Move left
-			currentVelocity.x = Mathf.MoveTowards(currentVelocity.x, -movementSpeed, currentAcceleration * Time.deltaTime);
-			hasMovedHorizontally = true;
-			isFacingRight = false;
-		}
-		if (Input.GetKey(KeyCode.RightArrow)) { // Move right
-			currentVelocity.x = Mathf.MoveTowards(currentVelocity.x, movementSpeed, currentAcceleration * Time.deltaTime);
-			hasMovedHorizontally = true;
-			isFacingRight = true;
-		}
-		if (Input.GetKey(KeyCode.UpArrow)) { // Jump
-			if (characterMovement.collisions.below) {
-				currentVelocity.y = Mathf.Sqrt(jumpHeight * -2f * -9.81f * 5); // Velocity to achieve ideal height
-			}
-		}
-
-		if (!hasMovedHorizontally) {
-			currentVelocity.x = Mathf.MoveTowards(currentVelocity.x, 0, currentAcceleration * Time.deltaTime); // Slow down
-		}
-
-		// All velocity calculated, move the player according to velocity
-		if (Input.GetKey(KeyCode.DownArrow)) {
-			// Use Vector2.down as the second parameter if you want to pass through platforms
-			characterMovement.Move(currentVelocity * Time.deltaTime, Vector2.down);
-		} else {
-			characterMovement.Move(currentVelocity * Time.deltaTime, Vector2.zero);
-		}
-	}
+    }
 
 }
