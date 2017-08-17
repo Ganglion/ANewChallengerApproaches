@@ -5,7 +5,10 @@
       <File FileName="Assets\Scripts\General\Character\ObjectMovement.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\General\Character\CharacterInput.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\General\Character\ObjectRaycasting.cs" Line="1" Column="1" />
-      <File FileName="Assets\Foggy Bridge\Scripts\BridgeguardController.cs" Line="82" Column="28" />
+      <File FileName="Assets\Foggy Bridge\Scripts\BridgeguardController.cs" Line="144" Column="1" />
+      <File FileName="Assets\Scripts\General\Character\Projectile.cs" Line="62" Column="53" />
+      <File FileName="Assets\Foggy Bridge\Scripts\SpitfireProjectile.cs" Line="43" Column="48" />
+      <File FileName="Assets\ShockwaveProjectile.cs" Line="7" Column="62" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

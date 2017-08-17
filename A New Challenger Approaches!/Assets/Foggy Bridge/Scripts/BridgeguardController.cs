@@ -16,6 +16,10 @@ public class BridgeguardController : UnitInput {
     protected GameObject spitfireProjectile;
     [SerializeField]
     protected Transform spitfireTransform;
+	[SerializeField]
+	protected GameObject shockwaveProjectile;
+	[SerializeField]
+	protected Transform shockwaveTransform;
 
     // Fields
     [SerializeField]
@@ -34,6 +38,14 @@ public class BridgeguardController : UnitInput {
     protected float spitfireGravity;
     [SerializeField]
     protected float spitfireLifespan;
+
+	// Shockwave fields
+	[SerializeField]
+	protected float shockwaveDamage;
+	[SerializeField]
+	protected float shockwaveSpeed;
+	[SerializeField]
+	protected float shockwaveLifespan;
 
     // Delay
     [SerializeField]
@@ -115,14 +127,22 @@ public class BridgeguardController : UnitInput {
 		cooldownToNextAction = Random.Range (minCoolown, maxCooldown);
 	}
 
-    protected void LaunchSpitfire() {
+	protected void LaunchSpitfire() {
+		Vector2 targetPosition = targetCharacter.position;
         float verticalSpeed = Mathf.Sqrt(2 * Mathf.Abs(spitfireGravity) * spitfireHeight);
-        float totalTimeTaken = 2 * verticalSpeed / Mathf.Abs(spitfireGravity);
-        float horizontalSpeed = (targetCharacter.position.x - spitfireTransform.position.x) / totalTimeTaken;
+		float totalTimeTaken = verticalSpeed / Mathf.Abs (spitfireGravity) + Mathf.Sqrt(2 * (spitfireHeight + spitfireTransform.position.y - targetPosition.y) / Mathf.Abs (spitfireGravity)); 
+		float horizontalSpeed = (targetPosition.x - spitfireTransform.position.x) / totalTimeTaken;
         Debug.Log(horizontalSpeed + " " + verticalSpeed);
         GameObject newSpitfire = (GameObject)Instantiate(spitfireProjectile, spitfireTransform.position, Quaternion.Euler(Vector3.zero));
         newSpitfire.GetComponent<SpitfireProjectile>().SetupProjectile(spitfireDamage, new Vector2(horizontalSpeed, verticalSpeed), spitfireLifespan, spitfireGravity, null);
 
     }
+
+	protected void LaunchShockwave() {
+		Vector2 facingVector = new Vector2 (Mathf.Sign (shockwaveTransform.position.x - transform.position.x), 0);
+		GameObject newShockwave = (GameObject)Instantiate (shockwaveProjectile, shockwaveTransform.position, Quaternion.Euler (Vector3.zero));
+		newShockwave.GetComponent<ShockwaveProjectile> ().SetupProjectile (shockwaveDamage, shockwaveSpeed, shockwaveLifespan, facingVector, null);
+		Debug.Log ("SEND");
+	}
 
 }

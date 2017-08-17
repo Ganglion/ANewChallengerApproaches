@@ -59,7 +59,7 @@ public class Projectile : MonoBehaviour {
         //projectileRigidbody.velocity = projectileVelocity;
     }
 
-    protected virtual void OnCollisionEnter2D(Collision2D other) {
+    protected virtual void OnTriggerEnter2D(Collider2D other) {
         GameObject hitObject = other.gameObject;
         if (hitObject.layer == LayerMask.NameToLayer(ENEMY_LAYER)) {
             OnHitEnemy(hitObject);

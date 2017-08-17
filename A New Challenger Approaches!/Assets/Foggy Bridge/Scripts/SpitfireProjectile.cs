@@ -25,10 +25,23 @@ public class SpitfireProjectile : Projectile {
         projectileRigidbody.velocity += new Vector2(0, projectileGravity * Time.deltaTime);
     }
 
+	protected override void OnHitPlayer (GameObject hitObject) {
+		hitObject.GetComponent<UnitAttributes> ().ApplyAttack (projectileDamage, projectileBuffs);
+		OnProjectileDeath ();
+	}
+
+	protected override void OnHitEnemy (GameObject hitObject) { }
+
     protected override void OnHitStructure(GameObject hitObject) {
-        RaycastHit2D groundHit = Physics2D.Raycast(transform.position, Vector2.down, projectileRigidbody.velocity.y, LayerMask.NameToLayer(STRUCTURE_LAYER));
+		RaycastHit2D groundHit = Physics2D.Raycast(transform.position, Vector2.down, transform.lossyScale.y, LayerMask.GetMask(STRUCTURE_LAYER));
+		Instantiate (projectileHitEffect, groundHit.point, Quaternion.Euler(Vector3.zero));
         float angleOfGround = Vector2.SignedAngle(groundHit.normal, Vector2.up);
         GameObject newSpitfireFlames = (GameObject)Instantiate(spitfireFlames, groundHit.point, Quaternion.Euler(new Vector3(0, 0, angleOfGround)));
-        base.OnHitDestructible(hitObject);
+		OnProjectileDeath ();
     }
+
+	protected override void OnProjectileDeath () {
+		Destroy (this.gameObject);
+	}
+
 }
