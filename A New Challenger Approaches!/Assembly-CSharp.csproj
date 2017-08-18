@@ -51,8 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CameraController.cs" />
      <Compile Include="Assets\ExampleAnimationController.cs" />
      <Compile Include="Assets\Foggy Bridge\Scripts\BridgeguardController.cs" />
+     <Compile Include="Assets\Foggy Bridge\Scripts\ShakeInstance.cs" />
      <Compile Include="Assets\Foggy Bridge\Scripts\SpitfireProjectile.cs" />
      <Compile Include="Assets\Foggy Bridge\Scripts\UnitInput.cs" />
      <Compile Include="Assets\Scripts\General\Buffs\Buff.cs" />

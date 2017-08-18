@@ -1,14 +1,17 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Foggy Bridge\Scripts\BridgeguardController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ShockwaveProjectile.cs">
     <Files>
       <File FileName="Assets\Scripts\General\Character\ObjectMovement.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\General\Character\CharacterInput.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\General\Character\ObjectRaycasting.cs" Line="1" Column="1" />
-      <File FileName="Assets\Foggy Bridge\Scripts\BridgeguardController.cs" Line="144" Column="1" />
-      <File FileName="Assets\Scripts\General\Character\Projectile.cs" Line="62" Column="53" />
-      <File FileName="Assets\Foggy Bridge\Scripts\SpitfireProjectile.cs" Line="43" Column="48" />
-      <File FileName="Assets\ShockwaveProjectile.cs" Line="7" Column="62" />
+      <File FileName="Assets\Foggy Bridge\Scripts\BridgeguardController.cs" Line="131" Column="55" />
+      <File FileName="Assets\Scripts\General\Character\Projectile.cs" Line="79" Column="1" />
+      <File FileName="Assets\Foggy Bridge\Scripts\SpitfireProjectile.cs" Line="37" Column="53" />
+      <File FileName="Assets\ShockwaveProjectile.cs" Line="10" Column="50" />
+      <File FileName="Assets\Scripts\General\Character\UnitAttributes.cs" Line="1" Column="1" />
+      <File FileName="Assets\CameraController.cs" Line="12" Column="70" />
+      <File FileName="Assets\Foggy Bridge\Scripts\ShakeInstance.cs" Line="16" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

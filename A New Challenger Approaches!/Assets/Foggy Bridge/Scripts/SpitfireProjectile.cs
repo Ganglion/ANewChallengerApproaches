@@ -26,6 +26,7 @@ public class SpitfireProjectile : Projectile {
     }
 
 	protected override void OnHitPlayer (GameObject hitObject) {
+		CameraController.Instance.ShakeCamera (0.075f, .75f);
 		hitObject.GetComponent<UnitAttributes> ().ApplyAttack (projectileDamage, projectileBuffs);
 		OnProjectileDeath ();
 	}
@@ -33,6 +34,7 @@ public class SpitfireProjectile : Projectile {
 	protected override void OnHitEnemy (GameObject hitObject) { }
 
     protected override void OnHitStructure(GameObject hitObject) {
+		CameraController.Instance.ShakeCamera (0.075f, .75f);
 		RaycastHit2D groundHit = Physics2D.Raycast(transform.position, Vector2.down, transform.lossyScale.y, LayerMask.GetMask(STRUCTURE_LAYER));
 		Instantiate (projectileHitEffect, groundHit.point, Quaternion.Euler(Vector3.zero));
         float angleOfGround = Vector2.SignedAngle(groundHit.normal, Vector2.up);

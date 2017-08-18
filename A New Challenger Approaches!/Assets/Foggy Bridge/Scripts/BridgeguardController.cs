@@ -128,6 +128,7 @@ public class BridgeguardController : UnitInput {
 	}
 
 	protected void LaunchSpitfire() {
+		CameraController.Instance.ShakeCamera (.125f, .75f);
 		Vector2 targetPosition = targetCharacter.position;
         float verticalSpeed = Mathf.Sqrt(2 * Mathf.Abs(spitfireGravity) * spitfireHeight);
 		float totalTimeTaken = verticalSpeed / Mathf.Abs (spitfireGravity) + Mathf.Sqrt(2 * (spitfireHeight + spitfireTransform.position.y - targetPosition.y) / Mathf.Abs (spitfireGravity)); 
@@ -139,10 +140,10 @@ public class BridgeguardController : UnitInput {
     }
 
 	protected void LaunchShockwave() {
+		CameraController.Instance.ShakeCamera (.125f, .75f);
 		Vector2 facingVector = new Vector2 (Mathf.Sign (shockwaveTransform.position.x - transform.position.x), 0);
 		GameObject newShockwave = (GameObject)Instantiate (shockwaveProjectile, shockwaveTransform.position, Quaternion.Euler (Vector3.zero));
 		newShockwave.GetComponent<ShockwaveProjectile> ().SetupProjectile (shockwaveDamage, shockwaveSpeed, shockwaveLifespan, facingVector, null);
-		Debug.Log ("SEND");
 	}
 
 }
