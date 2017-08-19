@@ -22,13 +22,15 @@ GameObject:
   - component: {fileID: 223609431730167450}
   - component: {fileID: 114104415038984194}
   - component: {fileID: 114828018677942966}
+  - component: {fileID: 95068775507799272}
+  - component: {fileID: 114551546417920568}
   m_Layer: 5
   m_Name: DamageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1645921194950016
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,6 +48,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &95068775507799272
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1621478000799694}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 00af125d282f0654cae8e922e977a41d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114104415038984194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,6 +86,17 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114551546417920568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1621478000799694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efea33aa571e4ae439802f3f558ccb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114723610029851076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,7 +169,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -374423301
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &224403979460236874

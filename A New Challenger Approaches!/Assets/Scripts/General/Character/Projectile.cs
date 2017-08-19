@@ -76,7 +76,8 @@ public class Projectile : MonoBehaviour {
         if (projectileHitEffect != null) {
             Instantiate(projectileHitEffect, transform.position, Quaternion.Euler(Vector3.zero));
         }
-        hitObject.GetComponent<UnitAttributes>().ApplyAttack(projectileDamage, projectileBuffs);
+        Debug.Log(hitObject.name);
+        hitObject.GetComponent<UnitAttributes>().ApplyAttack(projectileDamage, transform.position, projectileBuffs);
         OnProjectileDeath();
     }
 

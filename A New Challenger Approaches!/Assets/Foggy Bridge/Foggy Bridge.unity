@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 59588429}
   - component: {fileID: 59588430}
   - component: {fileID: 59588431}
+  - component: {fileID: 59588432}
   m_Layer: 10
   m_Name: BridgeguardShield
   m_TagString: Untagged
@@ -344,6 +345,23 @@ PolygonCollider2D:
       - {x: 0.24405387, y: -1.74517}
       - {x: 0.31540588, y: -1.6718923}
       - {x: 0.37, y: -1.5849999}
+--- !u!114 &59588432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 59588428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dd798c7b6bc5314c961dc4131697950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseMaxHealth: 0
+  baseMovementSpeed: 0
+  timeTakenToReachMaxSpeed: 0
+  baseJumpHeight: 0
+  baseDamageTakenFactor: 0.25
+  baseDamageOutputFactor: 1
 --- !u!1 &87378877
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 1.2150869
+  m_Length: 1.2150868
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 417157613}
   m_AttachedIK: {fileID: 713130366}
@@ -447,6 +465,7 @@ GameObject:
   - component: {fileID: 104695350}
   - component: {fileID: 104695349}
   - component: {fileID: 104695348}
+  - component: {fileID: 104695351}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -499,6 +518,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &104695351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 104695347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb98943a00fbddf4fa1e2f9992aff979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTextPrefab: {fileID: 1621478000799694, guid: 790bd72460b201745873dce77f36ced3,
+    type: 2}
 --- !u!1 &167712402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,6 +1483,8 @@ MonoBehaviour:
   baseMovementSpeed: 5
   timeTakenToReachMaxSpeed: 0.0625
   baseJumpHeight: 2
+  baseDamageTakenFactor: 1
+  baseDamageOutputFactor: 1
 --- !u!114 &860508426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2269,9 +2303,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMaxHealth: 100
-  baseMovementSpeed: 7
+  baseMovementSpeed: 4
   timeTakenToReachMaxSpeed: 1
   baseJumpHeight: 0
+  baseDamageTakenFactor: 1
+  baseDamageOutputFactor: 1
 --- !u!114 &1066687534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3159,7 +3195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 1.1256216
+  m_Length: 1.1256219
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 87378878}
   m_AttachedIK: {fileID: 713130366}

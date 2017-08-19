@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UnitAttributes : MonoBehaviour {
 
+    protected Color defaultDamageColor;
     protected const float airborneAccelerationTimeMultiplier = 8;
 
     // Base attributes
@@ -15,7 +16,9 @@ public class UnitAttributes : MonoBehaviour {
     protected float timeTakenToReachMaxSpeed;
     [SerializeField]
     protected float baseJumpHeight;
+    [SerializeField]
     protected float baseDamageTakenFactor = 1;
+    [SerializeField]
     protected float baseDamageOutputFactor = 1;
 
     // Runtime attributes
@@ -43,23 +46,46 @@ public class UnitAttributes : MonoBehaviour {
     protected float damageTakenFactorMultiplier = 1;
     protected float damageOutputFactorMultiplier = 1;
 
-    // Health system
-    public virtual void ApplyAttack(float damageDealt) {
-        TakeDamage(damageDealt);
+    protected virtual void Awake() {
+        buffList = new List<Buff>();
+        defaultDamageColor = Color.white;
+        InitialiseCurrentAttributes();
     }
 
-    public virtual void ApplyAttack(float damageDealt, params Buff[] attackBuffs) {
-        ApplyAttack(damageDealt);
-        for (int i = 0; i < attackBuffs.Length; i++) {
-            ApplyBuff(attackBuffs[i]);
+    // Health system
+    public void ApplyAttack(float damageDealt, Vector2 point) {
+        ApplyAttack(damageDealt, point, defaultDamageColor, null);
+    }
+
+    public void ApplyAttack(float damageDealt, Vector2 point, Color damageColor) {
+        ApplyAttack(damageDealt, point, damageColor, null);
+    }
+
+    public void ApplyAttack(float damageDealt, Vector2 point, params Buff[] attackBuffs) {
+        ApplyAttack(damageDealt, point, defaultDamageColor, attackBuffs);
+    }
+
+    public virtual void ApplyAttack(float damageDealt, Vector2 point, Color damageColor, params Buff[] attackBuffs) {
+        TakeDamage(damageDealt, point, damageColor);
+
+        if (attackBuffs != null) {
+            for (int i = 0; i < attackBuffs.Length; i++) {
+                ApplyBuff(attackBuffs[i]);
+            }
         }
     }
 
-    protected void TakeDamage(float damageDealt) {
+    protected void TakeDamage(float damageDealt, Vector2 point, Color damageColor) {
+        if (damageDealt < 0) {
+            Debug.LogError("Damage dealt (" + damageDealt + ") is negative. Use the Heal method to restore health.");
+            return;
+        }
         if (currentHealth > 0) {
+            DamageTextManager.Instance.SpawnDamageText(damageDealt, point, damageColor);
             currentHealth -= damageDealt;
             currentHealth = Mathf.Clamp(currentHealth, 0, baseMaxHealth);
-        } else {
+        }
+        if (currentHealth <= 0) {
             Death();
         }
     }
@@ -71,12 +97,10 @@ public class UnitAttributes : MonoBehaviour {
     // Buff system
     protected List<Buff> buffList;
 
-    protected void Awake() {
-        buffList = new List<Buff>();
-        ResetCurrentAttributes();
-    }
+
 
     protected void Update() {
+        //Debug.Log(gameObject.name + " " + currentHealth);
         ResetCurrentAttributes();
         for (int i = 0; i < buffList.Count; i++) {
             Buff currentBuff = buffList[i];
@@ -88,8 +112,17 @@ public class UnitAttributes : MonoBehaviour {
         }
     }
 
-    protected void ResetCurrentAttributes() {
+    protected void InitialiseCurrentAttributes() {
         currentHealth = baseMaxHealth;
+        currentMovementSpeed = baseMovementSpeed;
+        currentJumpHeight = baseJumpHeight;
+        currentDamageTakenFactor = baseDamageTakenFactor;
+        currentDamageOutputFactor = baseDamageOutputFactor;
+        currentGroundAcceleration = currentMovementSpeed / timeTakenToReachMaxSpeed;
+        currentAirborneAcceleraion = currentGroundAcceleration / airborneAccelerationTimeMultiplier;
+    }
+
+    protected void ResetCurrentAttributes() {
         currentMovementSpeed = baseMovementSpeed;
         currentJumpHeight = baseJumpHeight;
         currentDamageTakenFactor = baseDamageTakenFactor;
@@ -113,7 +146,7 @@ public class UnitAttributes : MonoBehaviour {
                 currentDamageOutputFactor *= buff.BuffValue;
                 break;
             case BuffType.DamagePerSecondBuff:
-                this.ApplyAttack(buff.BuffValue * Time.deltaTime);
+                this.ApplyAttack(buff.BuffValue * Time.deltaTime, transform.position);
                 break;
             case BuffType.RootBuff:
                 canMove = false;
