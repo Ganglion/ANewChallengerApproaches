@@ -5,9 +5,11 @@ using UnityEngine;
 public class BridgeguardController : UnitInput {
 
     // Constants
+    protected const string READY_TRIGGER = "BridgeguardReady";
     protected const string WALK_TRIGGER = "BridgeguardWalk";
     protected const string STAB_TRIGGER = "BridgeguardStab";
     protected const string SPITFIRE_TRIGGER = "BridgeguardSpitfire";
+    protected const string PLAYER_LAYER = "Player";
 
     // References
     [SerializeField]
@@ -38,6 +40,10 @@ public class BridgeguardController : UnitInput {
     protected float spitfireGravity;
     [SerializeField]
     protected float spitfireLifespan;
+    [SerializeField]
+    protected float spitfireDamageOverTime;
+    [SerializeField]
+    protected float spitfireDamageOverTimeDuration;
 
 	// Shockwave fields
 	[SerializeField]
@@ -53,11 +59,20 @@ public class BridgeguardController : UnitInput {
     [SerializeField]
     protected float maxCooldown;
 
+    // Precombat
+    [SerializeField]
+    protected float detectionRadius;
+
     // Runtime variables
+    protected bool hasEnteredCombat = false;
     protected bool isDoingAction = false;
     protected float cooldownToNextAction = 0;
     protected int totalWeights;
     protected float initialScale;
+
+    // Attack buffs
+    protected const string spitfireDamageOverTimeBuffName = "Spitfire Damage Over Time";
+    protected DamageOverTimeBuff spitfireDamageOverTimeBuff;
 
     // Components
     protected Animator characterAnimator;
@@ -67,40 +82,48 @@ public class BridgeguardController : UnitInput {
         characterAnimator = GetComponent<Animator>();
         totalWeights = moveWeight + stabWeight + spitfireWeight;
         initialScale = transform.localScale.x;
+        spitfireDamageOverTimeBuff = new DamageOverTimeBuff(spitfireDamageOverTime, spitfireDamageOverTimeBuffName, spitfireDamageOverTimeDuration, null, false);
     }
 
-    protected void Update() {
-        cooldownToNextAction -= Time.deltaTime;
-
-        float movementSpeed = characterAttributes.CurrentMovementSpeed;
-        float currentAcceleration = characterAttributes.CurrentGroundAcceleration;
-
-        if (!characterMovement.collisions.below) { // Is not on ground?
-            currentVelocity.y += Time.deltaTime * -9.81f * 5; // Fall
+    protected void FixedUpdate() {
+        if (!hasEnteredCombat) {
+            RaycastHit2D detectedPlayer = Physics2D.CircleCast(transform.position, detectionRadius, Vector2.zero, 0, LayerMask.GetMask(PLAYER_LAYER));
+            if (detectedPlayer.collider != null) {
+                characterAnimator.SetTrigger(READY_TRIGGER);
+                StartCoroutine(ActivateReadyState());
+            }
         } else {
-            currentVelocity.y = -0.1f;
-        }
+            cooldownToNextAction -= Time.deltaTime;
 
-        //Debug.Log (isDoingAction + " " + cooldownToNextAction + " ");
-        if (!isDoingAction && cooldownToNextAction <= 0 && characterAttributes.CanExecuteActions) {
-            int chosenAction = Random.Range(0, totalWeights);
-            if (chosenAction < moveWeight) {
-                characterAnimator.SetTrigger(WALK_TRIGGER);
-                currentVelocity.x = movementSpeed * FaceDirectionToTarget();
-
-            } else if ((chosenAction - moveWeight) < stabWeight) {
-                FaceDirectionToTarget();
-                characterAnimator.SetTrigger(STAB_TRIGGER);
-            } else if ((chosenAction - moveWeight - stabWeight) < spitfireWeight) {
-                FaceDirectionToTarget();
-                characterAnimator.SetTrigger(SPITFIRE_TRIGGER);
+            float movementSpeed = characterAttributes.CurrentMovementSpeed;
+            float currentAcceleration = characterAttributes.CurrentGroundAcceleration;
+                        
+            if (!characterMovement.collisions.below) { // Is not on ground?
+                currentVelocity.y += Time.deltaTime * -9.81f * 5; // Fall
+            } else {
+                currentVelocity.y = -0.1f;
             }
 
-            isDoingAction = true;
-            StartCoroutine(ApplyCooldownDelay());
+            if (!isDoingAction && cooldownToNextAction <= 0 && characterAttributes.CanExecuteActions && hasEnteredCombat) {
+                int chosenAction = Random.Range(0, totalWeights);
+                if (chosenAction < moveWeight) {
+                    characterAnimator.SetTrigger(WALK_TRIGGER);
+                    currentVelocity.x = movementSpeed * FaceDirectionToTarget();
+
+                } else if ((chosenAction - moveWeight) < stabWeight) {
+                    FaceDirectionToTarget();
+                    characterAnimator.SetTrigger(STAB_TRIGGER);
+                } else if ((chosenAction - moveWeight - stabWeight) < spitfireWeight) {
+                    FaceDirectionToTarget();
+                    characterAnimator.SetTrigger(SPITFIRE_TRIGGER);
+                }
+
+                isDoingAction = true;
+                StartCoroutine(ApplyCooldownDelay());
+            }
+            currentVelocity.x = Mathf.MoveTowards(currentVelocity.x, 0, currentAcceleration * Time.deltaTime);
+            characterMovement.Move(currentVelocity * Time.deltaTime, Vector2.zero);
         }
-        currentVelocity.x = Mathf.MoveTowards(currentVelocity.x, 0, currentAcceleration * Time.deltaTime);
-        characterMovement.Move(currentVelocity * Time.deltaTime, Vector2.zero);
     }
 
 	protected int FaceDirectionToTarget() {
@@ -119,7 +142,14 @@ public class BridgeguardController : UnitInput {
 		}
 	}
 
-	protected IEnumerator ApplyCooldownDelay() {
+    protected IEnumerator ActivateReadyState() {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(characterAnimator.GetCurrentAnimatorStateInfo(0).length);
+        hasEnteredCombat = true;
+        cooldownToNextAction = Random.Range(minCoolown, maxCooldown);
+    }
+
+    protected IEnumerator ApplyCooldownDelay() {
         isDoingAction = true;
         yield return new WaitForEndOfFrame();
         yield return new WaitForSeconds(characterAnimator.GetCurrentAnimatorStateInfo(0).length);
@@ -127,15 +157,18 @@ public class BridgeguardController : UnitInput {
 		cooldownToNextAction = Random.Range (minCoolown, maxCooldown);
 	}
 
+    protected void ReadyLanding() {
+        CameraController.Instance.ShakeCamera(.25f, 2f);
+    }
+
 	protected void LaunchSpitfire() {
 		CameraController.Instance.ShakeCamera (.125f, .75f);
 		Vector2 targetPosition = targetCharacter.position;
         float verticalSpeed = Mathf.Sqrt(2 * Mathf.Abs(spitfireGravity) * spitfireHeight);
 		float totalTimeTaken = verticalSpeed / Mathf.Abs (spitfireGravity) + Mathf.Sqrt(2 * (spitfireHeight + spitfireTransform.position.y - targetPosition.y) / Mathf.Abs (spitfireGravity)); 
 		float horizontalSpeed = (targetPosition.x - spitfireTransform.position.x) / totalTimeTaken;
-        Debug.Log(horizontalSpeed + " " + verticalSpeed);
         GameObject newSpitfire = (GameObject)Instantiate(spitfireProjectile, spitfireTransform.position, Quaternion.Euler(Vector3.zero));
-        newSpitfire.GetComponent<SpitfireProjectile>().SetupProjectile(spitfireDamage, new Vector2(horizontalSpeed, verticalSpeed), spitfireLifespan, spitfireGravity, null);
+        newSpitfire.GetComponent<SpitfireProjectile>().SetupProjectile(spitfireDamage, new Vector2(horizontalSpeed, verticalSpeed), spitfireLifespan, spitfireGravity, spitfireDamageOverTimeBuff);
 
     }
 

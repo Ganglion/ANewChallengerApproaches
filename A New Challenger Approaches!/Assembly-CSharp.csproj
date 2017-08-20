@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BossHealthBarController.cs" />
      <Compile Include="Assets\CameraController.cs" />
      <Compile Include="Assets\DamageTextController.cs" />
      <Compile Include="Assets\DamageTextManager.cs" />
@@ -60,6 +61,8 @@
      <Compile Include="Assets\Foggy Bridge\Scripts\SpitfireProjectile.cs" />
      <Compile Include="Assets\Foggy Bridge\Scripts\UnitInput.cs" />
      <Compile Include="Assets\Scripts\General\Buffs\Buff.cs" />
+     <Compile Include="Assets\Scripts\General\Buffs\DamageOverTimeBuff.cs" />
+     <Compile Include="Assets\Scripts\General\Buffs\MovementSpeedBuff.cs" />
      <Compile Include="Assets\Scripts\General\Character\CharacterInput.cs" />
      <Compile Include="Assets\Scripts\General\Character\HomingProjectile.cs" />
      <Compile Include="Assets\Scripts\General\Character\LinearProjectile.cs" />
@@ -71,6 +74,7 @@
      <Compile Include="Assets\Scripts\General\Singleton.cs" />
      <Compile Include="Assets\ShieldAttributes.cs" />
      <Compile Include="Assets\ShockwaveProjectile.cs" />
+     <Compile Include="Assets\SpitfireFlamesDamage.cs" />
      <Compile Include="Assets\Testing Level\Scripts\FiringHomingProjectileSkillExample.cs" />
      <Compile Include="Assets\Testing Level\Scripts\FiringProjectileSkillExample.cs" />
      <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\DepthOfField.shader" />

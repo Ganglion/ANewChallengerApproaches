@@ -39,6 +39,7 @@ public class SpitfireProjectile : Projectile {
 		Instantiate (projectileHitEffect, groundHit.point, Quaternion.Euler(Vector3.zero));
         float angleOfGround = Vector2.SignedAngle(groundHit.normal, Vector2.up);
         GameObject newSpitfireFlames = (GameObject)Instantiate(spitfireFlames, groundHit.point, Quaternion.Euler(new Vector3(0, 0, angleOfGround)));
+        newSpitfireFlames.GetComponent<SpitfireFlamesDamage>().InitialiseSpitfireFlames(projectileBuffs);
 		OnProjectileDeath ();
     }
 
