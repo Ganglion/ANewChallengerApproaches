@@ -11,6 +11,10 @@ public class ShockwaveProjectile : LinearProjectile {
 		base.MoveProjectile ();
 	}
 
+	protected override void OnHitPlayer (GameObject hitObject) {
+		hitObject.GetComponent<UnitAttributes> ().ApplyAttack (projectileDamage, hitObject.transform.position);
+	}
+
 	protected override void OnHitEnemy (GameObject hitObject) { }
 
 	protected override void OnHitStructure (GameObject hitObject) { }

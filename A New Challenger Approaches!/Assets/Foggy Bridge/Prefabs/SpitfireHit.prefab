@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4231106142098722}
   - component: {fileID: 198088802866995362}
   - component: {fileID: 199566897661117802}
+  - component: {fileID: 114380175411630340}
   m_Layer: 0
   m_Name: SpitfireHit
   m_TagString: Untagged
@@ -41,6 +42,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114380175411630340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1665641022285058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03e726b7747fe2148843b6c77e1262d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198088802866995362
 ParticleSystem:
   m_ObjectHideFlags: 1

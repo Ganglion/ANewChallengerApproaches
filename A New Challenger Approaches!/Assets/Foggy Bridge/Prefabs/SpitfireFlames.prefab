@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 61537388910940450}
   - component: {fileID: 114041888394392134}
   - component: {fileID: 50754721737749994}
+  - component: {fileID: 114026279220980642}
   m_Layer: 0
   m_Name: SpitfireFlames
   m_TagString: Untagged
@@ -89,6 +90,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &114026279220980642
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972318832000074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7fd4527b76101499c58c700684e8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114041888394392134
 MonoBehaviour:
   m_ObjectHideFlags: 1

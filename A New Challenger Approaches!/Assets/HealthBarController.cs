@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossHealthBarController : MonoBehaviour {
+public class HealthBarController : MonoBehaviour {
 
     // Constants
     private const string HEALTH_BAR_SCALER_NAME = "Hp Bar Scaler";
@@ -10,7 +10,7 @@ public class BossHealthBarController : MonoBehaviour {
 
     // References
     [SerializeField]
-    private UnitAttributes bossAttributes;
+    private UnitAttributes unitAttributes;
 
     // Fields
     [SerializeField]
@@ -26,7 +26,7 @@ public class BossHealthBarController : MonoBehaviour {
     }
 
     private void Update() {
-        float fractionHealth = bossAttributes.CurrentHealth / bossAttributes.BaseMaxHealth;
+		float fractionHealth = unitAttributes.CurrentHealth / unitAttributes.BaseMaxHealth;
         healthBarScaler.localScale = new Vector3(fractionHealth, 1, 1);
 
         if (healthBarBufferScaler.localScale.x > fractionHealth) {
