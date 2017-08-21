@@ -44,39 +44,39 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CameraController.cs" />
-     <Compile Include="Assets\DamageTextController.cs" />
-     <Compile Include="Assets\DamageTextManager.cs" />
-     <Compile Include="Assets\ExampleAnimationController.cs" />
      <Compile Include="Assets\Foggy Bridge\Scripts\BridgeguardController.cs" />
-     <Compile Include="Assets\Foggy Bridge\Scripts\ParticleSystemAutoDestruction.cs" />
      <Compile Include="Assets\Foggy Bridge\Scripts\ShakeInstance.cs" />
+     <Compile Include="Assets\Foggy Bridge\Scripts\ShieldAttributes.cs" />
+     <Compile Include="Assets\Foggy Bridge\Scripts\ShockwaveProjectile.cs" />
      <Compile Include="Assets\Foggy Bridge\Scripts\SpitfireFlamesAutoDestruction.cs" />
+     <Compile Include="Assets\Foggy Bridge\Scripts\SpitfireFlamesDamage.cs" />
      <Compile Include="Assets\Foggy Bridge\Scripts\SpitfireProjectile.cs" />
-     <Compile Include="Assets\Foggy Bridge\Scripts\UnitInput.cs" />
-     <Compile Include="Assets\HealthBarController.cs" />
      <Compile Include="Assets\Scripts\General\Buffs\Buff.cs" />
      <Compile Include="Assets\Scripts\General\Buffs\DamageOverTimeBuff.cs" />
      <Compile Include="Assets\Scripts\General\Buffs\MovementSpeedBuff.cs" />
+     <Compile Include="Assets\Scripts\General\CameraController.cs" />
      <Compile Include="Assets\Scripts\General\Character\CharacterInput.cs" />
+     <Compile Include="Assets\Scripts\General\Character\ExampleAnimationController.cs" />
+     <Compile Include="Assets\Scripts\General\Character\HealthBarController.cs" />
      <Compile Include="Assets\Scripts\General\Character\HomingProjectile.cs" />
      <Compile Include="Assets\Scripts\General\Character\LinearProjectile.cs" />
      <Compile Include="Assets\Scripts\General\Character\ObjectMovement.cs" />
      <Compile Include="Assets\Scripts\General\Character\ObjectRaycasting.cs" />
      <Compile Include="Assets\Scripts\General\Character\Projectile.cs" />
      <Compile Include="Assets\Scripts\General\Character\UnitAttributes.cs" />
+     <Compile Include="Assets\Scripts\General\Character\UnitInput.cs" />
      <Compile Include="Assets\Scripts\General\Character\Visualiser.cs" />
+     <Compile Include="Assets\Scripts\General\DamageTextController.cs" />
+     <Compile Include="Assets\Scripts\General\DamageTextManager.cs" />
+     <Compile Include="Assets\Scripts\General\ParticleSystemAutoDestruction.cs" />
      <Compile Include="Assets\Scripts\General\Singleton.cs" />
-     <Compile Include="Assets\ShieldAttributes.cs" />
-     <Compile Include="Assets\ShockwaveProjectile.cs" />
-     <Compile Include="Assets\SpitfireFlamesDamage.cs" />
      <Compile Include="Assets\Testing Level\Scripts\FiringHomingProjectileSkillExample.cs" />
      <Compile Include="Assets\Testing Level\Scripts\FiringProjectileSkillExample.cs" />
      <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\DepthOfField.shader" />
@@ -141,31 +141,31 @@
      <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
      <None Include="Assets\Plugins\Particlecollection_Free samples\Plugins\Effect\Shader\ParticleBlendEffect.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.TestRunner">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Timeline">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="Rewired_Core">
- <HintPath>C:/Users/user/Desktop/Games/ANCA/A New Challenger Approaches!/Assets/Plugins/Controller/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
+ <HintPath>C:/Users/Luke/Desktop/School or Intern Stuff/ANCA/A New Challenger Approaches!/Assets/Plugins/Controller/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
  </Reference>
  <Reference Include="XInputDotNetPure">
- <HintPath>C:/Users/user/Desktop/Games/ANCA/A New Challenger Approaches!/Assets/Plugins/Controller/XInputDotNet/Plugins/XInputDotNetPure.dll</HintPath>
+ <HintPath>C:/Users/Luke/Desktop/School or Intern Stuff/ANCA/A New Challenger Approaches!/Assets/Plugins/Controller/XInputDotNet/Plugins/XInputDotNetPure.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

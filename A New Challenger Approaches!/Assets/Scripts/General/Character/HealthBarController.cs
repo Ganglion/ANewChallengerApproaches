@@ -15,6 +15,8 @@ public class HealthBarController : MonoBehaviour {
     // Fields
     [SerializeField]
     private float bufferSpeed = 0.5f;
+    [SerializeField]
+    private Vector2 healthBarOffset;
 
     // Components
     private Transform healthBarScaler;
@@ -33,6 +35,8 @@ public class HealthBarController : MonoBehaviour {
             float nextBufferFraction = Mathf.MoveTowards(healthBarBufferScaler.localScale.x, fractionHealth, bufferSpeed * Time.deltaTime);
             healthBarBufferScaler.localScale = new Vector3(nextBufferFraction, 1, 1);
         }
+
+        transform.position = unitAttributes.transform.position + (Vector3)healthBarOffset;
     }
 
 }
