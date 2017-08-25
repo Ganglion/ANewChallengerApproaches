@@ -40,7 +40,7 @@ public class Bomb : Projectile {
     protected override void OnHitPlayer(GameObject hitObject)
     {
         CameraController.Instance.ShakeCamera(0.075f, .75f);
-       // hitObject.GetComponent<UnitAttributes>().ApplyAttack(projectileDamage, projectileBuffs);
+        hitObject.GetComponent<UnitAttributes>().ApplyAttack(projectileDamage, transform.position);
         OnProjectileDeath();
     }
 
