@@ -10,21 +10,38 @@ public class BuffyController : UnitInput
     [SerializeField]
     protected GameObject bomb;
     [SerializeField]
+    protected GameObject fireBomb;
+    [SerializeField]
     protected GameObject bombLauncher;
 
 
     //actions
     private string ACTION_IDLE = "Buffy Idle";
     private float TIME_IDLE = 3;
-
-
+    
     private string ACTION_WALK = "Buffy Walk";
     private float TIME_WALK = 1;
 
-    private string ACTION_ATTACK = "Buffy Attack";
-    private float TIME_ATTACK = 1;
-    private float COOLDOWN_ATTACK = 6;
-    private float attackCooldown = 0;
+    private const string ACTION_BOMB_ATTACK = "Buffy Attack";
+
+    private const float TIME_BOMB_ATTACK = 1;
+    private const int NUMBER_OF_BOMBS = 10;
+    private float COOLDOWN_BOMB_ATTACK = 6;
+    private float bombAttackCooldown = 0;
+
+    private const float TIME_FIRE_BOMB_ATTACK = 1;
+    private const int NUMBER_OF_FIRE_BOMBS = 10;
+    private float COOLDOWN_FIRE_BOMB_ATTACK = 6;
+    private float fireBombAttackCooldown = 0;
+
+    //fireBombBarrage
+    private List<GameObject> fireBombs;
+
+    //states
+    private const string STATE_NORMAL = "Normal";
+    private const string STATE_POWERED = "Powered";
+    private static float TIME_NORMAL_TO_POWERED = 3;
+    protected static string currentState = STATE_NORMAL;
 
    
     protected Animator characterAnimator;
@@ -49,56 +66,15 @@ public class BuffyController : UnitInput
     // Update is called once per frame
     void Update()
     {
-        if (!characterMovement.collisions.below)
-        { // Is not on ground?
-            currentVelocity.y += Time.deltaTime * -9.81f * 5; // Fall
-        }
-        else
-        {
-            currentVelocity.y = -0.1f;
-        }
-
-        //handle cooldowns
-        cooldownToNextAction -= Time.deltaTime;
-        attackCooldown -= Time.deltaTime;
-
-        if(cooldownToNextAction <= 0 && characterAttributes.CanExecuteActions)
-        {
-            characterAnimator.SetBool("isMoving", false);
-            characterAnimator.SetBool("isAttacking", false);
-            //Set New Action
-            //is enemy nearby?
-            if (Vector2.Distance(targetCharacter.transform.position, transform.position) < 4)
-            {
-                //escape
-               
-                action = ACTION_WALK;
-                characterAnimator.SetBool("isMoving", true);
-                cooldownToNextAction = TIME_WALK;
-            } else if(attackCooldown <= 0) {
-                //attack
-                //throw bombs everywhere
-                action = ACTION_ATTACK;
-                characterAnimator.SetBool("isAttacking", true);
-                
-                attackCooldown = COOLDOWN_ATTACK;
-                cooldownToNextAction = TIME_ATTACK;
-                StartCoroutine(LaunchFiveBombs());
-            } else {
-                action = ACTION_IDLE;
-                cooldownToNextAction = TIME_IDLE;
-
-            }
-
-            Debug.Log("action playing: " + action);
-        }
-        
-
+        handleGravity();
+        handleCooldowns();
+        handleBossState();
+        handleBossActions();  
         //Execute Updates
         if(action == ACTION_IDLE)
         {
             currentVelocity.x = 0;
-        } else if (action == ACTION_ATTACK)
+        } else if (action == ACTION_BOMB_ATTACK)
         {
             currentVelocity.x = 0;
         } else if (action == ACTION_WALK){
@@ -113,26 +89,133 @@ public class BuffyController : UnitInput
         
     }
 
+    protected void handleGravity()
+    {
+        if (!characterMovement.collisions.below && currentState == STATE_NORMAL)
+        { // Is not on ground?
+            currentVelocity.y += Time.deltaTime * -9.81f * 5; // Fall
+        }
+        else
+        {
+            currentVelocity.y = -0.1f;
+        }
+    }
 
-    protected IEnumerator LaunchFiveBombs()
+    protected void handleCooldowns()
+    {
+        cooldownToNextAction -= Time.deltaTime;
+        bombAttackCooldown -= Time.deltaTime;
+        fireBombAttackCooldown -= Time.deltaTime;
+    }
+
+    protected void handleBossState()
+    {
+        //can we change our state?
+        if(cooldownToNextAction <= 0)
+        {
+            if (currentState == STATE_NORMAL && characterAttributes.CurrentHealth < characterAttributes.BaseMaxHealth / 2)
+            {
+                currentState = STATE_POWERED;
+                cooldownToNextAction = TIME_NORMAL_TO_POWERED;
+                jump();
+            }
+        }
+ 
+    }
+
+    protected void handleBossActions()
+    {
+        switch (currentState)
+        {
+            case STATE_NORMAL:
+                handleNormalBossActions();
+                return;
+            case STATE_POWERED:
+                handlePoweredBossActions();
+                return;
+            default:
+                Debug.Log(currentState);
+                break;
+
+        }
+           
+    }
+
+    protected void handleNormalBossActions()
+    {
+        if (cooldownToNextAction <= 0 && characterAttributes.CanExecuteActions)
+        {
+            characterAnimator.SetBool("isMoving", false);
+            characterAnimator.SetBool("isAttacking", false);
+            //Set New Action
+            //is enemy nearby?
+            if (Vector2.Distance(targetCharacter.transform.position, transform.position) < 4)
+            {
+                //escape
+                action = ACTION_WALK;
+                characterAnimator.SetBool("isMoving", true);
+                cooldownToNextAction = TIME_WALK;
+            }
+            else if (bombAttackCooldown <= 0)
+            {
+                //attack
+                //throw bombs everywhere
+                action = ACTION_BOMB_ATTACK;
+                characterAnimator.SetBool("isAttacking", true);
+
+                bombAttackCooldown = COOLDOWN_BOMB_ATTACK;
+                cooldownToNextAction = TIME_BOMB_ATTACK;
+                StartCoroutine(launchBombs());
+                //
+            }
+            else
+            {
+                action = ACTION_IDLE;
+                cooldownToNextAction = TIME_IDLE;
+            }
+
+            Debug.Log("action playing: " + action);
+        }
+    }
+
+    protected void handlePoweredBossActions()
+    {
+        if (cooldownToNextAction <= 0 && characterAttributes.CanExecuteActions)
+        {
+            if (fireBombAttackCooldown <= 0)
+            {
+                fireBombAttackCooldown = COOLDOWN_FIRE_BOMB_ATTACK;
+                cooldownToNextAction = TIME_FIRE_BOMB_ATTACK;
+                StartCoroutine(spawnRingOfFire(NUMBER_OF_FIRE_BOMBS, 2, TIME_BOMB_ATTACK));
+            }
+        }
+    }
+
+    protected void jump()
+    {
+            currentVelocity.y = Mathf.Sqrt(jumpHeight * -2f * -9.81f * 5); // Velocity to achieve ideal height
+    }
+
+
+    /*
+     * BOMB_ATTACK METHODS 
+     */
+    protected IEnumerator launchBombs()
     {
         yield return new WaitForEndOfFrame();
-        yield return new WaitForSeconds(0.2f);
-        LaunchBomb();
-        yield return new WaitForSeconds(0.2f);
-        LaunchBomb();
-        yield return new WaitForSeconds(0.2f);
-        LaunchBomb();
-        yield return new WaitForSeconds(0.2f);
-        LaunchBomb();
-        yield return new WaitForSeconds(0.2f);
-        LaunchBomb();
+
+        float interval = TIME_BOMB_ATTACK / (NUMBER_OF_BOMBS-1);
+        for(int i = 0; i < NUMBER_OF_BOMBS; i++)
+        {
+            LaunchBomb();
+            yield return new WaitForSeconds(interval);
+        }       
     }
 
     protected void LaunchBomb()
     {
         float bombGravity = 1;
-        float bombSpeed = 10;
+        float bombSpeed = 15;
 
         //generate random direction upwards
         int randomAngleDeg = Random.Range(55, 95);
@@ -143,8 +226,60 @@ public class BuffyController : UnitInput
 
         //Debug.Log(horizontalSpeed + " " + verticalSpeed);
         GameObject newBomb = (GameObject)Instantiate(bomb, bombLauncher.transform.position, Quaternion.Euler(Vector3.zero));
-        newBomb.GetComponent<Bomb>().SetupProjectile(1000, new Vector2(x, y), Random.Range(10,20), bombGravity, null);
+        newBomb.GetComponent<Bomb>().SetupProjectile(5, new Vector2(x, y), Random.Range(10,20), bombGravity, null);
+    }
 
+    /*
+    * FIRE_BOMB_ATTACK METHODS 
+    */
+
+    protected void launchFireBombInDirection(Vector2 direction)
+    {
+        float bombGravity = 0;
+        float bombSpeed = 1;
+        float bombAcceleration = 1;
+        Vector2 normalizedDirection = direction.normalized;
+
+        GameObject newFireBomb = (GameObject)Instantiate(fireBomb, bombLauncher.transform.position, Quaternion.Euler(Vector3.zero));
+        newFireBomb.GetComponent<FireBomb>().SetupProjectile(5, normalizedDirection * bombSpeed, 10, bombGravity, bombAcceleration, null);
+    }
+
+    protected GameObject spawnFireBombAtPositionWithDirection(Vector2 position, Vector2 direction)
+    {
+
+        float bombGravity = 0;
+        float bombSpeed = 1;
+        float bombAcceleration = 1;
+        Vector2 normalizedDirection = direction.normalized;
+        GameObject newFireBomb = (GameObject)Instantiate(fireBomb, position, Quaternion.Euler(Vector3.zero));
+        newFireBomb.GetComponent<FireBomb>().SetupProjectile(5, normalizedDirection * bombSpeed, 10, bombGravity, bombAcceleration, null);
+        return newFireBomb;
+    }
+
+    protected IEnumerator spawnRingOfFire(int num_fireBomb, float distanceFromBoss, float timeToSpawn)
+    {
+        fireBombs = new List<GameObject>();
+
+        yield return new WaitForEndOfFrame();
+        Vector2 initialDirection = new Vector2(FaceDirectionToTarget(), 0);
+        Vector2 initialDisplacement = initialDirection * distanceFromBoss;
+        float degrees = FaceDirectionToTarget() * 360f / num_fireBomb;
+        float time = timeToSpawn / (num_fireBomb - 1);
+
+        for (int i = 0; i < num_fireBomb; i++)
+        {
+            GameObject newFireBomb = spawnFireBombAtPositionWithDirection(initialDisplacement + (Vector2)bombLauncher.transform.position, initialDirection);
+            fireBombs.Add(newFireBomb);
+            initialDirection = Quaternion.Euler(0, 0, degrees) * initialDirection;
+            initialDisplacement = Quaternion.Euler(0, 0, degrees) * initialDisplacement;
+            yield return new WaitForSeconds(time);
+        }
+
+        foreach(GameObject fb in fireBombs)
+        {
+            if(fb != null)
+                fb.GetComponent<FireBomb>().FireProjectile();
+        }
     }
 
     protected int FaceDirectionToTarget()

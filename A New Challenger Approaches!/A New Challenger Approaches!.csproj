@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="Assets\Bomb Dungeon\Scripts\Bomb.cs" />
     <Compile Include="Assets\Bomb Dungeon\Scripts\BuffyController.cs" />
+    <Compile Include="Assets\FireBomb.cs" />
     <Compile Include="Assets\Foggy Bridge\Scripts\BridgeguardController.cs" />
     <Compile Include="Assets\Foggy Bridge\Scripts\ShakeInstance.cs" />
     <Compile Include="Assets\Foggy Bridge\Scripts\ShieldAttributes.cs" />

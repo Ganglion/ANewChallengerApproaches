@@ -612,7 +612,7 @@ MonoBehaviour:
   projectile: {fileID: 1598217348299116, guid: a60a838b5fb0e514b971f0152700de74, type: 2}
   firingIndicator: {fileID: 154638378}
   firingPivot: {fileID: 856829114}
-  projectileDamage: 10
+  projectileDamage: 50
   projectileSpeed: 20
   projectileLifeSpan: 3
   projectileCooldown: 0.125
@@ -821,8 +821,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 866578799}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.019, y: -2.598, z: 0}
-  m_LocalScale: {x: 8.020396, y: 8.020396, z: 2.1106305}
+  m_LocalPosition: {x: 6.7, y: -2.87, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 2030328314}
   m_Father: {fileID: 0}
@@ -876,6 +876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetCharacter: {fileID: 856829114}
   bomb: {fileID: 1363224133084284, guid: db473b65ac25a52479b5723844f17b76, type: 2}
+  fireBomb: {fileID: 1307275677737734, guid: c883c48ff0b38fc428eaebdc3f70dc25, type: 2}
   bombLauncher: {fileID: 2030328313}
 --- !u!95 &866578806
 Animator:
@@ -1099,11 +1100,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4103678512150156, guid: db473b65ac25a52479b5723844f17b76, type: 2}
       propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 50204823842663536, guid: db473b65ac25a52479b5723844f17b76,
-        type: 2}
-      propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1515,7 +1511,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2030328313}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.076000005, y: 0.39600003, z: 0}
+  m_LocalPosition: {x: -0.032, y: 0.383, z: 0}
   m_LocalScale: {x: 0.2631579, y: 0.2631579, z: 1}
   m_Children: []
   m_Father: {fileID: 866578802}
