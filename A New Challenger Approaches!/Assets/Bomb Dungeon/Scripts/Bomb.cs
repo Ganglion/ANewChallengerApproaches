@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Bomb : Projectile {
     protected float projectileGravity;
-    protected bool isGoingDown = false;
-    protected bool projectileStop = false;
+    protected int hitCount = 0;
+    protected int maxHitCount = 6;
     public void SetupProjectile(float damage, Vector2 velocity, float lifespan, float gravity, params Buff[] buffs)
     {
         projectileDamage = damage;
@@ -18,16 +18,8 @@ public class Bomb : Projectile {
     }
 
     protected override void MoveProjectile()
-    {
-        //check for going down;
-        if(projectileRigidbody.velocity.y <= 0)
-        {
-            isGoingDown = true;
-        }
-
-       
+    {         
             projectileRigidbody.velocity += new Vector2(0, projectileGravity * Time.deltaTime);
-
 
     }
 
@@ -50,27 +42,16 @@ public class Bomb : Projectile {
 
     protected override void OnHitStructure(GameObject hitObject)
     {
-        if (!isGoingDown)
+        hitCount++;
+        if(hitCount > maxHitCount)
         {
-            return;
-
+            OnProjectileDeath();
         }
-        if(hitObject.tag == "Through")       {
-            int rand = Random.Range(0, 10);
-            if (rand < 7)
-            {
-                return;
-            }
-            
-        }
-
-        OnProjectileStop();
+        //changeProjectileTrajectory
+        Vector2 wallNormal = hitObject.transform.up;
+        projectileRigidbody.velocity=  Vector2.Reflect(projectileRigidbody.velocity, wallNormal);
         
     }
 
-    protected void OnProjectileStop()
-    {
-        projectileRigidbody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX;
-    }
 
 }

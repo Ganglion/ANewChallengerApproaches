@@ -108,10 +108,6 @@ public class BuffyController : UnitInput
             Debug.Log("unknown action:" + action);
         }
 
-        
-
-
-
         currentVelocity.x = Mathf.MoveTowards(currentVelocity.x, 0, currentAcceleration * Time.deltaTime);
         characterMovement.Move(currentVelocity * Time.deltaTime, Vector2.zero);
         
