@@ -12,7 +12,14 @@ public class BuffyController : UnitInput
     [SerializeField]
     protected GameObject fireBomb;
     [SerializeField]
+    protected GameObject laser;
+    [SerializeField]
     protected GameObject bombLauncher;
+    [SerializeField]
+    protected Transform topBehind;
+    [SerializeField]
+    protected Transform topInfront;
+
 
 
     //actions
@@ -23,23 +30,24 @@ public class BuffyController : UnitInput
     private float TIME_WALK = 1;
 
     private const string ACTION_BOMB_ATTACK = "Buffy Attack";
-
     private const float TIME_BOMB_ATTACK = 1;
     private const int NUMBER_OF_BOMBS = 10;
     private float COOLDOWN_BOMB_ATTACK = 6;
     private float bombAttackCooldown = 0;
 
-    private const float TIME_FIRE_BOMB_ATTACK = 1;
-    private const int NUMBER_OF_FIRE_BOMBS = 10;
+    private const float TIME_FIRE_BOMB_ATTACK = 3;
+    private const float TIME_FIRE_BOMB_CHARGE = 1;
+    private const int NUMBER_OF_FIRE_BOMBS = 20;
     private float COOLDOWN_FIRE_BOMB_ATTACK = 6;
     private float fireBombAttackCooldown = 0;
 
-    //fireBombBarrage
-    private List<GameObject> fireBombs;
+    private const string ACTION_CHASE = "Buffy Chase";
+    private const float TIME_CHASE = 2;
 
     //states
     private const string STATE_NORMAL = "Normal";
     private const string STATE_POWERED = "Powered";
+    private const string STATE_TRANSITION = "Transition";
     private static float TIME_NORMAL_TO_POWERED = 3;
     protected static string currentState = STATE_NORMAL;
 
@@ -63,23 +71,27 @@ public class BuffyController : UnitInput
         action = ACTION_IDLE;
     }
 
+    
+
     // Update is called once per frame
     void Update()
     {
         handleGravity();
         handleCooldowns();
         handleBossState();
-        handleBossActions();  
+        handleBossActions();
         //Execute Updates
-        if(action == ACTION_IDLE)
+        if (action == ACTION_IDLE)
         {
             currentVelocity.x = 0;
         } else if (action == ACTION_BOMB_ATTACK)
         {
             currentVelocity.x = 0;
-        } else if (action == ACTION_WALK){
+        } else if (action == ACTION_WALK) {
             currentVelocity.x = movementSpeed * FaceDirectionAwayFromTarget();
-
+        } else if (action == ACTION_CHASE)
+        {
+            currentVelocity.x = 3 * FaceDirectionToTarget();
         } else {
             Debug.Log("unknown action:" + action);
         }
@@ -95,9 +107,12 @@ public class BuffyController : UnitInput
         { // Is not on ground?
             currentVelocity.y += Time.deltaTime * -9.81f * 5; // Fall
         }
-        else
+        else if (currentState == STATE_TRANSITION)
         {
-            currentVelocity.y = -0.1f;
+            currentVelocity.y += Time.deltaTime * 1.2f;
+        } else
+        {
+            currentVelocity.y = 0f;
         }
     }
 
@@ -115,12 +130,21 @@ public class BuffyController : UnitInput
         {
             if (currentState == STATE_NORMAL && characterAttributes.CurrentHealth < characterAttributes.BaseMaxHealth / 2)
             {
-                currentState = STATE_POWERED;
+                characterAnimator.SetBool("isMoving", false);
+                characterAnimator.SetBool("isAttacking", false);
+                currentState = STATE_TRANSITION;
                 cooldownToNextAction = TIME_NORMAL_TO_POWERED;
-                jump();
+                StartCoroutine(transitToPowered());
             }
         }
  
+    }
+
+    protected IEnumerator transitToPowered()
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(3);
+        currentState = STATE_POWERED;
     }
 
     protected void handleBossActions()
@@ -168,6 +192,13 @@ public class BuffyController : UnitInput
                 StartCoroutine(launchBombs());
                 //
             }
+            else if (Mathf.Abs(transform.position.x - targetCharacter.transform.position.x) > 8)
+            {
+                //chase
+                action = ACTION_CHASE;
+                cooldownToNextAction = TIME_CHASE;
+                characterAnimator.SetBool("isMoving", true);
+            }
             else
             {
                 action = ACTION_IDLE;
@@ -182,19 +213,42 @@ public class BuffyController : UnitInput
     {
         if (cooldownToNextAction <= 0 && characterAttributes.CanExecuteActions)
         {
+
+            characterAnimator.SetBool("isMoving", false);
+            characterAnimator.SetBool("isAttacking", false);
             if (fireBombAttackCooldown <= 0)
             {
+                action = ACTION_BOMB_ATTACK;
+                characterAnimator.SetBool("isAttacking", true);
+
                 fireBombAttackCooldown = COOLDOWN_FIRE_BOMB_ATTACK;
                 cooldownToNextAction = TIME_FIRE_BOMB_ATTACK;
-                StartCoroutine(spawnRingOfFire(NUMBER_OF_FIRE_BOMBS, 2, TIME_BOMB_ATTACK));
+                StartCoroutine(spawnLasers(20, 4));
+                StartCoroutine(spawnRingOfFire(NUMBER_OF_FIRE_BOMBS, 2, TIME_FIRE_BOMB_CHARGE));
+            } else if (bombAttackCooldown <= 0)
+            {
+                action = ACTION_BOMB_ATTACK;
+                characterAnimator.SetBool("isAttacking", true);
+
+                bombAttackCooldown = COOLDOWN_BOMB_ATTACK;
+                cooldownToNextAction = TIME_BOMB_ATTACK;
+                StartCoroutine(launchBombs());
+                
+            } else if (Mathf.Abs(transform.position.x - targetCharacter.transform.position.x) > 5)
+            {
+                //chase
+                action = ACTION_CHASE;
+                cooldownToNextAction = TIME_CHASE;                
+            }
+            else
+            {
+                action = ACTION_IDLE;
+                cooldownToNextAction = TIME_IDLE;
             }
         }
     }
 
-    protected void jump()
-    {
-            currentVelocity.y = Mathf.Sqrt(jumpHeight * -2f * -9.81f * 5); // Velocity to achieve ideal height
-    }
+ 
 
 
     /*
@@ -248,8 +302,8 @@ public class BuffyController : UnitInput
     {
 
         float bombGravity = 0;
-        float bombSpeed = 1;
-        float bombAcceleration = 1;
+        float bombSpeed = 5;
+        float bombAcceleration = 5;
         Vector2 normalizedDirection = direction.normalized;
         GameObject newFireBomb = (GameObject)Instantiate(fireBomb, position, Quaternion.Euler(Vector3.zero));
         newFireBomb.GetComponent<FireBomb>().SetupProjectile(5, normalizedDirection * bombSpeed, 10, bombGravity, bombAcceleration, null);
@@ -258,7 +312,7 @@ public class BuffyController : UnitInput
 
     protected IEnumerator spawnRingOfFire(int num_fireBomb, float distanceFromBoss, float timeToSpawn)
     {
-        fireBombs = new List<GameObject>();
+        List<GameObject>fireBombs = new List<GameObject>();
 
         yield return new WaitForEndOfFrame();
         Vector2 initialDirection = new Vector2(FaceDirectionToTarget(), 0);
@@ -281,6 +335,52 @@ public class BuffyController : UnitInput
                 fb.GetComponent<FireBomb>().FireProjectile();
         }
     }
+
+    /*
+     * LASER_ATTACK METHODS
+     */
+
+    protected IEnumerator spawnLasers(int num_lasers, float timeToSpawn)
+    {
+        List<GameObject> lasers = new List<GameObject>();
+
+        float topInfrontX = topInfront.position.x;
+        float topBehindX = topBehind.position.x;
+        float distance = Mathf.Abs(topInfrontX - topBehindX);
+        float distanceBetweenLaser = distance / (num_lasers - 1);
+        int directionOfSpawn = ((topInfrontX - topBehindX) > 0) ? -1 : 1;
+        Vector2 spawnPosition = topInfront.position;
+        float time = timeToSpawn / (num_lasers - 1);
+
+        yield return new WaitForEndOfFrame();
+
+        for(int i = 0; i < num_lasers; i++)
+        {
+            GameObject newLaser = (GameObject)Instantiate(laser, spawnPosition, Quaternion.Euler(Vector3.zero));
+            //newLaser.GetComponent<Laser>().SpawnLaser(20, 5, 13, Vector2.down);
+            spawnPosition += new Vector2(distanceBetweenLaser * directionOfSpawn, 0);
+            yield return new WaitForSeconds(time);
+        }
+
+        foreach (GameObject spawnedLaser in lasers)
+        {
+            if (spawnedLaser != null)
+                spawnedLaser.GetComponent<Laser>().FireLaser();
+        }
+
+
+
+    }
+
+    protected void spawnLaserAtPosition(Vector2 position)
+    {
+
+    }
+
+
+    /*
+     * DIRECTION METHODS
+     */
 
     protected int FaceDirectionToTarget()
     {
