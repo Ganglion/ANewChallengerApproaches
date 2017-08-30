@@ -38,8 +38,14 @@ public class BuffyController : UnitInput
     private const float TIME_FIRE_BOMB_ATTACK = 3;
     private const float TIME_FIRE_BOMB_CHARGE = 1;
     private const int NUMBER_OF_FIRE_BOMBS = 20;
-    private float COOLDOWN_FIRE_BOMB_ATTACK = 6;
+    private float COOLDOWN_FIRE_BOMB_ATTACK = 10;
     private float fireBombAttackCooldown = 0;
+
+    private const float TIME_DROP_FIRE_ATTACK = 7;
+    private const float TIME_DROP_FIRE_CHARGE = 4;
+    private const int NUMBER_OF_DROP_FIRE = 15;
+    private float COOLDOWN_DROP_FIRE = 6;
+    private float dropFireAttackCooldown = 0;
 
     private const string ACTION_CHASE = "Buffy Chase";
     private const float TIME_CHASE = 2;
@@ -223,9 +229,18 @@ public class BuffyController : UnitInput
 
                 fireBombAttackCooldown = COOLDOWN_FIRE_BOMB_ATTACK;
                 cooldownToNextAction = TIME_FIRE_BOMB_ATTACK;
-                StartCoroutine(spawnLasers(20, 4));
+                //StartCoroutine(spawnTopLevelBalls(10, 2));
                 StartCoroutine(spawnRingOfFire(NUMBER_OF_FIRE_BOMBS, 2, TIME_FIRE_BOMB_CHARGE));
-            } else if (bombAttackCooldown <= 0)
+            } else if (dropFireAttackCooldown <= 0)
+            {
+                action = ACTION_BOMB_ATTACK;
+                characterAnimator.SetBool("isAttacking", true);
+                dropFireAttackCooldown = COOLDOWN_DROP_FIRE;
+                cooldownToNextAction = TIME_DROP_FIRE_ATTACK;
+                StartCoroutine(spawnTopLevelBalls(NUMBER_OF_DROP_FIRE, TIME_DROP_FIRE_CHARGE));
+            }
+
+            else if (bombAttackCooldown <= 0)
             {
                 action = ACTION_BOMB_ATTACK;
                 characterAnimator.SetBool("isAttacking", true);
@@ -336,47 +351,35 @@ public class BuffyController : UnitInput
         }
     }
 
-    /*
-     * LASER_ATTACK METHODS
-     */
+    //Dropping bombs
 
-    protected IEnumerator spawnLasers(int num_lasers, float timeToSpawn)
+     protected IEnumerator spawnTopLevelBalls(int num_fireBomb, float timeToSpawn) 
     {
-        List<GameObject> lasers = new List<GameObject>();
-
-        float topInfrontX = topInfront.position.x;
-        float topBehindX = topBehind.position.x;
-        float distance = Mathf.Abs(topInfrontX - topBehindX);
-        float distanceBetweenLaser = distance / (num_lasers - 1);
-        int directionOfSpawn = ((topInfrontX - topBehindX) > 0) ? -1 : 1;
-        Vector2 spawnPosition = topInfront.position;
-        float time = timeToSpawn / (num_lasers - 1);
+        List<GameObject> fireBombs = new List<GameObject>();
+        float distance = topBehind.transform.position.x - topInfront.transform.position.x;
+        float absDist = Mathf.Abs(distance);
+        float distBetweenBombs = absDist / (num_fireBomb - 1);
+        int direction = (distance < 0) ? -1 : 1;
+        Vector2 positionToSpawn = topInfront.transform.position;
+        float time = timeToSpawn / (num_fireBomb - 1);
 
         yield return new WaitForEndOfFrame();
 
-        for(int i = 0; i < num_lasers; i++)
+        for(int i = 0; i < num_fireBomb; i++)
         {
-            GameObject newLaser = (GameObject)Instantiate(laser, spawnPosition, Quaternion.Euler(Vector3.zero));
-            //newLaser.GetComponent<Laser>().SpawnLaser(20, 5, 13, Vector2.down);
-            spawnPosition += new Vector2(distanceBetweenLaser * directionOfSpawn, 0);
+            GameObject newFireBomb = spawnFireBombAtPositionWithDirection(positionToSpawn, Vector2.down);
+            fireBombs.Add(newFireBomb);
+            positionToSpawn += new Vector2(direction * distBetweenBombs, 0);
             yield return new WaitForSeconds(time);
+
         }
 
-        foreach (GameObject spawnedLaser in lasers)
+        foreach (GameObject fb in fireBombs)
         {
-            if (spawnedLaser != null)
-                spawnedLaser.GetComponent<Laser>().FireLaser();
+            if (fb != null)
+                fb.GetComponent<FireBomb>().FireProjectile();
         }
-
-
-
     }
-
-    protected void spawnLaserAtPosition(Vector2 position)
-    {
-
-    }
-
 
     /*
      * DIRECTION METHODS

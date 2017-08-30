@@ -392,7 +392,7 @@
     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\Uber.shader" />
     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
-    <None Include="Assets\Plugins\_SFB_Particle Package 1\Demo %26 Read Me\SFB_ParticlePackage1_ReadMe.txt" />
+    <None Include="Assets\Plugins\_SFB_Particle Package 1\Demo &amp; Read Me\SFB_ParticlePackage1_ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

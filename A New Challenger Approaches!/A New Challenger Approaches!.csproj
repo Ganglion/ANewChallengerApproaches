@@ -95,7 +95,6 @@
   <ItemGroup>
     <Compile Include="Assets\Bomb Dungeon\Scripts\Bomb.cs" />
     <Compile Include="Assets\Bomb Dungeon\Scripts\BuffyController.cs" />
-    <Compile Include="Assets\Bomb Dungeon\Scripts\Laser.cs" />
     <Compile Include="Assets\FireBomb.cs" />
     <Compile Include="Assets\Foggy Bridge\Scripts\BridgeguardController.cs" />
     <Compile Include="Assets\Foggy Bridge\Scripts\ShakeInstance.cs" />
@@ -188,7 +187,7 @@
     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\Uber.shader" />
     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
-    <None Include="Assets\Plugins\_SFB_Particle Package 1\Demo %26 Read Me\SFB_ParticlePackage1_ReadMe.txt" />
+    <None Include="Assets\Plugins\_SFB_Particle Package 1\Demo &amp; Read Me\SFB_ParticlePackage1_ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
