@@ -149,6 +149,7 @@ public class BuffyController : UnitInput
     protected IEnumerator transitToPowered()
     {
         yield return new WaitForEndOfFrame();
+        characterAnimator.SetBool("isTransformed", true);
         yield return new WaitForSeconds(3);
         currentState = STATE_POWERED;
     }
@@ -222,10 +223,12 @@ public class BuffyController : UnitInput
 
             characterAnimator.SetBool("isMoving", false);
             characterAnimator.SetBool("isAttacking", false);
+            characterAnimator.SetBool("isTransformed", true);
+
             if (fireBombAttackCooldown <= 0)
             {
                 action = ACTION_BOMB_ATTACK;
-                characterAnimator.SetBool("isAttacking", true);
+                characterAnimator.SetTrigger("Fire Bomb");
 
                 fireBombAttackCooldown = COOLDOWN_FIRE_BOMB_ATTACK;
                 cooldownToNextAction = TIME_FIRE_BOMB_ATTACK;
