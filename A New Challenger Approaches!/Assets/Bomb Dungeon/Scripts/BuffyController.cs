@@ -41,10 +41,10 @@ public class BuffyController : UnitInput
     private float COOLDOWN_FIRE_BOMB_ATTACK = 10;
     private float fireBombAttackCooldown = 0;
 
-    private const float TIME_DROP_FIRE_ATTACK = 7;
-    private const float TIME_DROP_FIRE_CHARGE = 4;
+    private const float TIME_DROP_FIRE_ATTACK = 5;
+    private const float TIME_DROP_FIRE_CHARGE = 3;
     private const int NUMBER_OF_DROP_FIRE = 15;
-    private float COOLDOWN_DROP_FIRE = 6;
+    private float COOLDOWN_DROP_FIRE = 15;
     private float dropFireAttackCooldown = 0;
 
     private const string ACTION_CHASE = "Buffy Chase";
@@ -127,6 +127,7 @@ public class BuffyController : UnitInput
         cooldownToNextAction -= Time.deltaTime;
         bombAttackCooldown -= Time.deltaTime;
         fireBombAttackCooldown -= Time.deltaTime;
+        dropFireAttackCooldown -= Time.deltaTime;
     }
 
     protected void handleBossState()
@@ -223,7 +224,6 @@ public class BuffyController : UnitInput
 
             characterAnimator.SetBool("isMoving", false);
             characterAnimator.SetBool("isAttacking", false);
-            characterAnimator.SetBool("isTransformed", true);
 
             if (fireBombAttackCooldown <= 0)
             {
@@ -237,7 +237,7 @@ public class BuffyController : UnitInput
             } else if (dropFireAttackCooldown <= 0)
             {
                 action = ACTION_BOMB_ATTACK;
-                characterAnimator.SetBool("isAttacking", true);
+                characterAnimator.SetTrigger("Bomb Drop");
                 dropFireAttackCooldown = COOLDOWN_DROP_FIRE;
                 cooldownToNextAction = TIME_DROP_FIRE_ATTACK;
                 StartCoroutine(spawnTopLevelBalls(NUMBER_OF_DROP_FIRE, TIME_DROP_FIRE_CHARGE));
