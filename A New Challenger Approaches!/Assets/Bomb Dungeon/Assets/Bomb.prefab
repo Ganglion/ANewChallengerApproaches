@@ -89,7 +89,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 0.875, g: 0.7398897, b: 0.87127286, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 0.1
   m_Range: 1
   m_SpotAngle: 18.1
   m_CookieSize: 10
@@ -110,7 +110,7 @@ Light:
     m_Bits: 4294967295
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0.1
+  m_BounceIntensity: 0.01
   m_FalloffTable:
     m_Table[0]: 0
     m_Table[1]: 0
