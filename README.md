@@ -7,7 +7,7 @@
 
 
 ## Creating a Character with movement
-#### Scripts required:
+### Scripts required:
 1. 2D Collider (Box Collider 2D, Capsule Collider 2D)
 2. UnitAttributes
     * Ensure that jump height, movement speed, max health and time taken to reach max speed is not 0 in the inspector
@@ -18,7 +18,7 @@
     * Player is under player layer
 4. CharacterInput
 
-#### Adding Example Linear Projectile Firing to Character
+### Adding Example Linear Projectile Firing to Character
 
 1. Add Firing Projectile Skill Example script to character
     * Ensure Projectile Life Span is greater than 0 in the inspector
@@ -31,7 +31,7 @@
 5. Drag your character's gameObject onto "firing pivotr" on the Firing Projectile Skill Example script Component
 
 ## Scripts
-#### CharacterInput
+### CharacterInput
 ##### Description
 Handles player movement. Controls are set to up, down, left, right, arrows. **Requires ObjectMovement script.** This is an example script, you can edit and create your own script. ${CharacterName}Input.cs. 
 
@@ -51,7 +51,7 @@ To edit controls, edit the if statements in DoPlayerInput()
     }
    ```
 
-#### UnitAttributes
+### UnitAttributes
 ##### Description
 Handles the attributes of attached character/unit. Handles damage calculation and changes to unit's behaviour (eg movement speed, jump height)
 
@@ -90,7 +90,7 @@ Handles the attributes of attached character/unit. Handles damage calculation an
 
 
 
-#### ObjectMovement
+### ObjectMovement
 ##### Description
 Handles movement of attached object (eg player, projectile, enemy, minions). Also does detection of slope, vertical and horizontal collision.
 
@@ -103,7 +103,7 @@ Handles movement of attached object (eg player, projectile, enemy, minions). Als
 |void Move(Vector2 **moveAmount**, bool **standingOnPlatform**)|Translates object by **moveAmount**. **standingOnPlatform** = *true* if character/enemy is on a platform|
 |void Move(Vector2 **moveAmount**, Vector2 **input**, bool **standingOnPlatform** = *false*)|Translates object by **moveAmount**. **standingOnPlatform** = *true* if character/enemy is on a platform. If not provided **standingOnPlatform** = *false*. **input** is the player's input. WIP|
 
-#### Projectile
+## Projectile
 ##### Description
 Script for basic projectiles. Handles collision detection and movement.
 
@@ -112,7 +112,7 @@ Script for basic projectiles. Handles collision detection and movement.
 |gameObject **projectileHitEffect**|Effect when projectile hits enemy|
 |bool **faceTowardsMovement**|if true, object will rotate to face direction of its motion|
 |bool **facingDirectionOffset**| WIP, default = 0|
-(you can override if you implement your own projectile)
+#### You can override these methods
 |Virtual methods ||
 |---|---|
 |void OnProjectileDeath()|Destroys projectile|
@@ -123,7 +123,7 @@ Script for basic projectiles. Handles collision detection and movement.
 |void OnHitPlayer(GameObject **hitObject**)|triggers when projectile hits **hitObject** that is on the **Player** layer. Default implementation is do nothing|
 |virtual void MoveProjectile()| WIP|
 
-### Example of writing your own projectile script
+#### Example of writing your own projectile script
 ```csharp
 using System.Collections;
 using System.Collections.Generic;
@@ -132,8 +132,8 @@ using UnityEngine;
 //Attach this script to your new projectile prefab
 public class FriendlyFireProjectile : Projectile {
 
-//set up projectile to work with FiringProjectileSkillExample.cs
-public void SetupProjectile(float damage, float speed, float lifespan, Vector2 direction, params Buff[] buffs) {
+    //set up projectile to work with FiringProjectileSkillExample.cs
+    public void SetupProjectile(float damage, float speed, float lifespan, Vector2 direction, params Buff[] buffs) {
         projectileDamage = damage;
         projectileSpeed = speed;
         projectileLifespan = lifespan;
