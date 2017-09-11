@@ -90,6 +90,7 @@ public class BridgeguardController : UnitInput {
             RaycastHit2D detectedPlayer = Physics2D.CircleCast(transform.position, detectionRadius, Vector2.zero, 0, LayerMask.GetMask(PLAYER_LAYER));
             if (detectedPlayer.collider != null) {
                 characterAnimator.SetTrigger(READY_TRIGGER);
+                CameraController.Instance.AddToCameraTracker(transform);
                 StartCoroutine(ActivateReadyState());
             }
         } else {
