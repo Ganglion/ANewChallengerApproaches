@@ -28,7 +28,7 @@
     2. Drag firing indicator onto character in the hierachy. This will se firing indicator as a child of the character
     3. Set the x position of the firingIndicator to be 1 (or greater than width of your character) in the inspector
 4. Drag firingIndicator gameObject onto "firing indicator" on the Firing Projectile Skill Example script Component
-5. Drag your character's gameObject onto "firing pivotr" on the Firing Projectile Skill Example script Component
+5. Drag your character's gameObject onto "firing pivot" on the Firing Projectile Skill Example script Component
 
 ## Scripts
 ### CharacterInput
@@ -151,6 +151,24 @@ public class FriendlyFireProjectile : Projectile {
 
 }
 ```
+## CameraController
+##### Description
+Handles more advanced camera logic. Put the main camera as a child of the cameracontroller object. 
+
+|Serialized Fields (editable from inspector)||
+|---|---|
+|List<Transform> **TrackedTransforms**| **size** is the number of tracked objects, **element** is the transform of the object you want to track. (Drag your player gameObject as an element in the inspector)|
+|Vector2 **CameraOffest**| **x** is the offset in the x direction, **y** is the offset in the y direction**|
+|float **CameraScaleSpeed**| Determines how fast the camera zooms in and out|
+|float **CameraBuffer**|WIP|
+
+|Public methods||
+|---|---|
+|void ShakeCamera(float **intensity**, float **duration**)| Shakes the camera. **intensity** controls how much to shake (suggested amount is < 0.1) and **duration** the length of the camera shake|
+
+
+
+
 
 
 
