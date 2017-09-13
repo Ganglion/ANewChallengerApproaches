@@ -65,21 +65,29 @@ public class UnitAttributes : MonoBehaviour {
         InitialiseCurrentAttributes();
     }
 
-    // Health system
-    public void ApplyAttack(float damageDealt, Vector2 point) {
-        ApplyAttack(damageDealt, point, defaultDamageColor, null);
+	// Health system (and a million overloaded methods)
+	public void ApplyAttack(float damageDealt) {
+		ApplyAttack (damageDealt, transform.position, defaultDamageColor, null);
+	}
+
+	public void ApplyAttack(float damageDealt, params Buff[] attackBuffs) {
+		ApplyAttack (damageDealt, transform.position, defaultDamageColor, null);
+	}
+
+    public void ApplyAttack(float damageDealt, Vector2 pointOfHit) {
+		ApplyAttack(damageDealt, pointOfHit, defaultDamageColor, null);
     }
 
-    public void ApplyAttack(float damageDealt, Vector2 point, Color damageColor) {
-        ApplyAttack(damageDealt, point, damageColor, null);
+    public void ApplyAttack(float damageDealt, Vector2 pointOfHit, Color damageColor) {
+		ApplyAttack(damageDealt, pointOfHit, damageColor, null);
     }
 
-    public void ApplyAttack(float damageDealt, Vector2 point, params Buff[] attackBuffs) {
-        ApplyAttack(damageDealt, point, defaultDamageColor, attackBuffs);
+    public void ApplyAttack(float damageDealt, Vector2 pointOfHit, params Buff[] attackBuffs) {
+		ApplyAttack(damageDealt, pointOfHit, defaultDamageColor, attackBuffs);
     }
 
-    public virtual void ApplyAttack(float damageDealt, Vector2 point, Color damageColor, params Buff[] attackBuffs) {
-        TakeDamage(damageDealt, point, damageColor, false);
+    public virtual void ApplyAttack(float damageDealt, Vector2 pointOfHit, Color damageColor, params Buff[] attackBuffs) {
+		TakeDamage(damageDealt, pointOfHit, damageColor, false);
 
         if (attackBuffs != null) {
             for (int i = 0; i < attackBuffs.Length; i++) {

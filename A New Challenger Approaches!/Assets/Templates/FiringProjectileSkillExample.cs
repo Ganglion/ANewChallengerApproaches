@@ -41,7 +41,7 @@ public class FiringProjectileSkillExample : MonoBehaviour {
     private void FireProjectile() {
         GameObject newProjectile = (GameObject) Instantiate(projectile, firingIndicator.position, Quaternion.Euler(Vector3.zero));
         Vector2 facingVector = firingIndicator.position - firingPivot.position;
-        Debug.Assert(newProjectile.GetComponent<LinearProjectile>(), "Projectile does not contain the LinearProjectile component. Check if you getting the correct component.");
-        newProjectile.GetComponent<LinearProjectile>().SetupProjectile(projectileDamage, projectileSpeed, projectileLifeSpan, facingVector);
+        Debug.Assert(newProjectile.GetComponent<ExampleLinearProjectile>(), "Projectile does not contain the LinearProjectile component. Check if you getting the correct component.");
+        newProjectile.GetComponent<ExampleLinearProjectile>().SetupProjectile(projectileDamage, projectileSpeed, projectileLifeSpan, facingVector);
     }
 }

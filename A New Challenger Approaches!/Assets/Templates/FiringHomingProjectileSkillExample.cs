@@ -83,7 +83,7 @@ public class FiringHomingProjectileSkillExample : MonoBehaviour {
     private void FireProjectile(Transform targetTransform) {
         GameObject newProjectile = (GameObject) Instantiate(projectile, firingIndicator.position, Quaternion.Euler(Vector3.zero));
         Vector2 facingVector = firingIndicator.position - firingPivot.position;
-        Debug.Assert(newProjectile.GetComponent<HomingProjectile>(), "Projectile does not contain the HomingProjectile component. Check if you getting the correct component.");
-        newProjectile.GetComponent<HomingProjectile>().SetupProjectile(projectileDamage, projectileSpeed, projectileLifeSpan, facingVector, targetTransform);
+        Debug.Assert(newProjectile.GetComponent<ExampleHomingProjectile>(), "Projectile does not contain the HomingProjectile component. Check if you getting the correct component.");
+        newProjectile.GetComponent<ExampleHomingProjectile>().SetupProjectile(projectileDamage, projectileSpeed, projectileLifeSpan, facingVector, targetTransform);
     }
 }

@@ -44,10 +44,10 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -62,11 +62,7 @@
      <Compile Include="Assets\Scripts\General\Buffs\DamageOverTimeBuff.cs" />
      <Compile Include="Assets\Scripts\General\Buffs\MovementSpeedBuff.cs" />
      <Compile Include="Assets\Scripts\General\CameraController.cs" />
-     <Compile Include="Assets\Scripts\General\Character\CharacterInput.cs" />
-     <Compile Include="Assets\Scripts\General\Character\ExampleAnimationController.cs" />
      <Compile Include="Assets\Scripts\General\Character\HealthBarController.cs" />
-     <Compile Include="Assets\Scripts\General\Character\HomingProjectile.cs" />
-     <Compile Include="Assets\Scripts\General\Character\LinearProjectile.cs" />
      <Compile Include="Assets\Scripts\General\Character\ObjectMovement.cs" />
      <Compile Include="Assets\Scripts\General\Character\ObjectRaycasting.cs" />
      <Compile Include="Assets\Scripts\General\Character\Projectile.cs" />
@@ -77,8 +73,13 @@
      <Compile Include="Assets\Scripts\General\DamageTextManager.cs" />
      <Compile Include="Assets\Scripts\General\ParticleSystemAutoDestruction.cs" />
      <Compile Include="Assets\Scripts\General\Singleton.cs" />
-     <Compile Include="Assets\Testing Level\Scripts\FiringHomingProjectileSkillExample.cs" />
-     <Compile Include="Assets\Testing Level\Scripts\FiringProjectileSkillExample.cs" />
+     <Compile Include="Assets\Templates\CharacterInput.cs" />
+     <Compile Include="Assets\Templates\ExampleAnimationController.cs" />
+     <Compile Include="Assets\Templates\FiringHomingProjectileSkillExample.cs" />
+     <Compile Include="Assets\Templates\FiringProjectileSkillExample.cs" />
+     <Compile Include="Assets\Templates\Projectile\ExampleHomingProjectile.cs" />
+     <Compile Include="Assets\Templates\Projectile\ExampleLinearProjectile.cs" />
+     <Compile Include="Assets\Templates\Projectile\TemplateProjectile.cs" />
      <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\DepthOfField.shader" />
      <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
      <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\Fog.shader" />
@@ -141,31 +142,31 @@
      <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
      <None Include="Assets\Plugins\Particlecollection_Free samples\Plugins\Effect\Shader\ParticleBlendEffect.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.TestRunner">
- <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Timeline">
- <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
- <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="Rewired_Core">
- <HintPath>C:/Users/Luke/Desktop/School or Intern Stuff/ANCA/A New Challenger Approaches!/Assets/Plugins/Controller/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
+ <HintPath>C:/Users/user/Desktop/Games/ANCA/A New Challenger Approaches!/Assets/Plugins/Controller/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
  </Reference>
  <Reference Include="XInputDotNetPure">
- <HintPath>C:/Users/Luke/Desktop/School or Intern Stuff/ANCA/A New Challenger Approaches!/Assets/Plugins/Controller/XInputDotNet/Plugins/XInputDotNetPure.dll</HintPath>
+ <HintPath>C:/Users/user/Desktop/Games/ANCA/A New Challenger Approaches!/Assets/Plugins/Controller/XInputDotNet/Plugins/XInputDotNetPure.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

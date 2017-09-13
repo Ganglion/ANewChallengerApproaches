@@ -21,17 +21,17 @@ public class SpitfireProjectile : Projectile {
         projectileRigidbody.velocity = velocity;
     }
 
-    protected override void MoveProjectile() {
+    protected override void UpdateProjectile() {
         projectileRigidbody.velocity += new Vector2(0, projectileGravity * Time.deltaTime);
     }
 
-	protected override void OnHitPlayer (GameObject hitObject) {
+	protected override void OnHitFriendly (GameObject hitObject) { }
+
+	protected override void OnHitEnemy (GameObject hitObject) {
 		CameraController.Instance.ShakeCamera (0.075f, .75f);
 		hitObject.GetComponent<UnitAttributes> ().ApplyAttack (projectileDamage, transform.position, projectileBuffs);
 		OnProjectileDeath ();
 	}
-
-	protected override void OnHitEnemy (GameObject hitObject) { }
 
     protected override void OnHitStructure(GameObject hitObject) {
 		CameraController.Instance.ShakeCamera (0.075f, .75f);

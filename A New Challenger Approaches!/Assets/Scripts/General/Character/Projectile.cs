@@ -11,6 +11,9 @@ public class Projectile : MonoBehaviour {
     protected const string STRUCTURE_LAYER = "Structure";
     protected const string PLAYER_LAYER = "Player";
 
+	protected const string PLAYER_TAG = "Player";
+	protected const string ENEMY_TAG = "Enemy";
+
     // Prefabs
     [SerializeField]
     protected GameObject projectileHitEffect;
@@ -51,10 +54,10 @@ public class Projectile : MonoBehaviour {
             float facingAngle = Mathf.Atan2(projectileRigidbody.velocity.y, projectileRigidbody.velocity.x) * Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(0, 0, facingAngle + facingDirectionOffset);
         }
-        MoveProjectile();
+        UpdateProjectile();
     }
 
-    protected virtual void MoveProjectile() {
+    protected virtual void UpdateProjectile() {
         //transform.Translate(projectileVelocity * Time.deltaTime);
         //projectileRigidbody.velocity = projectileVelocity;
     }
@@ -62,13 +65,21 @@ public class Projectile : MonoBehaviour {
     protected virtual void OnTriggerEnter2D(Collider2D other) {
         GameObject hitObject = other.gameObject;
         if (hitObject.layer == LayerMask.NameToLayer(ENEMY_LAYER)) {
-            OnHitEnemy(hitObject);
+			if (this.gameObject.tag == PLAYER_TAG) {
+				OnHitEnemy (hitObject);
+			} else if (this.gameObject.tag == ENEMY_TAG) {
+				OnHitFriendly (hitObject);
+			}
         } else if (hitObject.layer == LayerMask.NameToLayer(DESTRUCTIBLE_LAYER)) {
             OnHitDestructible(hitObject);
         } else if (hitObject.layer == LayerMask.NameToLayer(STRUCTURE_LAYER)) {
             OnHitStructure(hitObject);
-        } else if (hitObject.layer == LayerMask.NameToLayer(PLAYER_LAYER)) {
-            OnHitPlayer(hitObject);
+		} else if (hitObject.layer == LayerMask.NameToLayer(PLAYER_LAYER)) {
+			if (this.gameObject.tag == PLAYER_TAG) {
+				OnHitFriendly (hitObject);
+			} else if (this.gameObject.tag == ENEMY_TAG) {
+				OnHitEnemy (hitObject);
+			}
         }
     }
 
@@ -88,8 +99,8 @@ public class Projectile : MonoBehaviour {
         OnProjectileDeath();
     }
 
-    protected virtual void OnHitPlayer(GameObject hitObject) {
-        // Nothing here
+    protected virtual void OnHitFriendly(GameObject hitObject) {
+		// Nothing here
     }
 
     protected virtual void OnProjectileDeath() {

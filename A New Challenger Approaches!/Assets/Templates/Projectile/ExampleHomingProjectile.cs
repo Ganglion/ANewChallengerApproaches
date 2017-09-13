@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HomingProjectile : Projectile {
+public class ExampleHomingProjectile : Projectile {
 
     // Runtime variables
     protected Transform targetUnit;
@@ -13,16 +13,27 @@ public class HomingProjectile : Projectile {
         projectileLifespan = lifespan;
         projectileBuffs = buffs;
         unitProjectileDirection = direction.normalized;
+
+		// Extra target unit variable
         targetUnit = target;
     }
 
-    protected override void MoveProjectile() {
+    protected override void UpdateProjectile() {
         Vector2 directionTowardsTarget;
+
+		// If have target
         if (targetUnit != null) {
+
+			// move towards target
             directionTowardsTarget = (targetUnit.position - transform.position).normalized;
+
         } else {
+
+			// otherwise, move like a linear projectile
             directionTowardsTarget = unitProjectileDirection;
         }
+
+		// Set projectile velocity according to above calculated direction
         projectileRigidbody.velocity = directionTowardsTarget * projectileSpeed;
     }
 

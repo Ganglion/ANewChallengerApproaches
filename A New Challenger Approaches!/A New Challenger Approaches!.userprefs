@@ -1,9 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Foggy Bridge\Scripts\SpitfireFlamesAutoDestruction.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Templates\FiringHomingProjectileSkillExample.cs">
     <Files>
-      <File FileName="Assets\Foggy Bridge\Scripts\SpitfireFlamesAutoDestruction.cs" Line="17" Column="43" />
-      <File FileName="Assets\Foggy Bridge\Scripts\ParticleSystemAutoDestruction.cs" Line="8" Column="11" />
+      <File FileName="Assets\Templates\Projectile\ExampleLinearProjectile.cs" Line="34" Column="46" />
+      <File FileName="Assets\Templates\Projectile\ExampleHomingProjectile.cs" Line="5" Column="21" />
+      <File FileName="Assets\Templates\FiringHomingProjectileSkillExample.cs" Line="87" Column="43" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
