@@ -7,8 +7,6 @@ public class UnitInput : MonoBehaviour {
 
 	// Runtime variables
 	protected Vector2 currentVelocity;
-	protected bool isFacingRight = true;
-	public bool IsFacingRight { get { return isFacingRight; } }
 	public Vector2 CurrentVelocity { get { return currentVelocity; } set { currentVelocity = value; } }
 
 	// Components

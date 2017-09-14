@@ -58,6 +58,7 @@ public class UnitAttributes : MonoBehaviour {
 
     // Runtime variables
     protected float currentDamageOverTimeIntervalCooldown = 0;
+	protected bool isDead = false;
 
     protected virtual void Awake() {
         buffList = new List<Buff>();
@@ -71,7 +72,7 @@ public class UnitAttributes : MonoBehaviour {
 	}
 
 	public void ApplyAttack(float damageDealt, params Buff[] attackBuffs) {
-		ApplyAttack (damageDealt, transform.position, defaultDamageColor, null);
+		ApplyAttack (damageDealt, transform.position, defaultDamageColor, attackBuffs);
 	}
 
     public void ApplyAttack(float damageDealt, Vector2 pointOfHit) {
@@ -111,10 +112,22 @@ public class UnitAttributes : MonoBehaviour {
             currentHealth -= damageDealt;
             currentHealth = Mathf.Clamp(currentHealth, 0, baseMaxHealth);
         }
-        if (currentHealth <= 0) {
+        if (!isDead && currentHealth <= 0) {
+			isDead = true;
             Death();
         }
     }
+
+	public void Heal(float healAmount) {
+		if (healAmount < 0) {
+			Debug.LogError("Heal amount (" + healAmount + ") is negative. Use the ApplyAttack method to deal damage.");
+			return;
+		}
+		if (currentHealth > 0 && healAmount > 0) {
+			currentHealth += healAmount;
+			currentHealth = Mathf.Clamp(currentHealth, 0, baseMaxHealth);
+		}
+	}
 
     protected virtual void Death() {
         // Transform to orb
@@ -123,17 +136,14 @@ public class UnitAttributes : MonoBehaviour {
     // Buff system
     protected List<Buff> buffList;
 
-
-
     protected void Update() {
         ResetCurrentAttributes();
         for (int i = 0; i < buffList.Count; i++) {
             Buff currentBuff = buffList[i];
             if (Time.time >= currentBuff.BuffTimestamp + currentBuff.BuffDuration) {
-                Debug.Log(currentBuff.BuffTimestamp + " " + currentBuff.BuffDuration);
+				RemoveBuffEffect (currentBuff);
                 buffList.RemoveAt(i);
             } else {
-                //ParseBuff(currentBuff);
                 currentBuff.ExecuteBuff(this);
             }
         }
@@ -159,45 +169,18 @@ public class UnitAttributes : MonoBehaviour {
         currentDamageOutputFactor = baseDamageOutputFactor;
         currentGroundAcceleration = currentMovementSpeed / timeTakenToReachMaxSpeed;
         currentAirborneAcceleraion = currentGroundAcceleration / airborneAccelerationTimeMultiplier;
-        damagePerSecond = 0;
+		movementSpeedMultiplier = 1;
+		jumpHeightMultiplier = 1;
+		damageTakenFactorMultiplier = 1;
+		damageOutputFactorMultiplier = 1;
+		damagePerSecond = 0;
     }
-
-    /*protected void ParseBuff(Buff buff) {
-        switch (buff.BuffType) {
-            case BuffType.MovementSpeedBuff:
-                currentMovementSpeed *= buff.BuffValue;
-                break;
-            case BuffType.JumpHeightBuff:
-                currentJumpHeight *= buff.BuffValue;
-                break;
-            case BuffType.DamageTakenBuff:
-                currentDamageTakenFactor *= buff.BuffValue;
-                break;
-            case BuffType.DamageOutputBuff:
-                currentDamageOutputFactor *= buff.BuffValue;
-                break;
-            case BuffType.DamagePerSecondBuff:
-                this.ApplyAttack(buff.BuffValue * Time.deltaTime, transform.position);
-                break;
-            case BuffType.RootBuff:
-                canMove = false;
-                break;
-            case BuffType.DisarmBuff:
-                canExecuteActions = false;
-                break;
-            case BuffType.StunBuff:
-                canMove = false;
-                canExecuteActions = false;
-                break;
-            default:
-                break;
-        }
-    }*/
 
     protected void ApplyBuff(Buff newBuff) {
         if (newBuff.IsStackable) {
             newBuff.BuffTimestamp = Time.time;
             buffList.Add(newBuff);
+			ApplyBuffEffect (newBuff);
         } else {
             for (int i = 0; i < buffList.Count; i++) {
                 Buff currentBuff = buffList[i];
@@ -208,7 +191,24 @@ public class UnitAttributes : MonoBehaviour {
             }
             newBuff.BuffTimestamp = Time.time;
             buffList.Add(newBuff);
+			ApplyBuffEffect (newBuff);
         }
     }
+
+	protected void ApplyBuffEffect(Buff buff) {
+		if (buff.BuffEffect != null) {
+			buff.BuffEffectObject = (GameObject) Instantiate (buff.BuffEffect, transform.position, Quaternion.Euler (Vector3.zero));
+			//buff.BuffEffectObject.transform.localScale = transform.localScale;
+			buff.BuffEffectObject.transform.parent = transform;
+		}
+	}
+
+	protected void RemoveBuffEffect(Buff buff) {
+		if (buff.BuffEffectObject != null) {
+			GameObject tempBuffObject = buff.BuffEffectObject;
+			buff.BuffEffectObject = null;
+			Destroy (tempBuffObject);
+		}
+	}
 
 }

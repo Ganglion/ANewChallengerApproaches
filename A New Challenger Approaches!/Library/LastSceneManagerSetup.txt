@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Foggy Bridge/Foggy Bridge.unity
+- path: Assets/Your Stuff- Do your stuff in here/Your Test Scene.unity
   isLoaded: 1
   isActive: 1

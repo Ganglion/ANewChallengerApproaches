@@ -2,17 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/*public enum BuffType {
-    MovementSpeedBuff,
-    JumpHeightBuff,
-    DamageTakenBuff,
-    DamageOutputBuff,
-    DamagePerSecondBuff,
-    RootBuff,
-    DisarmBuff,
-    StunBuff
-}*/
-
 public class Buff {
 
     // Buff attributes
@@ -24,6 +13,7 @@ public class Buff {
     protected bool isStackable;
     protected int sourcePlayer;
     protected float buffTimestamp;
+	protected GameObject buffEffectObject;
 
     public string BuffName { get { return buffName; } }
     public float BuffDuration { get { return buffDuration; } set { buffDuration = value; } }
@@ -33,20 +23,7 @@ public class Buff {
     public bool IsStackable { get { return isStackable; } }
     public int SourcePlayer { get { return sourcePlayer; } }
     public float BuffTimestamp { get { return buffTimestamp; } set { buffTimestamp = value; } }
-
-    /*
-    // Runtime attributes
-    private bool isExpired;
-    public bool IsExpired { get { return isExpired; } }
-
-    void Update () {
-        Debug.Log(buffDuration);
-		if (buffDuration > 0) {
-            buffDuration -= Time.deltaTime;
-        } else {
-            isExpired = true;
-        }
-	}*/
+	public GameObject BuffEffectObject { get { return buffEffectObject; } set { buffEffectObject = value; } }
 
     public override bool Equals(object other) {
         Buff otherBuff = (Buff) other;

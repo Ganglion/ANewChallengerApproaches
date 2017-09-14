@@ -73,11 +73,11 @@ public class CameraController : Singleton<CameraController> {
         //Debug.Log(minX + " " + maxX + " " + minY + " " + maxY);
         float charactersHeightDifference = maxY - minY;
         float charactersWidthDifference = maxX - minX;
-        Debug.Log(charactersHeightDifference + " " + charactersWidthDifference);
+        //Debug.Log(charactersHeightDifference + " " + charactersWidthDifference);
         float idealHeight = charactersHeightDifference + 2 * cameraBuffer;
         float idealWidth = charactersWidthDifference + 2 * cameraBuffer;
         float calculatedHeightUsingIdealWidth = idealWidth / mainCamera.aspect;
-        Debug.Log(idealHeight + " " + calculatedHeightUsingIdealWidth);
+        //Debug.Log(idealHeight + " " + calculatedHeightUsingIdealWidth);
         idealHeight = Mathf.Max(idealHeight, calculatedHeightUsingIdealWidth);
         float distanceFromAveragePositionToCameraPositionOnZAxis = Mathf.Abs(averagePosition.z - transform.position.z);
         float idealFieldOfView = 2 * Mathf.Atan2(idealHeight, 2 * distanceFromAveragePositionToCameraPositionOnZAxis) * Mathf.Rad2Deg;
