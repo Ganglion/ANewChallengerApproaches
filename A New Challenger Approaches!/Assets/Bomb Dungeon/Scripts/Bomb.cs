@@ -17,7 +17,7 @@ public class Bomb : Projectile {
         projectileRigidbody.velocity = velocity;
     }
 
-    protected override void MoveProjectile()
+    protected void MoveProjectile()
     {         
             projectileRigidbody.velocity += new Vector2(0, projectileGravity * Time.deltaTime);
 
@@ -29,7 +29,7 @@ public class Bomb : Projectile {
         Destroy(this.gameObject);
     }
 
-    protected override void OnHitPlayer(GameObject hitObject)
+    protected void OnHitPlayer(GameObject hitObject)
     {
         CameraController.Instance.ShakeCamera(0.075f, .75f);
         hitObject.GetComponent<UnitAttributes>().ApplyAttack(projectileDamage, transform.position);

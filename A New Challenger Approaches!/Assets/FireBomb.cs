@@ -28,7 +28,7 @@ public class FireBomb : Projectile {
         hasFired = true;
     }
 
-    protected override void MoveProjectile()
+    protected void MoveProjectile()
     {
         if (hasFired) {
             projectileRigidbody.velocity += projectileAcceleration * velocityOnFire * Time.deltaTime;
@@ -43,7 +43,7 @@ public class FireBomb : Projectile {
         Destroy(this.gameObject);
     }
 
-    protected override void OnHitPlayer(GameObject hitObject)
+    protected void OnHitPlayer(GameObject hitObject)
     {
         CameraController.Instance.ShakeCamera(0.075f, .75f);
         hitObject.GetComponent<UnitAttributes>().ApplyAttack(projectileDamage, transform.position);

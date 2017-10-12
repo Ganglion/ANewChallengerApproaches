@@ -96,22 +96,19 @@
     <Compile Include="Assets\Bomb Dungeon\Scripts\Bomb.cs" />
     <Compile Include="Assets\Bomb Dungeon\Scripts\BuffyController.cs" />
     <Compile Include="Assets\FireBomb.cs" />
-    <Compile Include="Assets\Foggy Bridge\Scripts\BridgeguardController.cs" />
-    <Compile Include="Assets\Foggy Bridge\Scripts\ShakeInstance.cs" />
-    <Compile Include="Assets\Foggy Bridge\Scripts\ShieldAttributes.cs" />
-    <Compile Include="Assets\Foggy Bridge\Scripts\ShockwaveProjectile.cs" />
-    <Compile Include="Assets\Foggy Bridge\Scripts\SpitfireFlamesAutoDestruction.cs" />
-    <Compile Include="Assets\Foggy Bridge\Scripts\SpitfireFlamesDamage.cs" />
-    <Compile Include="Assets\Foggy Bridge\Scripts\SpitfireProjectile.cs" />
+    <Compile Include="Assets\Scenes\Foggy Bridge\Scripts\BridgeguardAttributes.cs" />
+    <Compile Include="Assets\Scenes\Foggy Bridge\Scripts\BridgeguardController.cs" />
+    <Compile Include="Assets\Scenes\Foggy Bridge\Scripts\ShakeInstance.cs" />
+    <Compile Include="Assets\Scenes\Foggy Bridge\Scripts\ShieldAttributes.cs" />
+    <Compile Include="Assets\Scenes\Foggy Bridge\Scripts\ShockwaveProjectile.cs" />
+    <Compile Include="Assets\Scenes\Foggy Bridge\Scripts\SpitfireFlamesAutoDestruction.cs" />
+    <Compile Include="Assets\Scenes\Foggy Bridge\Scripts\SpitfireFlamesDamage.cs" />
+    <Compile Include="Assets\Scenes\Foggy Bridge\Scripts\SpitfireProjectile.cs" />
     <Compile Include="Assets\Scripts\General\Buffs\Buff.cs" />
     <Compile Include="Assets\Scripts\General\Buffs\DamageOverTimeBuff.cs" />
     <Compile Include="Assets\Scripts\General\Buffs\MovementSpeedBuff.cs" />
     <Compile Include="Assets\Scripts\General\CameraController.cs" />
-    <Compile Include="Assets\Scripts\General\Character\CharacterInput.cs" />
-    <Compile Include="Assets\Scripts\General\Character\ExampleAnimationController.cs" />
     <Compile Include="Assets\Scripts\General\Character\HealthBarController.cs" />
-    <Compile Include="Assets\Scripts\General\Character\HomingProjectile.cs" />
-    <Compile Include="Assets\Scripts\General\Character\LinearProjectile.cs" />
     <Compile Include="Assets\Scripts\General\Character\ObjectMovement.cs" />
     <Compile Include="Assets\Scripts\General\Character\ObjectRaycasting.cs" />
     <Compile Include="Assets\Scripts\General\Character\Projectile.cs" />
@@ -122,8 +119,13 @@
     <Compile Include="Assets\Scripts\General\DamageTextManager.cs" />
     <Compile Include="Assets\Scripts\General\ParticleSystemAutoDestruction.cs" />
     <Compile Include="Assets\Scripts\General\Singleton.cs" />
-    <Compile Include="Assets\Testing Level\Scripts\FiringHomingProjectileSkillExample.cs" />
-    <Compile Include="Assets\Testing Level\Scripts\FiringProjectileSkillExample.cs" />
+    <Compile Include="Assets\Templates - Check this out for Examples\Animation\ExampleAnimationController.cs" />
+    <Compile Include="Assets\Templates - Check this out for Examples\Movement\ExampleCharacterMovement.cs" />
+    <Compile Include="Assets\Templates - Check this out for Examples\Projectile\ExampleHomingProjectile.cs" />
+    <Compile Include="Assets\Templates - Check this out for Examples\Projectile\ExampleLinearProjectile.cs" />
+    <Compile Include="Assets\Templates - Check this out for Examples\Projectile\TemplateProjectile.cs" />
+    <Compile Include="Assets\Templates - Check this out for Examples\Skills\FiringHomingProjectileSkillExample.cs" />
+    <Compile Include="Assets\Templates - Check this out for Examples\Skills\FiringProjectileSkillExample.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Anima2D\Anima2D\Examples\Shaders\Unlit-Alpha-Cull-off.shader" />
@@ -187,7 +189,7 @@
     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\Uber.shader" />
     <None Include="Assets\Plugins\UnityParticlePack\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
-    <None Include="Assets\Plugins\_SFB_Particle Package 1\Demo %26 Read Me\SFB_ParticlePackage1_ReadMe.txt" />
+    <None Include="Assets\Plugins\_SFB_Particle Package 1\Demo &amp; Read Me\SFB_ParticlePackage1_ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

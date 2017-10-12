@@ -75,9 +75,11 @@ public class BuffyController : UnitInput
         characterAnimator = GetComponent<Animator>();
         initialScale = transform.localScale.x;
         action = ACTION_IDLE;
+        CameraController.Instance.AddToCameraTracker(transform);
+
     }
 
-    
+
 
     // Update is called once per frame
     void Update()
