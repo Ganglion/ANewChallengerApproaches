@@ -23,6 +23,10 @@ public class BridgeguardController : UnitInput {
 	[SerializeField]
 	protected Transform shockwaveTransform;
 
+	[Header(">:^)")]
+	[SerializeField]
+	protected bool hardMode = false;
+
 	[Header("AI")]
     // Fields
     [SerializeField]
@@ -119,7 +123,11 @@ public class BridgeguardController : UnitInput {
                 int chosenAction = Random.Range(0, totalWeights);
                 if (chosenAction < moveWeight) {
                     characterAnimator.SetTrigger(WALK_TRIGGER);
-					currentVelocity.x = movementSpeed * FaceDirectionToTarget() * characterAttributes.MovementSpeedMultiplier;
+					if (hardMode) {
+						currentVelocity.x = movementSpeed * 2f * FaceDirectionToTarget () * characterAttributes.MovementSpeedMultiplier;
+					} else {
+						currentVelocity.x = movementSpeed * FaceDirectionToTarget () * characterAttributes.MovementSpeedMultiplier;
+					}
 
                 } else if ((chosenAction - moveWeight) < stabWeight) {
                     FaceDirectionToTarget();
@@ -180,6 +188,17 @@ public class BridgeguardController : UnitInput {
 		float horizontalSpeed = (targetPosition.x - spitfireTransform.position.x) / totalTimeTaken;
         GameObject newSpitfire = (GameObject)Instantiate(spitfireProjectile, spitfireTransform.position, Quaternion.Euler(Vector3.zero));
 		newSpitfire.GetComponent<SpitfireProjectile>().SetupProjectile(spitfireDamage, new Vector2(horizontalSpeed, verticalSpeed), spitfireLifespan, spitfireGravity, spitfireDamageOverTimeBuff);
+
+		if (hardMode) {
+			for (int i = 0; i < 2; i++) {
+				targetPosition = (Vector2)targetCharacter.position + new Vector2 (Random.Range (-10, 10), 0);
+				verticalSpeed = Mathf.Sqrt (2 * Mathf.Abs (spitfireGravity) * spitfireHeight);
+				totalTimeTaken = verticalSpeed / Mathf.Abs (spitfireGravity) + Mathf.Sqrt (2 * (spitfireHeight + spitfireTransform.position.y - targetPosition.y) / Mathf.Abs (spitfireGravity)); 
+				horizontalSpeed = (targetPosition.x - spitfireTransform.position.x) / totalTimeTaken;
+				newSpitfire = (GameObject)Instantiate (spitfireProjectile, spitfireTransform.position, Quaternion.Euler (Vector3.zero));
+				newSpitfire.GetComponent<SpitfireProjectile> ().SetupProjectile (spitfireDamage, new Vector2 (horizontalSpeed, verticalSpeed), spitfireLifespan, spitfireGravity, spitfireDamageOverTimeBuff);
+			}
+		}
     }
 
 	protected void LaunchShockwave() {
@@ -187,6 +206,20 @@ public class BridgeguardController : UnitInput {
 		Vector2 facingVector = new Vector2 (Mathf.Sign (shockwaveTransform.position.x - transform.position.x), 0);
 		GameObject newShockwave = (GameObject)Instantiate (shockwaveProjectile, shockwaveTransform.position, Quaternion.Euler (Vector3.zero));
 		newShockwave.GetComponent<ShockwaveProjectile> ().SetupProjectile (shockwaveDamage, shockwaveSpeed, shockwaveLifespan, facingVector, null);
+
+		if (hardMode) {
+			StartCoroutine (HardmodeShockwave (1f));
+		}
+	}
+
+	protected IEnumerator HardmodeShockwave(float interval) {
+		for (int i = 0; i < 2; i++) {
+			yield return new WaitForSeconds (interval);
+			CameraController.Instance.ShakeCamera (.125f, .75f);
+			Vector2 facingVector = new Vector2 (Mathf.Sign (shockwaveTransform.position.x - transform.position.x), 0);
+			GameObject newShockwave = (GameObject)Instantiate (shockwaveProjectile, shockwaveTransform.position, Quaternion.Euler (Vector3.zero));
+			newShockwave.GetComponent<ShockwaveProjectile> ().SetupProjectile (shockwaveDamage, shockwaveSpeed, shockwaveLifespan, facingVector, null);
+		}
 	}
 
 	public void SetDead() {
