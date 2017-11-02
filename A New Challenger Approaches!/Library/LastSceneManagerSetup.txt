@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Foggy Bridge/Foggy Bridge.unity
+- path: Assets/Bomb Dungeon/Bomb Dungeon.unity
   isLoaded: 1
   isActive: 1

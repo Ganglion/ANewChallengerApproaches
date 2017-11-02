@@ -17,28 +17,17 @@ public class Bomb : Projectile {
         projectileRigidbody.velocity = velocity;
     }
 
-    protected void MoveProjectile()
-    {         
-            projectileRigidbody.velocity += new Vector2(0, projectileGravity * Time.deltaTime);
-
-    }
-
     protected override void OnProjectileDeath()
     {
-        Debug.Log("Projectile Death");
         Destroy(this.gameObject);
     }
 
-    protected void OnHitPlayer(GameObject hitObject)
-    {
+
+    protected override void OnHitEnemy(GameObject hitObject) {
         CameraController.Instance.ShakeCamera(0.075f, .75f);
         hitObject.GetComponent<UnitAttributes>().ApplyAttack(projectileDamage, transform.position);
         OnProjectileDeath();
     }
-
-    
-
-    protected override void OnHitEnemy(GameObject hitObject) { }
 
     protected override void OnHitStructure(GameObject hitObject)
     {
