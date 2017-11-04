@@ -190,7 +190,7 @@ public class BridgeguardController : UnitInput {
 		newSpitfire.GetComponent<SpitfireProjectile>().SetupProjectile(spitfireDamage, new Vector2(horizontalSpeed, verticalSpeed), spitfireLifespan, spitfireGravity, spitfireDamageOverTimeBuff);
 
 		if (hardMode) {
-			for (int i = 0; i < 2; i++) {
+			for (int i = 0; i < 4; i++) {
 				targetPosition = (Vector2)targetCharacter.position + new Vector2 (Random.Range (-10, 10), 0);
 				verticalSpeed = Mathf.Sqrt (2 * Mathf.Abs (spitfireGravity) * spitfireHeight);
 				totalTimeTaken = verticalSpeed / Mathf.Abs (spitfireGravity) + Mathf.Sqrt (2 * (spitfireHeight + spitfireTransform.position.y - targetPosition.y) / Mathf.Abs (spitfireGravity)); 

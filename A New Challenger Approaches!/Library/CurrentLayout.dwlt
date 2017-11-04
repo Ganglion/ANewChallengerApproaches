@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 4411
+  controlID: 830
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 4262
+  controlID: 1022
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -205,10 +205,10 @@ MonoBehaviour:
     y: 0
     width: 549
     height: 635
-  m_MinSize: {x: 204, y: 421}
-  m_MaxSize: {x: 4004, y: 8021}
+  m_MinSize: {x: 204, y: 442}
+  m_MaxSize: {x: 4004, y: 8042}
   vertical: 1
-  controlID: 4412
+  controlID: 775
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 192}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 4327
+  controlID: 831
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -441,9 +441,9 @@ MonoBehaviour:
     height: 264
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
-    m_ExpandedIDs: 5621ffff48e4ffff44f9ffff00000000
+    m_SelectedIDs: 1a3d0000
+    m_LastClickedID: 15642
+    m_ExpandedIDs: 1afcffff000000001a3d0000a63d00003e3e00002c3f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -504,19 +504,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scenes/Foggy Bridge/Prefabs
+    - Assets/Scenes/Foggy Bridge/Scripts
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scenes/Foggy Bridge/Prefabs
+  - Assets/Scenes/Foggy Bridge/Scripts
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\user\Desktop\Games\ANCA\A New Challenger Approaches!
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 95}
-    m_SelectedIDs: d6370000
-    m_LastClickedID: 14294
-    m_ExpandedIDs: 00000000182b00008c2b0000702c00007c2c00008a300000ce300000dc30000022310000e4370000d8390000883a0000be3b000000ca9a3bffffff7f
+    m_SelectedIDs: a8370000
+    m_LastClickedID: 14248
+    m_ExpandedIDs: 00000000c4290000382a00002a2b0000362b00004c2f0000922f0000a02f0000e82f00002637000022390000d23900000c3b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -544,7 +544,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000182b00008c2b0000702c00007c2c00008a300000ce300000dc30000022310000e4370000d8390000883a0000be3b000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000c4290000382a00002a2b0000362b00004c2f0000922f0000a02f0000e82f00002637000022390000d23900000c3b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -777,7 +777,7 @@ MonoBehaviour:
     y: 92
     width: 322
     height: 428
-  m_ScrollPosition: {x: 0, y: 0}
+  m_ScrollPosition: {x: 0, y: 873.8281}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: -195
