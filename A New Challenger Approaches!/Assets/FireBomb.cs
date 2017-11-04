@@ -22,34 +22,21 @@ public class FireBomb : Projectile {
        
     }
 
-
     public void FireProjectile()
     {
         hasFired = true;
+        projectileRigidbody.velocity = velocityOnFire;
     }
-
-    protected void MoveProjectile()
-    {
-        if (hasFired) {
-            projectileRigidbody.velocity += projectileAcceleration * velocityOnFire * Time.deltaTime;
-        } 
-    }
-
-    
 
     protected override void OnProjectileDeath()
     {
-        Debug.Log("Projectile Death");
         Destroy(this.gameObject);
     }
 
-    protected void OnHitPlayer(GameObject hitObject)
-    {
+    protected override void OnHitEnemy(GameObject hitObject) {
         CameraController.Instance.ShakeCamera(0.075f, .75f);
         hitObject.GetComponent<UnitAttributes>().ApplyAttack(projectileDamage, transform.position);
         OnProjectileDeath();
     }
-
-    protected override void OnHitEnemy(GameObject hitObject) { }
 
 }
