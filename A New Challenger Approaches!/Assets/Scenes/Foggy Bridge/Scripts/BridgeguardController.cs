@@ -13,7 +13,7 @@ public class BridgeguardController : UnitInput {
 
     // References
     [SerializeField]
-    protected Transform targetCharacter;
+    protected List<Transform> targetCharacters;
     [SerializeField]
     protected GameObject spitfireProjectile;
     [SerializeField]
@@ -102,8 +102,10 @@ public class BridgeguardController : UnitInput {
             RaycastHit2D detectedPlayer = Physics2D.CircleCast(transform.position, detectionRadius, Vector2.zero, 0, LayerMask.GetMask(PLAYER_LAYER));
             if (detectedPlayer.collider != null) {
                 characterAnimator.SetTrigger(READY_TRIGGER);
-                CameraController.Instance.AddToCameraTracker(transform);
-                StartCoroutine(ActivateReadyState());
+				for (int i = 0; i < targetCharacters.Count; i++) {
+					CameraController.Instance.AddToCameraTracker (transform);
+				}
+				StartCoroutine (ActivateReadyState ());
             }
 		} else if (!isDead) {
             cooldownToNextAction -= Time.deltaTime;
@@ -147,6 +149,7 @@ public class BridgeguardController : UnitInput {
 
 	protected int FaceDirectionToTarget() {
 		//Debug.Log (targetCharacter.position.x - transform.position.x);
+		Transform targetCharacter = targetCharacters[Random.Range(0, targetCharacters.Count)];
 		bool targetIsToTheRight = ((targetCharacter.position.x - transform.position.x) > 0) ? true : false;
 		if (targetIsToTheRight) {
 			Vector3 transformScale = transform.localScale;
@@ -182,6 +185,7 @@ public class BridgeguardController : UnitInput {
 
 	protected void LaunchSpitfire() {
 		CameraController.Instance.ShakeCamera (.125f, .75f);
+		Transform targetCharacter = targetCharacters[Random.Range(0, targetCharacters.Count)];
 		Vector2 targetPosition = targetCharacter.position;
         float verticalSpeed = Mathf.Sqrt(2 * Mathf.Abs(spitfireGravity) * spitfireHeight);
 		float totalTimeTaken = verticalSpeed / Mathf.Abs (spitfireGravity) + Mathf.Sqrt(2 * (spitfireHeight + spitfireTransform.position.y - targetPosition.y) / Mathf.Abs (spitfireGravity)); 
@@ -191,6 +195,7 @@ public class BridgeguardController : UnitInput {
 
 		if (hardMode) {
 			for (int i = 0; i < 4; i++) {
+				targetCharacter = targetCharacters[Random.Range(0, targetCharacters.Count)];
 				targetPosition = (Vector2)targetCharacter.position + new Vector2 (Random.Range (-10, 10), 0);
 				verticalSpeed = Mathf.Sqrt (2 * Mathf.Abs (spitfireGravity) * spitfireHeight);
 				totalTimeTaken = verticalSpeed / Mathf.Abs (spitfireGravity) + Mathf.Sqrt (2 * (spitfireHeight + spitfireTransform.position.y - targetPosition.y) / Mathf.Abs (spitfireGravity)); 
@@ -217,6 +222,7 @@ public class BridgeguardController : UnitInput {
 			yield return new WaitForSeconds (interval);
 			CameraController.Instance.ShakeCamera (.125f, .75f);
 			Vector2 facingVector = new Vector2 (Mathf.Sign (shockwaveTransform.position.x - transform.position.x), 0);
+			facingVector = new Vector2(Mathf.Sign(targetCharacters[Random.Range(0, targetCharacters.Count)].position.x - transform.position.x), 0);
 			GameObject newShockwave = (GameObject)Instantiate (shockwaveProjectile, shockwaveTransform.position, Quaternion.Euler (Vector3.zero));
 			newShockwave.GetComponent<ShockwaveProjectile> ().SetupProjectile (shockwaveDamage, shockwaveSpeed, shockwaveLifespan, facingVector, null);
 		}

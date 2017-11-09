@@ -1,0 +1,727 @@
+fileFormatVersion: 2
+guid: a2cb772de8c32764b99348ba8204c96a
+timeCreated: 1508408959
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: buff_0
+    21300002: buff_1
+    21300004: buff_2
+    21300006: buff_3
+    21300008: buff_4
+    21300010: buff_5
+    21300012: buff_6
+    21300014: buff_7
+    21300016: buff_8
+    21300018: buff_9
+    21300020: buff_10
+    21300022: buff_11
+    21300024: buff_12
+    21300026: buff_13
+    21300028: buff_14
+    21300030: buff_15
+    21300032: buff_16
+    21300034: buff_17
+    21300036: buff_18
+    21300038: buff_19
+    21300040: buff_20
+    21300042: buff_21
+    21300044: buff_22
+    21300046: buff_23
+    21300048: buff_24
+    21300050: buff_25
+    21300052: buff_26
+    21300054: buff_27
+    21300056: buff_28
+    21300058: buff_29
+    21300060: buff_30
+    21300062: buff_31
+    21300064: buff_32
+    21300066: buff_33
+    21300068: buff_34
+    21300070: buff_35
+    21300072: buff_36
+    21300074: buff_37
+    21300076: buff_38
+    21300078: buff_39
+    21300080: buff_40
+    21300082: buff_41
+    21300084: buff_42
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: buff_0
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 3787
+        width: 600
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_1
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 3787
+        width: 600
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_2
+      rect:
+        serializedVersion: 2
+        x: 2094
+        y: 3787
+        width: 600
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_3
+      rect:
+        serializedVersion: 2
+        x: 3054
+        y: 3787
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.49472493, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_4
+      rect:
+        serializedVersion: 2
+        x: 4014
+        y: 3787
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5129468, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_5
+      rect:
+        serializedVersion: 2
+        x: 4974
+        y: 3787
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5192415, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_6
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 3247
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_7
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 3247
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_8
+      rect:
+        serializedVersion: 2
+        x: 2094
+        y: 3247
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_9
+      rect:
+        serializedVersion: 2
+        x: 3054
+        y: 3247
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_10
+      rect:
+        serializedVersion: 2
+        x: 4014
+        y: 3247
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_11
+      rect:
+        serializedVersion: 2
+        x: 4974
+        y: 3247
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_12
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 2707
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_13
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 2707
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_14
+      rect:
+        serializedVersion: 2
+        x: 2094
+        y: 2707
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_15
+      rect:
+        serializedVersion: 2
+        x: 3054
+        y: 2707
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_16
+      rect:
+        serializedVersion: 2
+        x: 4014
+        y: 2707
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_17
+      rect:
+        serializedVersion: 2
+        x: 4974
+        y: 2707
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_18
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 2167
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_19
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 2167
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_20
+      rect:
+        serializedVersion: 2
+        x: 2094
+        y: 2167
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_21
+      rect:
+        serializedVersion: 2
+        x: 3054
+        y: 2167
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_22
+      rect:
+        serializedVersion: 2
+        x: 4014
+        y: 2167
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_23
+      rect:
+        serializedVersion: 2
+        x: 4974
+        y: 2167
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_24
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 1627
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_25
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 1627
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_26
+      rect:
+        serializedVersion: 2
+        x: 2094
+        y: 1627
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_27
+      rect:
+        serializedVersion: 2
+        x: 3054
+        y: 1627
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_28
+      rect:
+        serializedVersion: 2
+        x: 4014
+        y: 1627
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_29
+      rect:
+        serializedVersion: 2
+        x: 4974
+        y: 1627
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_30
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 1087
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_31
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 1087
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_32
+      rect:
+        serializedVersion: 2
+        x: 2094
+        y: 1087
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_33
+      rect:
+        serializedVersion: 2
+        x: 3054
+        y: 1087
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_34
+      rect:
+        serializedVersion: 2
+        x: 4014
+        y: 1087
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_35
+      rect:
+        serializedVersion: 2
+        x: 4974
+        y: 1087
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_36
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 547
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.51944506, y: 0.50000024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_37
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 547
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.51730937, y: 0.49999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_38
+      rect:
+        serializedVersion: 2
+        x: 2094
+        y: 547
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.51224244, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_39
+      rect:
+        serializedVersion: 2
+        x: 3054
+        y: 547
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5080066, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_40
+      rect:
+        serializedVersion: 2
+        x: 4014
+        y: 547
+        width: 600
+        height: 500
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_41
+      rect:
+        serializedVersion: 2
+        x: 4974
+        y: 547
+        width: 600
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: buff_42
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 7
+        width: 600
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

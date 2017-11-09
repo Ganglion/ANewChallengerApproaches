@@ -53,7 +53,24 @@
   <ItemGroup>
      <Compile Include="Assets\Bomb Dungeon\Scripts\Bomb.cs" />
      <Compile Include="Assets\Bomb Dungeon\Scripts\BuffyController.cs" />
-     <Compile Include="Assets\FireBomb.cs" />
+     <Compile Include="Assets\Bomb Dungeon\Scripts\FireBomb.cs" />
+     <Compile Include="Assets\Nekoyu\Scripts\Animations.cs" />
+     <Compile Include="Assets\Nekoyu\Scripts\BuffSkill.cs" />
+     <Compile Include="Assets\Nekoyu\Scripts\CollisionDamage.cs" />
+     <Compile Include="Assets\Nekoyu\Scripts\Dash.cs" />
+     <Compile Include="Assets\Nekoyu\Scripts\DashBuff.cs" />
+     <Compile Include="Assets\Nekoyu\Scripts\Destruction.cs" />
+     <Compile Include="Assets\Nekoyu\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Nekoyu\Scripts\FollowPlayer.cs" />
+     <Compile Include="Assets\Nekoyu\Scripts\Lifesteal.cs" />
+     <Compile Include="Assets\Nekoyu\Scripts\LifestealMovement.cs" />
+     <Compile Include="Assets\Nekoyu\Scripts\MeleeAttack.cs" />
+     <Compile Include="Assets\Nekoyu\Scripts\NekoyuInput.cs" />
+     <Compile Include="Assets\Nekoyu\Scripts\NekoyuLinearProjectile.cs" />
+     <Compile Include="Assets\Nekoyu\Scripts\NekoyuProjectile.cs" />
+     <Compile Include="Assets\Nekoyu\Scripts\SpellSwipe.cs" />
+     <Compile Include="Assets\Nekoyu\Scripts\TestBuff.cs" />
+     <Compile Include="Assets\RespawnOrb.cs" />
      <Compile Include="Assets\Scenes\Foggy Bridge\Scripts\BridgeguardAttributes.cs" />
      <Compile Include="Assets\Scenes\Foggy Bridge\Scripts\BridgeguardController.cs" />
      <Compile Include="Assets\Scenes\Foggy Bridge\Scripts\ShakeInstance.cs" />
@@ -62,6 +79,10 @@
      <Compile Include="Assets\Scenes\Foggy Bridge\Scripts\SpitfireFlamesAutoDestruction.cs" />
      <Compile Include="Assets\Scenes\Foggy Bridge\Scripts\SpitfireFlamesDamage.cs" />
      <Compile Include="Assets\Scenes\Foggy Bridge\Scripts\SpitfireProjectile.cs" />
+     <Compile Include="Assets\Scorpion\AnimationController.cs" />
+     <Compile Include="Assets\Scorpion\Boomerang.cs" />
+     <Compile Include="Assets\Scorpion\CharacterMovement.cs" />
+     <Compile Include="Assets\Scorpion\UseProjectileSkill.cs" />
      <Compile Include="Assets\Scripts\General\Buffs\Buff.cs" />
      <Compile Include="Assets\Scripts\General\Buffs\DamageOverTimeBuff.cs" />
      <Compile Include="Assets\Scripts\General\Buffs\MovementSpeedBuff.cs" />

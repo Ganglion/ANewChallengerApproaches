@@ -31,10 +31,12 @@ public class HealthBarController : MonoBehaviour {
 		float fractionHealth = unitAttributes.CurrentHealth / unitAttributes.BaseMaxHealth;
         healthBarScaler.localScale = new Vector3(fractionHealth, 1, 1);
 
-        if (healthBarBufferScaler.localScale.x > fractionHealth) {
-            float nextBufferFraction = Mathf.MoveTowards(healthBarBufferScaler.localScale.x, fractionHealth, bufferSpeed * Time.deltaTime);
-            healthBarBufferScaler.localScale = new Vector3(nextBufferFraction, 1, 1);
-        }
+		if (healthBarBufferScaler.localScale.x > fractionHealth) {
+			float nextBufferFraction = Mathf.MoveTowards (healthBarBufferScaler.localScale.x, fractionHealth, bufferSpeed * Time.deltaTime);
+			healthBarBufferScaler.localScale = new Vector3 (nextBufferFraction, 1, 1);
+		} else {
+			healthBarBufferScaler.localScale = new Vector3 (fractionHealth, 1, 1);
+		}
 
         transform.position = unitAttributes.transform.position + (Vector3)healthBarOffset;
     }

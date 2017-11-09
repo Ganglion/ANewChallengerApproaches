@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class UnitAttributes : MonoBehaviour {
 
+	[SerializeField]
+	protected GameObject respawnOrb;
+
     // Constants
     protected Color defaultDamageColor;
     protected const float airborneAccelerationTimeMultiplier = 8;
@@ -129,14 +132,25 @@ public class UnitAttributes : MonoBehaviour {
 		}
 	}
 
+	public void Respawn() {
+		currentHealth = baseMaxHealth;
+		isDead = false;
+	}
+
     protected virtual void Death() {
         // Transform to orb
+		GameObject newRespawnOrb = Instantiate(respawnOrb, transform.position, Quaternion.Euler(Vector3.zero));
+		newRespawnOrb.GetComponent<RespawnOrb> ().SetupOrb (this.gameObject);
+		this.gameObject.SetActive (false);
     }
 
     // Buff system
     protected List<Buff> buffList;
 
     protected void Update() {
+		if (this.gameObject.name == "Nekoyu") {
+			Debug.Log (currentHealth);
+		}
         ResetCurrentAttributes();
         for (int i = 0; i < buffList.Count; i++) {
             Buff currentBuff = buffList[i];

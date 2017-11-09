@@ -300,7 +300,7 @@ public class BuffyController : UnitInput
 
         //Debug.Log(horizontalSpeed + " " + verticalSpeed);
         GameObject newBomb = (GameObject)Instantiate(bomb, bombLauncher.transform.position, Quaternion.Euler(Vector3.zero));
-        newBomb.GetComponent<Bomb>().SetupProjectile(5, new Vector2(x, y), Random.Range(10,20), bombGravity, null);
+        newBomb.GetComponent<Bomb>().SetupProjectile(10, new Vector2(x, y), Random.Range(10,20), bombGravity, null);
     }
 
     /*
