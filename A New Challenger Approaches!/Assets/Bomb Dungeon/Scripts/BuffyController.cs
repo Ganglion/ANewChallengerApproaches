@@ -68,6 +68,7 @@ public class BuffyController : UnitInput
     protected float initialScale;
     protected bool isDoingAction = false;
     protected string action;
+    protected bool isDead = false;
 
     protected override void Awake()
     {
@@ -87,6 +88,11 @@ public class BuffyController : UnitInput
         handleGravity();
         handleCooldowns();
         handleBossState();
+
+        if(isDead)
+        {
+            return;
+        }
         handleBossActions();
         //Execute Updates
         if (action == ACTION_IDLE)
@@ -132,8 +138,26 @@ public class BuffyController : UnitInput
         dropFireAttackCooldown -= Time.deltaTime;
     }
 
+    float fadeTime = 2.0f;
+    float startTime;
+
     protected void handleBossState()
     {
+
+        Debug.Log(gameObject.GetComponent<UnitAttributes>().CurrentHealth);
+
+        if (gameObject.GetComponent<UnitAttributes>().CurrentHealth <= 0 && !isDead)
+        {
+            startTime = Time.time;
+            StartCoroutine(fadeToDeath());
+        }
+
+        if (isDead)
+        {
+            SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, Mathf.Lerp(1, 0, (Time.time - startTime) / 2));
+        }
         //can we change our state?
         if(cooldownToNextAction <= 0)
         {
@@ -147,6 +171,14 @@ public class BuffyController : UnitInput
             }
         }
  
+    }
+
+    protected IEnumerator fadeToDeath()
+    {
+        yield return new WaitForEndOfFrame();
+        isDead = true;
+        yield return new WaitForSeconds(2);
+        gameObject.SetActive(false);
     }
 
     protected IEnumerator transitToPowered()
