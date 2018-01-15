@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Bomb Dungeon/Bomb Dungeon.unity
+- path: Assets/Scenes/Fishing/Fishing.unity
   isLoaded: 1
   isActive: 1
