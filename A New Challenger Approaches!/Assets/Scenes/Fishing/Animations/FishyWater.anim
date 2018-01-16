@@ -19,31 +19,31 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: 0, y: 4.5, z: 0}
+        value: {x: 0, y: -0.5, z: 0}
         inSlope: {x: 0.3, y: 0.15625, z: 0}
         outSlope: {x: 0.3, y: 0.15625, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.5
-        value: {x: 0.15, y: 4.578125, z: 0}
+        value: {x: 0.15, y: -0.421875, z: 0}
         inSlope: {x: 0, y: 0.125, z: 0}
         outSlope: {x: 0, y: 0.125, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 1
-        value: {x: 0, y: 4.625, z: 0}
+        value: {x: 0, y: -0.375, z: 0}
         inSlope: {x: -0.3, y: -0.017578125, z: 0}
         outSlope: {x: -0.3, y: -0.017578125, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 1.5
-        value: {x: -0.15, y: 4.560547, z: 0}
+        value: {x: -0.15, y: -0.43945312, z: 0}
         inSlope: {x: 0, y: -0.125, z: 0}
         outSlope: {x: 0, y: -0.125, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 2
-        value: {x: 0, y: 4.5, z: 0}
+        value: {x: 0, y: -0.5, z: 0}
         inSlope: {x: 0.3, y: -0.12109375, z: 0}
         outSlope: {x: 0.3, y: -0.12109375, z: 0}
         tangentMode: 0
@@ -135,31 +135,31 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 4.5
+        value: -0.5
         inSlope: 0.15625
         outSlope: 0.15625
         tangentMode: 34
       - serializedVersion: 2
         time: 0.5
-        value: 4.578125
+        value: -0.421875
         inSlope: 0.125
         outSlope: 0.125
         tangentMode: 34
       - serializedVersion: 2
         time: 1
-        value: 4.625
+        value: -0.375
         inSlope: -0.017578125
         outSlope: -0.017578125
         tangentMode: 34
       - serializedVersion: 2
         time: 1.5
-        value: 4.560547
+        value: -0.43945312
         inSlope: -0.125
         outSlope: -0.125
         tangentMode: 34
       - serializedVersion: 2
         time: 2
-        value: 4.5
+        value: -0.5
         inSlope: -0.12109375
         outSlope: -0.12109375
         tangentMode: 34
