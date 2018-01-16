@@ -1,0 +1,817 @@
+fileFormatVersion: 2
+guid: 3d92d86665c04d144b890bf7a863e15c
+timeCreated: 1510291395
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: EnergyBall_0
+    21300002: EnergyBall_1
+    21300004: EnergyBall_2
+    21300006: EnergyBall_3
+    21300008: EnergyBall_4
+    21300010: EnergyBall_5
+    21300012: EnergyBall_6
+    21300014: EnergyBall_7
+    21300016: EnergyBall_8
+    21300018: EnergyBall_9
+    21300020: EnergyBall_10
+    21300022: EnergyBall_11
+    21300024: EnergyBall_12
+    21300026: EnergyBall_13
+    21300028: EnergyBall_14
+    21300030: EnergyBall_15
+    21300032: EnergyBall_16
+    21300034: EnergyBall_17
+    21300036: EnergyBall_18
+    21300038: EnergyBall_19
+    21300040: EnergyBall_20
+    21300042: EnergyBall_21
+    21300044: EnergyBall_22
+    21300046: EnergyBall_23
+    21300048: EnergyBall_24
+    21300050: EnergyBall_25
+    21300052: EnergyBall_26
+    21300054: EnergyBall_27
+    21300056: EnergyBall_28
+    21300058: EnergyBall_29
+    21300060: EnergyBall_30
+    21300062: EnergyBall_31
+    21300064: EnergyBall_32
+    21300066: EnergyBall_33
+    21300068: EnergyBall_34
+    21300070: EnergyBall_35
+    21300072: EnergyBall_36
+    21300074: EnergyBall_37
+    21300076: EnergyBall_38
+    21300078: EnergyBall_39
+    21300080: EnergyBall_40
+    21300082: EnergyBall_41
+    21300084: EnergyBall_42
+    21300086: EnergyBall_43
+    21300088: EnergyBall_44
+    21300090: EnergyBall_45
+    21300092: EnergyBall_46
+    21300094: EnergyBall_47
+    21300096: EnergyBall_48
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: EnergyBall_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 349.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_1
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 349.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_2
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 349.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_3
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 349.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_4
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 349.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_5
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 349.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_6
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 349.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 291.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_8
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 291.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_9
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 291.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_10
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 291.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_11
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 291.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_12
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 291.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_13
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 291.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 233.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_15
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 233.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_16
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 233.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_17
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 233.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_18
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 233.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_19
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 233.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_20
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 233.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 175.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_22
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 175.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_23
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 175.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_24
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 175.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_25
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 175.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_26
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 175.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_27
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 175.7143
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 117.71429
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_29
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 117.71429
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_30
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 117.71429
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_31
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 117.71429
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_32
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 117.71429
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_33
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 117.71429
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_34
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 117.71429
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 59.714287
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_36
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 59.714287
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_37
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 59.714287
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_38
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 59.714287
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_39
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 59.714287
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_40
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 59.714287
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_41
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 59.714287
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.7142868
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_43
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1.7142868
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_44
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 1.7142868
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_45
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 1.7142868
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_46
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 1.7142868
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_47
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 1.7142868
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EnergyBall_48
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 1.7142868
+        width: 58.285713
+        height: 58.285713
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

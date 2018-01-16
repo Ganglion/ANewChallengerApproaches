@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4347740686427004
 Transform:
   m_ObjectHideFlags: 1
@@ -126,13 +126,7 @@ MonoBehaviour:
   degreeRotationPerSecond: 720
   timeBeforeReturn: 3
   boomerangMaxReturnSpeed: 12
-  boomerangReturnAcceleration: 6
-  forceReturnDistance: 10
-  forceReturnMultiplier: 0.5
-  unmissable: 0
-  freeTime: 1
-  damageIncrease: 1
-  maxDamage: 20
+  boomerangAccelerationTime: 3
   particleSystem: {fileID: 198095470942214820}
 --- !u!198 &198095470942214820
 ParticleSystem:

@@ -82,6 +82,8 @@
      <Compile Include="Assets\Scorpion\AnimationController.cs" />
      <Compile Include="Assets\Scorpion\Boomerang.cs" />
      <Compile Include="Assets\Scorpion\CharacterMovement.cs" />
+     <Compile Include="Assets\Scorpion\ScorpionAttribute.cs" />
+     <Compile Include="Assets\Scorpion\UpgradeOrbBehavior.cs" />
      <Compile Include="Assets\Scorpion\UseProjectileSkill.cs" />
      <Compile Include="Assets\Scripts\General\Buffs\Buff.cs" />
      <Compile Include="Assets\Scripts\General\Buffs\DamageOverTimeBuff.cs" />

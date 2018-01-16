@@ -6,18 +6,12 @@ using System.Collections.Generic;
 public class Boomerang : Projectile 
 {
 	public float degreeRotationPerSecond;
-	public float timeBeforeReturn;
+	protected float timeBeforeReturn;
 	public float boomerangMaxReturnSpeed;
-	public float boomerangReturnAcceleration;
-	public float forceReturnDistance;
-	public float forceReturnMultiplier;
-	public bool unmissable;
-	public float freeTime;
-	public float damageIncrease;
-	public float maxDamage;
+	public float boomerangAccelerationTime;
 	public ParticleSystem particleSystem;
 
-	private float originalDamage;
+	private float timeSinceReturnStarted;
 
 	private GameObject thrower;
 
@@ -29,54 +23,33 @@ public class Boomerang : Projectile
 	// Update is called once per frame
 	void Update () 
 	{
-		if(projectileDamage < maxDamage) {
-			projectileDamage += damageIncrease * Time.deltaTime;
-			if(projectileDamage > maxDamage) {
-				projectileDamage = maxDamage;
-			}
-			var emission = particleSystem.emission;
-			emission.rateOverDistanceMultiplier = (projectileDamage - originalDamage)/(maxDamage - projectileDamage);
-		}
 		transform.Rotate(new Vector3(0, 0, 1), degreeRotationPerSecond * Time.deltaTime);
-		if(Vector3.Distance(thrower.transform.position, transform.position) > forceReturnDistance) {
-			projectileRigidbody.velocity = (thrower.transform.position -transform.position).normalized * boomerangMaxReturnSpeed * forceReturnMultiplier;
+		if(timeBeforeReturn > 0) {
+			timeBeforeReturn -= Time.deltaTime;
 		}
 		else {
-			if(timeBeforeReturn > 0) {
-				timeBeforeReturn -= Time.deltaTime;
-			}
-			if(timeBeforeReturn <= 0) {
-				if(projectileRigidbody.velocity.magnitude <= boomerangMaxReturnSpeed) {
-					Vector3 oldVelocity = projectileRigidbody.velocity;
-					unitProjectileDirection = (thrower.transform.position - transform.position).normalized;
-					oldVelocity.x += unitProjectileDirection.x * Time.deltaTime * boomerangReturnAcceleration;
-					oldVelocity.y += unitProjectileDirection.y * Time.deltaTime * boomerangReturnAcceleration;
-					projectileRigidbody.velocity = oldVelocity;
-					if(unmissable) {
-						if(freeTime > 0) {
-							freeTime -= Time.deltaTime;
-						} else {
-							projectileRigidbody.velocity = (thrower.transform.position -transform.position).normalized * boomerangMaxReturnSpeed;
-						}
-					}
-				} else {
-					//Set it to move directly towards the player
-					projectileRigidbody.velocity = (thrower.transform.position -transform.position).normalized * boomerangMaxReturnSpeed;
-				}
-			}
+			timeSinceReturnStarted += Time.deltaTime;
+			Vector3 oldVelocity = projectileRigidbody.velocity;
+			unitProjectileDirection = (thrower.transform.position - transform.position).normalized;
+			
+			oldVelocity.x = unitProjectileDirection.x * (boomerangMaxReturnSpeed * (timeSinceReturnStarted / boomerangAccelerationTime));
+			oldVelocity.y = unitProjectileDirection.y * (boomerangMaxReturnSpeed * (timeSinceReturnStarted / boomerangAccelerationTime));
+			
+			projectileRigidbody.velocity = oldVelocity;	
 		}
 	}
 
 	// Sets up projectile properties
-	public void SetupProjectile(float damage, float speed, float lifespan, Vector2 direction, GameObject throwPerson, params Buff[] buffs) {
+	public void SetupProjectile(float damage, float speed, float lifespan, Vector2 direction, GameObject throwPerson, float returnTime, params Buff[] buffs) {
 		projectileDamage = damage;
-		originalDamage = damage;
 		projectileSpeed = speed;
 		projectileLifespan = lifespan;
 		projectileBuffs = buffs;
+		timeBeforeReturn = returnTime;
 		unitProjectileDirection = direction.normalized;
 		projectileRigidbody.velocity = unitProjectileDirection * projectileSpeed;
 		thrower = throwPerson;
+		timeSinceReturnStarted = 0;
 	}
 		
 	protected override void UpdateProjectile() {
@@ -96,12 +69,11 @@ public class Boomerang : Projectile
 
 	protected override void OnHitFriendly(GameObject o) {
 		if(timeBeforeReturn <= 0) {
-			if (o.GetComponent<UseProjectileSkill> () != null) {
-				OnProjectileDeath ();
+			if(o.GetComponent<UseProjectileSkill>() != null) {
+				OnProjectileDeath();
 			}
 		}
 	}
-
 
 	protected override void OnHitStructure (GameObject hitObject) {
 		// If projectile hits a wall, projectile dies
