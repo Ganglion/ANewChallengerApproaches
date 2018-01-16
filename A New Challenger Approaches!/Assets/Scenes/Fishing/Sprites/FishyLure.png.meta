@@ -1,9 +1,10 @@
 fileFormatVersion: 2
-guid: a3ad14234cdc02d4682db4c4c6cda4d2
-timeCreated: 1507812353
+guid: 8cbab2f6a5018784ea4db14d8dfdc53e
+timeCreated: 1516022847
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
+  externalObjects: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -43,8 +44,8 @@ TextureImporter:
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 9
-  spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePivot: {x: 0.6570546, y: 0.6304497}
+  spriteBorder: {x: 421, y: 665, z: 635, w: 140}
   spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -57,6 +58,7 @@ TextureImporter:
   platformSettings:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -69,6 +71,6 @@ TextureImporter:
     outline: []
     physicsShape: []
   spritePackingTag: 
-  userData: 98815905813815
+  userData: 99354064143696
   assetBundleName: 
   assetBundleVariant: 
