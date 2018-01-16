@@ -51,6 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BubbleProjectile.cs" />
+     <Compile Include="Assets\FishyController.cs" />
+     <Compile Include="Assets\LazerbeamProjectile.cs" />
      <Compile Include="Assets\Nekoyu\Scripts\Animations.cs" />
      <Compile Include="Assets\Nekoyu\Scripts\BuffSkill.cs" />
      <Compile Include="Assets\Nekoyu\Scripts\CollisionDamage.cs" />
