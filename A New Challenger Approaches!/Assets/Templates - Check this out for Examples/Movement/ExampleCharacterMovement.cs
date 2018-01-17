@@ -5,6 +5,7 @@ using UnityEngine;
 public class ExampleCharacterMovement : UnitInput {
 
     // Components
+	[SerializeField]
     protected Animator characterAnimator;
 
 	// Used for animations
@@ -13,7 +14,7 @@ public class ExampleCharacterMovement : UnitInput {
 
     protected override void Awake() {
 		base.Awake ();
-        characterAnimator = GetComponent<Animator>();
+        //characterAnimator = GetComponent<Animator>();
     }
 		
     protected void FixedUpdate() {
@@ -29,7 +30,17 @@ public class ExampleCharacterMovement : UnitInput {
 		float currentAcceleration = characterMovement.collisions.below ? characterAttributes.CurrentGroundAcceleration : characterAttributes.CurrentAirborneAcceleration;
         float jumpHeight = characterAttributes.CurrentJumpHeight;
 
-        bool hasMovedHorizontally = false;
+		float horzInput = Input.GetAxisRaw("Horizontal");
+
+		bool hasMovedHorizontally = false;
+
+		if (characterAnimator) {
+			if (horzInput != 0) {
+				characterAnimator.SetBool ("isRunning", true);
+			} else {
+				characterAnimator.SetBool ("isRunning", false);
+			}
+		}
 
 		// Character not on ground?
         if (!characterMovement.collisions.below) {
@@ -97,6 +108,20 @@ public class ExampleCharacterMovement : UnitInput {
 			// move player normally
             characterMovement.Move(currentVelocity * Time.deltaTime, Vector2.zero);
         }
+
+		if (isFacingRight)
+		{
+			Vector3 transformScale = transform.localScale;
+			transformScale.x = Mathf.Abs(transform.localScale.x);
+			transform.localScale = transformScale;
+		}
+		else
+		{
+			Vector3 transformScale = transform.localScale;
+			transformScale.x = -Mathf.Abs(transform.localScale.x);
+			transform.localScale = transformScale;
+		}
+
     }
 
 }

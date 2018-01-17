@@ -31,7 +31,7 @@ public class ExampleLinearProjectile : Projectile {
 
 	protected override void OnHitStructure (GameObject hitObject) {
 		// If projectile hits a wall, projectile dies
-		OnProjectileDeath ();
+		//OnProjectileDeath ();
 	}
 
 	protected override void OnProjectileDeath () {

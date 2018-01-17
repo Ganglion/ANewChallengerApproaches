@@ -25,11 +25,11 @@ public class Projectile : MonoBehaviour {
     protected float facingDirectionOffset;
 
     // Attributes
-    protected float projectileDamage;
-    protected float projectileSpeed;
-    protected float projectileLifespan;
+    public float projectileDamage;
+    public float projectileSpeed;
+    public float projectileLifespan;
     protected Buff[] projectileBuffs;
-    protected Vector2 unitProjectileDirection;
+    public Vector2 unitProjectileDirection;
 
     // Runtime variables
     protected float hitColliderRadius;
