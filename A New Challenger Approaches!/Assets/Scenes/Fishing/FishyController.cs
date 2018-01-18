@@ -169,4 +169,19 @@ public class FishyController : UnitInput {
         newBubblebeam.GetComponent<BubbleProjectile>().SetupProjectile(bubblebeamDamage, bubblebeamVelocity, bubblebeamLifespan);
     }
 
+    public void Tsunami() {
+        CameraController.Instance.ShakeCamera(.25f, 3f);
+    }
+
+    public void FishyDeathShake() {
+        CameraController.Instance.ShakeCamera(.25f, 3f);
+    }
+
+    public void SetDead() {
+        isDead = true;
+    }
+
+    protected void Death() {
+        this.gameObject.SetActive(false);
+    }
 }

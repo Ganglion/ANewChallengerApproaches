@@ -39,14 +39,13 @@ GameObject:
   - component: {fileID: 60590336751425838}
   - component: {fileID: 114057587333113554}
   - component: {fileID: 114510744323103428}
-  - component: {fileID: 114390834000143636}
   - component: {fileID: 114081624367164616}
-  - component: {fileID: 114116584578601400}
-  - component: {fileID: 114143708514768130}
   - component: {fileID: 114603534598798314}
   - component: {fileID: 50503014654738828}
   - component: {fileID: 61442863796826290}
-  - component: {fileID: 95443098088548850}
+  - component: {fileID: 114170541316877252}
+  - component: {fileID: 114359821239352426}
+  - component: {fileID: 114753465561002476}
   m_Layer: 9
   m_Name: Dathan
   m_TagString: Player
@@ -103,8 +102,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1551310922683390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.1, y: -1.979, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -7.682457, y: 2.0853965, z: 0}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children:
   - {fileID: 4037626228212198}
   - {fileID: 4256250681574176}
@@ -184,23 +183,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3, y: 3}
   m_EdgeRadius: 0
---- !u!95 &95443098088548850
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1551310922683390}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95946427898556582
 Animator:
   serializedVersion: 3
@@ -245,12 +227,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1551310922683390}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4e3f63fbd7f22d45ab13ff0177acd22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114116584578601400
+--- !u!114 &114170541316877252
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -258,48 +240,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1551310922683390}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa533cc8a9888454e8750342dbd56132, type: 3}
+  m_Script: {fileID: 11500000, guid: 3784ac83d592baf4aac868ff9f1c00d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keycodeControl: 122
-  projectile: {fileID: 1598217348299116, guid: 6e9403d879ac44a8e88c5231bbf70bc8, type: 2}
-  firingIndicator: {fileID: 4037626228212198}
-  firingPivot: {fileID: 4424578304866386}
-  projectileDamage: 5
-  projectileSpeed: 10
-  projectileLifeSpan: 4
-  projectileCooldown: 0.75
---- !u!114 &114143708514768130
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1551310922683390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa533cc8a9888454e8750342dbd56132, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keycodeControl: 99
-  projectile: {fileID: 1598217348299116, guid: 72646dd1bb9034b829c58a6fd69a6976, type: 2}
-  firingIndicator: {fileID: 4037626228212198}
-  firingPivot: {fileID: 4424578304866386}
-  projectileDamage: 12
-  projectileSpeed: 0.2
-  projectileLifeSpan: 4
-  projectileCooldown: 2
---- !u!114 &114390834000143636
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1551310922683390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f02321de1a4de04baddacd334fd43d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlayer: 1
+  respawnOrb: {fileID: 0}
   baseMaxHealth: 100
   baseMovementSpeed: 5
   timeTakenToReachMaxSpeed: 0.1
@@ -312,6 +256,24 @@ MonoBehaviour:
   timeSinceLastDash: 99
   flySpeed: 10
   flyAccel: 8
+--- !u!114 &114359821239352426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1551310922683390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d270e070f775b4f8f48b361da251b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 1598217348299116, guid: 72646dd1bb9034b829c58a6fd69a6976, type: 2}
+  firingIndicator: {fileID: 4037626228212198}
+  firingPivot: {fileID: 4424578304866386}
+  projectileDamage: 12
+  projectileSpeed: 0.2
+  projectileLifeSpan: 4
+  projectileCooldown: 2
 --- !u!114 &114510744323103428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -323,10 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a9c6b6f6c9e7e468611a86127636ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentJumps: 0
-  jumpCooldown: 0
   characterAnimator: {fileID: 95946427898556582}
-  secJumpType: 0
 --- !u!114 &114603534598798314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -351,6 +310,24 @@ MonoBehaviour:
   portal1: {fileID: 0}
   portal2: {fileID: 0}
   portalUptime: 15
+--- !u!114 &114753465561002476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1551310922683390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea6a4e7eec7e32b4893668f5bdeded2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 1598217348299116, guid: 6e9403d879ac44a8e88c5231bbf70bc8, type: 2}
+  firingIndicator: {fileID: 4037626228212198}
+  firingPivot: {fileID: 4424578304866386}
+  projectileDamage: 5
+  projectileSpeed: 10
+  projectileLifeSpan: 4
+  projectileCooldown: 0.75
 --- !u!212 &212450812025024738
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -360,6 +337,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -375,6 +353,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -402,6 +381,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -417,6 +397,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

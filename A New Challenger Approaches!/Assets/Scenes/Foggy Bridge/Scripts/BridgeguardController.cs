@@ -126,7 +126,7 @@ public class BridgeguardController : UnitInput {
                 if (chosenAction < moveWeight) {
                     characterAnimator.SetTrigger(WALK_TRIGGER);
 					if (hardMode) {
-						currentVelocity.x = movementSpeed * 2f * FaceDirectionToTarget () * characterAttributes.MovementSpeedMultiplier;
+						currentVelocity.x = movementSpeed * FaceDirectionToTarget () * characterAttributes.MovementSpeedMultiplier;
 					} else {
 						currentVelocity.x = movementSpeed * FaceDirectionToTarget () * characterAttributes.MovementSpeedMultiplier;
 					}

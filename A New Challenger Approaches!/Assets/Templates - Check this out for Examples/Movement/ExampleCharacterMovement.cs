@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewired;
 
 public class ExampleCharacterMovement : UnitInput {
 
+    public int playerID;
+    public Player dathanPlayer;
+    [System.NonSerialized]
+    private bool initialized;
+
     // Components
-	[SerializeField]
+    [SerializeField]
     protected Animator characterAnimator;
 
 	// Used for animations
@@ -18,8 +24,10 @@ public class ExampleCharacterMovement : UnitInput {
     }
 		
     protected void FixedUpdate() {
+        if (!ReInput.isReady) return;
+        if (!initialized) dathanPlayer = ReInput.players.GetPlayer(playerID);
 
-		// Execute this every frame
+        // Execute this every frame
         DoPlayerInput();
     }
 
@@ -57,7 +65,7 @@ public class ExampleCharacterMovement : UnitInput {
         }
 
 		// Pressed left arrow?
-        if (Input.GetKey(KeyCode.LeftArrow)) {
+        if (Input.GetKey(KeyCode.LeftArrow) || dathanPlayer.GetAxis("Move Horizontal") < 0) {
 
 			// Accelerate leftwards towards max speed
             currentVelocity.x = Mathf.MoveTowards(currentVelocity.x, -movementSpeed, currentAcceleration * Time.deltaTime);
@@ -66,7 +74,7 @@ public class ExampleCharacterMovement : UnitInput {
         }
 
 		// Pressed right arrow?
-        if (Input.GetKey(KeyCode.RightArrow)) {
+        if (Input.GetKey(KeyCode.RightArrow) || dathanPlayer.GetAxis("Move Horizontal") > 0) {
 
 			// Accelerate rightwards towards max speed
             currentVelocity.x = Mathf.MoveTowards(currentVelocity.x, movementSpeed, currentAcceleration * Time.deltaTime);
@@ -75,7 +83,7 @@ public class ExampleCharacterMovement : UnitInput {
         }
 
 		// Pressed up arrow?
-        if (Input.GetKey(KeyCode.UpArrow)) {
+        if (Input.GetKey(KeyCode.UpArrow) || dathanPlayer.GetAxis("Move Vertical") >= .5f) {
 
 			// If character is on ground,
 			if (characterMovement.collisions.below) {
@@ -96,7 +104,7 @@ public class ExampleCharacterMovement : UnitInput {
 			
         // All velocity calculated, time to move the player
 		// Pressed down button?
-        if (Input.GetKey(KeyCode.DownArrow)) {
+        if (Input.GetKey(KeyCode.DownArrow) || dathanPlayer.GetAxis("Move Vertical") < -.65f) {
 
 			// move player while passing through platforms
             // Use Vector2.down as the second parameter if you want to pass through platforms

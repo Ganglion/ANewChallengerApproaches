@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewired;
 
 public class DathanNormalFireball : MonoBehaviour {
 
-	// Prefabs
-	[SerializeField]
+    public int playerID;
+    public Player dathanPlayer;
+    [System.NonSerialized]
+    private bool initialized;
+
+    // Prefabs
+    [SerializeField]
 	private GameObject projectile;
 
 	// Objects
@@ -37,16 +43,18 @@ public class DathanNormalFireball : MonoBehaviour {
 
 	// Executes every frame
 	private void Update () {
+        if (!ReInput.isReady) return;
+        if (!initialized) dathanPlayer = ReInput.players.GetPlayer(playerID);
 
-		// Skill is on cooldown?
-		if (currentProjectileCooldown > 0) {
+        // Skill is on cooldown?
+        if (currentProjectileCooldown > 0) {
 
 			// Decrease cooldown time according to frame time
 			currentProjectileCooldown -= Time.deltaTime;
 		}
 
 		// Pressed C button and skill is off cooldown?
-		if (Input.GetKey(KeyCode.C) && currentProjectileCooldown <= 0) {
+		if ((Input.GetKey(KeyCode.C) || dathanPlayer.GetButton("Fire")) && currentProjectileCooldown <= 0) {
 
 			FireProjectile();
 

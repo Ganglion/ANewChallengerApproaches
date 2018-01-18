@@ -8,7 +8,7 @@ public class FishyWaterDamage : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D other) {
         if (other.gameObject.layer == LayerMask.NameToLayer(PLAYER_LAYER)) {
-            other.GetComponent<UnitAttributes>().ApplyAttack(3 * Time.deltaTime, other.transform.position);
+            other.GetComponent<UnitAttributes>().ApplyAttack(20 * Time.deltaTime, other.transform.position);
         }
     }
 

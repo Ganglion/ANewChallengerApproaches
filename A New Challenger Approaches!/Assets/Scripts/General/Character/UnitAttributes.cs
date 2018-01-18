@@ -148,9 +148,6 @@ public class UnitAttributes : MonoBehaviour {
     protected List<Buff> buffList;
 
     protected void Update() {
-		if (this.gameObject.name == "Nekoyu") {
-			Debug.Log (currentHealth);
-		}
         ResetCurrentAttributes();
         for (int i = 0; i < buffList.Count; i++) {
             Buff currentBuff = buffList[i];

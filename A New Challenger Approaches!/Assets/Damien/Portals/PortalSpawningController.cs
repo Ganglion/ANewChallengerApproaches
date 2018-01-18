@@ -1,8 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewired;
 
 public class PortalSpawningController : MonoBehaviour {
+
+    public int playerID;
+    public Player dathanPlayer;
+    [System.NonSerialized]
+    private bool initialized;
 
     public UnitAttributes player;
     public Transform facingIndicator;
@@ -86,12 +92,16 @@ public class PortalSpawningController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (!ReInput.isReady) return;
+        if (!initialized) dathanPlayer = ReInput.players.GetPlayer(playerID);
+
         portal1runningTime += Time.deltaTime;
         portal2runningTime += Time.deltaTime;
-        if (Input.GetKeyDown(portal2Key) && portal2runningTime >= portalCooldown){
+        if ((Input.GetKeyDown(portal2Key) || dathanPlayer.GetButtonDown("Up Button")) && portal2runningTime >= portalCooldown){
+
             spawnPortal(2, facingIndicator.position);
         }
-        if (Input.GetKeyDown(portal1Key) && portal1runningTime >= portalCooldown){
+        if ((Input.GetKeyDown(portal1Key) || dathanPlayer.GetButtonDown("Up Button")) && portal1runningTime >= portalCooldown){
             spawnPortal(1, facingIndicator.position);
         }
 	}
